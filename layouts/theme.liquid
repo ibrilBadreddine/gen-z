@@ -1,0 +1,26 @@
+<!doctype html>
+{% assign lang = store.store_locale.iso_code %}
+{% assign direction = 'ltr' %}
+
+{% if lang == 'ar' %}
+  {% assign direction = 'rtl' %}
+{% endif %}
+
+<html lang="{{ lang }}" dir="{{ direction }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="{{ request.url }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+
+    {{ '_globals.css' | asset_url | stylesheet_tag }}
+  </head>
+  <body>
+    <main id="main">
+      {{ content_for_layout }}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+@import url("./_tokens.css");
+@import url("./_components.css");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  background-color: var(--color-surface-container);
+  color: var(--color-on-background);
+
+  & > #main {
+    width: 600px;
+    min-height: calc(100vh - var(--spacing-24));
+    margin: var(--spacing-12);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-background);
+  }
+}
+
+@media (width <= 760px) {
+  body {
+    background-color: var(--color-background);
+
+    & > #main {
+      width: 100%;
+      min-height: 100vh;
+      margin: var(--spacing-0);
+      border-radius: var(--radius-none);
+    }
+  }
+}
