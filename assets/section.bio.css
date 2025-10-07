@@ -1,0 +1,15 @@
+/* BIO */
+[ui-section="bio"] {
+  display: grid;
+  gap: var(--spacing-8);
+
+  .title {
+    font: var(--font-title-md);
+  }
+
+  .description {
+    opacity: 0.8;
+    font: var(--font-body-md);
+    text-wrap: balance;
+  }
+}

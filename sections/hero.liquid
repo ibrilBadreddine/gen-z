@@ -1,0 +1,28 @@
+{{ 'section.hero.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="hero">
+  <div class="avatar">
+    <div class="avatar-box">
+      <img
+        src="https://images.pexels.com/photos/34046748/pexels-photo-34046748.jpeg"
+        alt="logo"
+        width="80"
+        height="90"
+      >
+    </div>
+  </div>
+  <div class="content">
+    <h4 class="heading">Cokimocha</h4>
+    <p class="subheading">Life is too short for bad coffee.</p>
+  </div>
+  <div class="actions">
+    <button ui-button data-variant="primary" data-size="md">Shop</button>
+    <button ui-button data-variant="outline" data-size="md">About</button>
+  </div>
+</div>
+
+{%- schema -%}
+{
+  "label": "Home"
+}
+{%- endschema -%}

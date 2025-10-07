@@ -1,0 +1,28 @@
+/* SOCIAL LINKS */
+[ui-section="social-links"] {
+  display: grid;
+  gap: var(--spacing-8);
+
+  .title {
+    font: var(--font-title-md);
+    text-align: center;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--spacing-8);
+
+    .link {
+      width: 100%;
+    }
+  }
+}
+
+@media (width <= 769px) {
+  [ui-section="social-links"] {
+    .links {
+      flex-direction: column;
+    }
+  }
+}

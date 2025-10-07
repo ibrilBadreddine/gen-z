@@ -1,0 +1,30 @@
+{{ 'section.gallery.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="gallery">
+  <ul class="images">
+    <li class="image">
+      <img
+        src="https://images.pexels.com/photos/32396635/pexels-photo-32396635.png"
+        alt="image 2"
+        width="200"
+        height="200"
+      >
+      <span class="label">Photo 2</span>
+    </li>
+    <li class="image">
+      <img
+        src="https://images.pexels.com/photos/34046747/pexels-photo-34046747.jpeg"
+        alt="image 1"
+        width="200"
+        height="200"
+      >
+      <span class="label">Photo 1</span>
+    </li>
+  </ul>
+</div>
+
+{% schema %}
+{
+  "label": "Gallery"
+}
+{% endschema %}

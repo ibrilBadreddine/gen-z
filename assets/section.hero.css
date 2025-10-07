@@ -1,0 +1,41 @@
+/* HERO */
+[ui-section="hero"] {
+  display: grid;
+  justify-content: center;
+  gap: var(--spacing-12);
+  text-align: center;
+
+  .avatar {
+    display: flex;
+    justify-content: center;
+
+    .avatar-box {
+      width: 82px;
+      height: 82px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      border-radius: var(--radius-circled);
+      outline: 2px solid var(--color-primary);
+    }
+  }
+
+  .content {
+    display: grid;
+    gap: var(--spacing-4);
+
+    .heading {
+      font: var(--font-body-lg);
+    }
+
+    .subheading {
+      opacity: 0.8;
+      font: var(--font-body-md);
+    }
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-8);
+  }
+}

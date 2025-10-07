@@ -1,8 +1,17 @@
 {
   "sections": {
-    "placeholder": {
-      "type": "placeholder"
+    "hero": {
+      "type": "hero"
+    },
+    "gallery": {
+      "type": "gallery"
+    },
+    "bio": {
+      "type": "bio"
+    },
+    "social-links": {
+      "type": "social-links"
     }
   },
-  "order": ["placeholder"]
+  "order": ["hero", "gallery", "bio", "social-links"]
 }

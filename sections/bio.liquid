@@ -1,0 +1,15 @@
+{{ 'section.bio.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="bio">
+  <h3 class="title">Hey, I am Samira</h3>
+  <p class="description">
+    I am the brand owner of Cokimocha, I bring you a blend of love and relaxation. We offer beautiful coffee cups along
+    with delicious coffee, cookies, and everything you need to create the perfect cup of coffee for your mornings.
+  </p>
+</div>
+
+{% schema %}
+{
+  "label": "Bio"
+}
+{% endschema %}
