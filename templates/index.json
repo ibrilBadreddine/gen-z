@@ -11,7 +11,10 @@
     },
     "social-links": {
       "type": "social-links"
+    },
+    "collections": {
+      "type": "collections"
     }
   },
-  "order": ["hero", "gallery", "bio", "social-links"]
+  "order": ["hero", "gallery", "bio", "social-links", "collections"]
 }

@@ -1,0 +1,23 @@
+{{ 'section.collections.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="collections">
+  <h3 class="title">Collections</h3>
+  <ul class="items">
+    {% for item in (1..4) %}
+      <li class="item">
+        <button style="background-image: url('https://images.pexels.com/photos/30041434/pexels-photo-30041434.jpeg');">
+          <div class="content">
+            <span class="name">Whole bean coffee</span>
+            <p class="description">Lorem ipsum dolor sit amet.</p>
+          </div>
+        </button>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "label": "Collections"
+}
+{% endschema %}
