@@ -7,7 +7,7 @@
     font: var(--font-title-md);
   }
 
-  .items {
+  & > .collections {
     display: flex;
     width: calc(100% + var(--spacing-24));
     padding-inline-end: var(--spacing-24);
@@ -19,13 +19,13 @@
     -ms-overflow-style: none;
     -webkit-overflow-scrolling: touch;
 
-    .item {
+    .collection {
       min-width: 70%;
-      height: 160px;
+      height: 20vh;
       scroll-snap-align: center;
       scroll-snap-stop: always;
 
-      & > button {
+      .collection-card {
         display: flex;
         position: relative;
         align-items: end;
@@ -39,6 +39,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        cursor: pointer;
 
         .content {
           display: grid;
@@ -75,9 +76,10 @@
 
 @media (width <= 769px) {
   [ui-section="collections"] {
-    .items {
-      .item {
+    .collections {
+      .collection {
         min-width: 80%;
+        height: 18vh;
       }
     }
   }

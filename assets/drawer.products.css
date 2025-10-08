@@ -1,0 +1,55 @@
+/* DRAWER PRODUCTS */
+.drawer-products {
+  /* CORE */
+  .core {
+    padding-block-end: var(--spacing-32);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+    .products {
+      display: grid;
+      gap: var(--spacing-12);
+      grid-template-columns: repeat(2, 1fr);
+
+      .product {
+        display: grid;
+        gap: var(--spacing-6);
+        position: relative;
+
+        img {
+          width: 100%;
+          height: 250px;
+          object-fit: cover;
+          border-radius: var(--radius-md);
+        }
+
+        .name {
+          padding-inline: var(--spacing-4);
+          font: var(--font-body-md);
+        }
+
+        .action {
+          position: absolute;
+          inset-inline-end: var(--spacing-6);
+          inset-block-start: var(--spacing-6);
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 769px) {
+  .drawer-products {
+    .core {
+      .products {
+        .product {
+          img {
+            height: 20vh;
+          }
+        }
+      }
+    }
+  }
+}

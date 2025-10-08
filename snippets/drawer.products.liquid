@@ -1,0 +1,25 @@
+{% comment %}
+  Renders a products drawer
+
+  Usage:
+  {% render 'drawer-products'%}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-products" data-state="closed">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Whole bean coffee</h4>
+      <p class="description">[8] Products</p>
+    </div>
+    <button ui-drawer="trigger" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="close">
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <ul class="products">
+      {% for item in (1..8) %}
+        {% render 'block.product' %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+{% comment %}
+  Renders a collection card (Block)
+
+  Usage:
+  {% render 'collection-product'%}
+{% endcomment %}
+
+<li class="collection">
+  <ui-drawer>
+    <button
+      class="collection-card"
+      ui-drawer="trigger"
+      style="background-image: url('https://images.pexels.com/photos/30041434/pexels-photo-30041434.jpeg');"
+    >
+      <div class="content">
+        <span class="name">Whole bean coffee</span>
+        <p class="description">Lorem ipsum dolor sit amet.</p>
+      </div>
+    </button>
+    {% render 'drawer.products' %}
+  </ui-drawer>
+</li>

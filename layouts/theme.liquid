@@ -19,6 +19,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
 
     {{ '_globals.css' | asset_url | stylesheet_tag }}
+
+    {{ 'misc.drawer.js' | asset_url | script_tag_deferred }}
+    {{ 'misc.drawer.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     <div id="app">

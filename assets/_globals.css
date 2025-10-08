@@ -54,6 +54,10 @@ body {
       text-align: center;
     }
   }
+
+  &:has([ui-drawer="content"][data-state="open"]) {
+    overflow-y: hidden;
+  }
 }
 
 @media (width <= 760px) {

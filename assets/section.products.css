@@ -7,12 +7,12 @@
     font: var(--font-title-md);
   }
 
-  .items {
+  & > .products {
     display: grid;
     gap: var(--spacing-12);
     grid-template-columns: repeat(2, 1fr);
 
-    .item {
+    .product {
       display: grid;
       gap: var(--spacing-6);
       position: relative;
@@ -40,8 +40,8 @@
 
 @media (width <= 769px) {
   [ui-section="products"] {
-    .items {
-      .item {
+    .products {
+      .product {
         img {
           height: 20vh;
         }
