@@ -19,5 +19,5 @@
       "type": "products"
     }
   },
-  "order": ["hero", "gallery", "bio", "social-links", "collections", "products"]
+  "order": ["hero", "collections", "products"]
 }

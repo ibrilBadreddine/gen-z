@@ -1,0 +1,56 @@
+{% comment %}
+  Renders a cart drawer
+
+  Usage:
+  {% render 'drawer-cart'%}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-cart" data-state="closed">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">My cart</h4>
+    </div>
+    <button ui-drawer="trigger" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="close">
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <ul class="products">
+      {% for item in (1..8) %}
+        <li class="product">
+          <img
+            src="https://images.pexels.com/photos/6946071/pexels-photo-6946071.jpeg"
+            alt="product"
+            width="100%"
+            height="100%"
+          >
+          <div class="info">
+            <span class="name">Hot Chocolate cup</span>
+            <span class="price">$25.00</span>
+          </div>
+          <div class="actions">
+            <div class="quantity">
+              <button ui-button data-variant="outline" data-size="xs" data-icon aria-label="decrease">
+                <i class="hgi hgi-stroke hgi-minus-sign"></i>
+              </button>
+              <span class="value">1</span>
+              <button ui-button data-variant="outline" data-size="xs" data-icon aria-label="increase">
+                <i class="hgi hgi-stroke hgi-plus-sign"></i>
+              </button>
+            </div>
+            <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="remove">
+              <i class="hgi hgi-stroke hgi-delete-04"></i>
+            </button>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+    <div class="total">
+      <h4 class="label">Total Amount</h4>
+      <span class="value">$599</span>
+    </div>
+    <div class="actions">
+      <button ui-button data-variant="primary" data-size="lg">Make Payment</button>
+    </div>
+  </div>
+</div>

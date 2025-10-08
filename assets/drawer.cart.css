@@ -1,0 +1,106 @@
+/* DRAWER CART */
+.drawer-cart {
+  /* CORE */
+  .core {
+    display: grid;
+    gap: var(--spacing-32);
+    padding-block-end: var(--spacing-24);
+
+    .products {
+      display: flex;
+      width: calc(100% + var(--spacing-24));
+      padding-inline-end: var(--spacing-24);
+      overflow-x: scroll;
+      gap: var(--spacing-12);
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+
+      .product {
+        display: grid;
+        min-width: 70%;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        gap: var(--spacing-12);
+
+        img {
+          width: 100%;
+          height: 35vh;
+          object-fit: cover;
+          border-radius: var(--radius-lg);
+        }
+
+        .info {
+          display: grid;
+          gap: var(--spacing-4);
+
+          .price {
+            opacity: 0.8;
+            font: var(--font-body-md);
+          }
+        }
+
+        .actions {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .quantity {
+            display: flex;
+            align-items: center;
+
+            .value {
+              min-width: 30px;
+              font: var(--font-body-md);
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+
+    .total {
+      display: grid;
+      gap: var(--spacing-8);
+      padding: var(--spacing-16);
+      border-radius: var(--radius-md);
+      background-color: var(--color-secondary-container);
+      color: var(--color-on-secondary-container);
+
+      .label {
+        opacity: 0.8;
+        font: var(--font-title-sm);
+      }
+
+      .value {
+        font: var(--font-title-md);
+      }
+    }
+
+    .actions {
+      display: grid;
+    }
+  }
+}
+
+@media (width <= 769px) {
+  .drawer-cart {
+    .core {
+      .products {
+        .product {
+          img {
+            height: 25vh;
+          }
+
+          .info {
+            .name {
+              font: var(--font-body-md);
+            }
+          }
+        }
+      }
+    }
+  }
+}

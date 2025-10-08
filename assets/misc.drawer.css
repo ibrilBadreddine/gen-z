@@ -2,7 +2,13 @@
 ui-drawer {
   [ui-drawer="trigger"] {
     &:first-child:has(+ [ui-drawer="content"][data-state="open"]) {
-      &::before {
+      cursor: auto;
+
+      &:active {
+        scale: none;
+      }
+
+      &::after {
         content: "";
         position: fixed;
         inset: 0;

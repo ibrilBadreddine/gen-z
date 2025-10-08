@@ -22,6 +22,7 @@
 
     {{ 'misc.drawer.js' | asset_url | script_tag_deferred }}
     {{ 'misc.drawer.css' | asset_url | stylesheet_tag }}
+    {{ 'drawer.cart.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     <div id="app">
@@ -29,9 +30,12 @@
         <button ui-button data-variant="outline" data-size="md" data-icon aria-label="menu">
           <i class="hgi hgi-stroke hgi-menu-05"></i>
         </button>
-        <button ui-button data-variant="outline" data-size="md" data-icon aria-label="cart">
-          <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>
-        </button>
+        <ui-drawer>
+          <button ui-drawer="trigger" ui-button data-variant="outline" data-size="md" data-icon aria-label="cart">
+            <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>
+          </button>
+          {% render 'drawer.cart' %}
+        </ui-drawer>
       </header>
       <main id="main">
         {{ content_for_layout }}

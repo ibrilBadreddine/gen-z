@@ -25,6 +25,7 @@ if (!customElements.get("ui-drawer")) {
     }
 
     toggle(state) {
+      console.log(state)
       this.isOpen = state ?? !this.isOpen;
       this.content.setAttribute("data-state", this.isOpen ? "open" : "closed");
     }
