@@ -58,9 +58,28 @@ body {
   &:has([ui-drawer="content"][data-state="open"]) {
     overflow-y: hidden;
   }
+
+  &:has([ui-stories="content"][data-state="open"]) {
+    overflow-y: hidden;
+  }
 }
 
-@media (width <= 760px) {
+@media (width > 769px) {
+  body {
+    & > #app {
+      &:has([ui-stories="content"][data-state="open"]) {
+        &::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background-color: var(--color-background);
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 769px) {
   body {
     background-color: var(--color-background);
 

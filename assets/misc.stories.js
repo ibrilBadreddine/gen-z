@@ -1,5 +1,5 @@
-if (!customElements.get("ui-drawer")) {
-  class Drawer extends HTMLElement {
+if (!customElements.get("ui-stories")) {
+  class Stories extends HTMLElement {
     constructor() {
       super();
 
@@ -12,8 +12,8 @@ if (!customElements.get("ui-drawer")) {
     }
 
     _render() {
-      this.triggers = this.querySelectorAll("[ui-drawer='trigger']");
-      this.content = this.querySelector("[ui-drawer='content']");
+      this.triggers = this.querySelectorAll("[ui-stories='trigger']");
+      this.content = this.querySelector("[ui-stories='content']");
 
       this.triggers.forEach((trigger) =>
         trigger.addEventListener("click", () => this.toggle())
@@ -30,5 +30,5 @@ if (!customElements.get("ui-drawer")) {
     }
   }
 
-  customElements.define("ui-drawer", Drawer);
+  customElements.define("ui-stories", Stories);
 }

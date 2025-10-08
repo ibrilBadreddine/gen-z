@@ -1,15 +1,20 @@
 {{ 'section.hero.css' | asset_url | stylesheet_tag }}
+{{ 'misc.stories.css' | asset_url | stylesheet_tag }}
+{{ 'misc.stories.js' | asset_url | script_tag_deferred }}
 
 <div ui-section="hero">
   <div class="avatar">
-    <div class="avatar-box">
-      <img
-        src="https://images.pexels.com/photos/34046748/pexels-photo-34046748.jpeg"
-        alt="logo"
-        width="80"
-        height="90"
-      >
-    </div>
+    <ui-stories>
+      <button ui-stories="trigger" class="avatar-box">
+        <img
+          src="https://images.pexels.com/photos/34046748/pexels-photo-34046748.jpeg"
+          alt="logo"
+          width="80"
+          height="90"
+        >
+      </button>
+      {% render 'misc.stories' %}
+    </ui-stories>
   </div>
   <div class="content">
     <h4 class="heading">Cokimocha</h4>
