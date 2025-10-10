@@ -1,6 +1,7 @@
 {{ 'section.products.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.product.css' | asset_url | stylesheet_tag }}
 
-<div ui-section="products">
+<div ui-section="products" ui-nav="shop">
   <h3 class="title">All Products</h3>
   <ul class="products">
     {% for item in (1..4) %}

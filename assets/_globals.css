@@ -16,6 +16,12 @@ ul {
   list-style: none;
 }
 
+/* .youcan-section {
+  &:has([ui-section][hidden]) {
+    display: none !important;
+  }
+} */
+
 body {
   display: flex;
   justify-content: center;
@@ -38,6 +44,22 @@ body {
       flex: 2;
       flex-direction: column;
       gap: var(--spacing-32);
+
+      &:has(input[value="about"]:checked) {
+        .youcan-section {
+          &:has([ui-nav="shop"]) {
+            display: none !important;
+          }
+        }
+      }
+
+      &:has(input[value="shop"]:checked) {
+        .youcan-section {
+          &:has([ui-nav="about"]) {
+            display: none !important;
+          }
+        }
+      }
     }
 
     /* HEADER */

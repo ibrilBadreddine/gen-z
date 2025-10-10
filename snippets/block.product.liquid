@@ -13,11 +13,22 @@
     height="100%"
   >
   <span class="name">Whole bean coffee</span>
-  <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart" class="action">
-    {% if item < 5 %}
-      <i class="hgi hgi-stroke hgi-plus-sign"></i>
-    {% else %}
-      <i class="hgi hgi-stroke hgi-shopping-basket-01"></i>
-    {% endif %}
-  </button>
+  <ui-drawer>
+    <button
+      ui-drawer="trigger"
+      ui-button
+      data-variant="outline"
+      data-size="sm"
+      data-icon
+      aria-label="add to cart"
+      class="action"
+    >
+      {% if item < 5 %}
+        <i class="hgi hgi-stroke hgi-plus-sign"></i>
+      {% else %}
+        <i class="hgi hgi-stroke hgi-shopping-basket-01"></i>
+      {% endif %}
+    </button>
+    {% render 'drawer.product' %}
+  </ui-drawer>
 </li>

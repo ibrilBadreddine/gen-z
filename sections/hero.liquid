@@ -2,7 +2,7 @@
 {{ 'misc.stories.css' | asset_url | stylesheet_tag }}
 {{ 'misc.stories.js' | asset_url | script_tag_deferred }}
 
-<div ui-section="hero">
+<ui-hero ui-section="hero">
   <div class="avatar">
     <ui-stories>
       <button ui-stories="trigger" class="avatar-box">
@@ -21,10 +21,16 @@
     <p class="subheading">Life is too short for bad coffee.</p>
   </div>
   <div class="actions">
-    <button ui-button data-variant="primary" data-size="md">Shop</button>
-    <button ui-button data-variant="outline" data-size="md">About</button>
+    <label ui-button data-variant="ghost" data-size="md">
+      Shop
+      <input type="radio" name="nav" value="shop" checked>
+    </label>
+    <label ui-button data-variant="ghost" data-size="md">
+      About
+      <input type="radio" name="nav" value="about">
+    </label>
   </div>
-</div>
+</ui-hero>
 
 {%- schema -%}
 {
