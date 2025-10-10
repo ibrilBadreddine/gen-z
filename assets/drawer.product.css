@@ -1,0 +1,93 @@
+/* DRAWER PRODUCT */
+.drawer-product {
+  /* CORE */
+  .core {
+    display: grid;
+    position: relative;
+    padding-block-end: var(--spacing-32);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--spacing-12);
+
+    .media {
+      display: grid;
+      gap: var(--spacing-12);
+
+      .slides {
+        display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+        gap: var(--spacing-12);
+
+        .slide {
+          min-width: 100%;
+          height: 40vh;
+          scroll-snap-align: center;
+          scroll-snap-stop: always;
+        }
+      }
+
+      .pagination {
+        display: flex;
+        justify-content: center;
+        gap: var(--spacing-8);
+
+        .page {
+          width: 6px;
+          height: 6px;
+          border: none;
+          border-radius: var(--radius-rounded);
+          background-color: var(--color-surface-container-high);
+
+          &:first-child {
+            width: 30px;
+            background-color: var(--color-primary);
+          }
+        }
+      }
+    }
+
+    .bio {
+      display: grid;
+      gap: var(--spacing-8);
+
+      .title {
+        font: var(--font-title-lg);
+      }
+
+      .price {
+        color: var(--color-primary);
+      }
+    }
+
+    .description {
+      display: grid;
+      gap: var(--spacing-4);
+
+      .label {
+        font: var(--font-body-lg);
+      }
+
+      p {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+    }
+
+    .actions {
+      display: grid;
+      position: sticky;
+      inset-block-end: 0;
+
+      [ui-button] {
+        width: 100%;
+      }
+    }
+  }
+}
