@@ -45,11 +45,12 @@
         accusamus atque temporibus vel.
       </p>
     </div>
-    <div class="actions">
-      <button ui-button data-variant="primary" data-size="lg">
+    <ui-drawer class="actions">
+      <button ui-drawer="trigger" ui-button data-variant="primary" data-size="lg" class="add-to-cart">
         <i class="hgi hgi-stroke hgi-shopping-cart-add-01"></i>
         Add to cart
       </button>
-    </div>
+      {% render 'drawer.quantity' %}
+    </ui-drawer>
   </div>
 </div>

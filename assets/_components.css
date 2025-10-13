@@ -143,5 +143,265 @@
 }
 
 /* INPUT */
+[ui-input] {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding-inline: var(--spacing-12);
+  transition: all var(--transition-standard-default-effects);
+  border: 1px solid var(--color-surface-container-highest);
+  border-radius: var(--radius-sm);
+  outline: none;
+  background-color: var(--color-on-secondary);
+  box-shadow: 0 1px 2px 0 #0000000d;
+  color: var(--color-on-background);
+  font: var(--font-body-md);
+
+  &:is(button) {
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-8);
+  }
+
+  /* Invalid */
+  &[aria-invalid="true"] {
+    border-color: var(--color-error);
+  }
+
+  /* Placeholder */
+  &::placeholder {
+    color: var(--color-outline);
+  }
+
+  /* Disabled */
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Focus */
+  &:focus {
+    &:not([aria-invalid="true"]) {
+      border-color: var(--color-outline);
+      box-shadow: 0 0 0 3px
+        color-mix(
+          in oklab,
+          var(--color-surface-container-highest) 50%,
+          transparent
+        );
+    }
+
+    &[aria-invalid="true"] {
+      box-shadow: 0 0 0 3px
+        color-mix(in oklab, var(--color-error) 20%, transparent);
+    }
+  }
+}
+
+/* RADIO GROUP */
+[ui-radio-group] {
+  display: flex;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+
+  [ui-radio-item] {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: fit-content;
+    height: 36px;
+    padding-inline: var(--spacing-12);
+    transition: all var(--transition-standard-default-effects);
+    border: 1px solid var(--color-surface-container-highest);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-on-secondary);
+    box-shadow: 0 1px 2px 0 #0000000d;
+    color: var(--color-on-background);
+    font: var(--font-body-md);
+    gap: var(--spacing-8);
+
+    input {
+      position: absolute;
+      opacity: 0;
+      scale: 0;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      width: 14px;
+      height: 14px;
+      border: 1px solid var(--color-surface-container-highest);
+      border-radius: var(--radius-circled);
+      box-shadow: 0 1px 2px 0 #0000000d;
+    }
+
+    /* Checked */
+
+    &:has(input:checked) {
+      border-color: color-mix(in srgb, var(--color-primary) 50%, transparent);
+      background-color: color-mix(
+        in srgb,
+        var(--color-primary) 8%,
+        transparent
+      );
+
+      &::before {
+        width: var(--spacing-6);
+        height: var(--spacing-6);
+        border: 5px solid var(--color-primary);
+        background-color: var(--color-background);
+      }
+    }
+
+    /* Disabled */
+    &:has(input:disabled) {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Focus */
+    &:has(input:focus-visible) {
+      &:not([aria-invalid="true"]) {
+        box-shadow: 0 0 0 3px
+          color-mix(
+            in oklab,
+            var(--color-surface-container-highest) 50%,
+            transparent
+          );
+      }
+
+      &[aria-invalid="true"] {
+        box-shadow: 0 0 0 3px
+          color-mix(in oklab, var(--color-error) 20%, transparent);
+      }
+    }
+  }
+}
+
+/* TOGGLE GROUP */
+[ui-toggle-group] {
+  display: flex;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+
+  [ui-toggle-item] {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 50px;
+    height: 36px;
+    padding-inline: var(--spacing-12);
+    transition: all var(--transition-standard-default-effects);
+    border: 1px solid var(--color-surface-container-highest);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-on-secondary);
+    box-shadow: 0 1px 2px 0 #0000000d;
+    color: var(--color-on-background);
+    font: var(--font-body-md);
+    text-align: center;
+    gap: var(--spacing-8);
+
+    input {
+      position: absolute;
+      opacity: 0;
+      scale: 0;
+    }
+
+    /* Checked */
+    &:has(input:checked) {
+      border-color: transparent;
+      background-color: var(--color-primary);
+      color: var(--color-on-primary);
+    }
+
+    /* Disabled */
+    &:has(input:disabled) {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Focus */
+    &:has(input:focus-visible) {
+      &:not([aria-invalid="true"]) {
+        box-shadow: 0 0 0 3px
+          color-mix(
+            in oklab,
+            var(--color-surface-container-highest) 50%,
+            transparent
+          );
+      }
+
+      &[aria-invalid="true"] {
+        box-shadow: 0 0 0 3px
+          color-mix(in oklab, var(--color-error) 20%, transparent);
+      }
+    }
+  }
+}
+
+/* IMAGE GROUP */
+[ui-image-group] {
+  display: flex;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+
+  [ui-image-item] {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    padding: var(--spacing-2);
+    transition: all var(--transition-standard-default-effects);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-on-secondary);
+    box-shadow:
+      0 1px 3px 0 #0000001a,
+      0 1px 2px -1px #0000001a;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      scale: 0;
+    }
+
+    img {
+      width: 50px !important;
+      height: 50px !important;
+      border-radius: calc(var(--radius-sm) * 0.8) !important;
+    }
+
+    /* Checked */
+    &:has(input:checked) {
+      background-color: var(--color-primary);
+    }
+
+    /* Disabled */
+    &:has(input:disabled) {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Focus */
+    &:has(input:focus-visible) {
+      &:not([aria-invalid="true"]) {
+        box-shadow: 0 0 0 3px
+          color-mix(
+            in oklab,
+            var(--color-surface-container-highest) 50%,
+            transparent
+          );
+      }
+
+      &[aria-invalid="true"] {
+        box-shadow: 0 0 0 3px
+          color-mix(in oklab, var(--color-error) 20%, transparent);
+      }
+    }
+  }
+}
 
 /* DRAWER */

@@ -1,0 +1,78 @@
+/* DRAWER QUANTITY */
+.drawer-quantity {
+  & > .core {
+    display: grid;
+    gap: var(--spacing-24);
+    padding-block-end: var(--spacing-24);
+
+    .product-item {
+      display: flex;
+      gap: var(--spacing-12);
+
+      .image {
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+        font: var(--font-body-md);
+
+        .title {
+          opacity: 0.8;
+        }
+
+        .price {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    .quantity-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .label {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+
+      .control {
+        display: flex;
+        align-items: center;
+
+        .value {
+          width: 36px;
+          font: var(--font-body-md);
+          text-align: center;
+        }
+      }
+    }
+
+    .form-item {
+      display: grid;
+      gap: var(--spacing-12);
+
+      .field {
+        display: grid;
+        gap: var(--spacing-4);
+
+        .label {
+          opacity: 0.8;
+          font: var(--font-body-md);
+        }
+      }
+    }
+
+    .actions-item {
+      display: grid;
+      gap: var(--spacing-12);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

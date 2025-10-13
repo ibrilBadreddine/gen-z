@@ -25,7 +25,7 @@ ui-drawer {
     z-index: 50;
     flex-direction: column;
     width: 600px;
-    min-height: 50vh;
+    /* min-height: 50vh; */
     max-height: 80vh;
     padding: var(--spacing-24);
     padding-block: var(--spacing-32) var(--spacing-0);

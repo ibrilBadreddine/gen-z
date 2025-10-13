@@ -1,0 +1,25 @@
+/* DRAWER SELECT */
+.drawer-select {
+  & > .core {
+    height: 120px;
+    margin-block-end: var(--spacing-24);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+
+      .opt {
+        scroll-snap-align: center;
+
+        /* scroll-snap-stop: always; */
+      }
+    }
+  }
+}

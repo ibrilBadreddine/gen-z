@@ -1,0 +1,167 @@
+{% comment %}
+  Renders a quantity drawer
+
+  Usage:
+  {% render 'drawer-quantity' %}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-quantity" data-state="closed">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Item added to bag</h4>
+    </div>
+    <button ui-drawer="trigger" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="close">
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <div class="product-item">
+      <div class="image">
+        <img
+          src="https://images.pexels.com/photos/5038250/pexels-photo-5038250.jpeg"
+          alt="product"
+          width="80"
+          height="80"
+        >
+      </div>
+      <div class="info">
+        <span class="title">Hot coffee mug</span>
+        <span class="price">$25.00</span>
+      </div>
+    </div>
+    <div class="quantity-item">
+      <span class="label">Change quantity:</span>
+      <div class="control">
+        <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="decrease">
+          <i class="hgi hgi-stroke hgi-minus-sign"></i>
+        </button>
+        <span class="value">1</span>
+        <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="increase">
+          <i class="hgi hgi-stroke hgi-plus-sign"></i>
+        </button>
+      </div>
+    </div>
+    {% if false %}
+      <div class="form-item">
+        <label class="field">
+          <span class="label">First name</span>
+          <input ui-input type="text" placeholder="Type your first name..">
+        </label>
+        <label class="field">
+          <span class="label">Last name</span>
+          <input ui-input type="text" placeholder="Type your last name..">
+        </label>
+        <label class="field">
+          <span class="label">Phone number</span>
+          <input ui-input type="phone" placeholder="Type your phone number..">
+        </label>
+        {% comment %}
+          <label class="field">
+            <span class="label">Color</span>
+            <div ui-radio-group>
+              <label ui-radio-item>
+                Red
+                <input type="radio" name="radio" value="opt-1" checked>
+              </label>
+              <label ui-radio-item>
+                Orange
+                <input type="radio" name="radio" value="opt-2">
+              </label>
+              <label ui-radio-item>
+                Yellow
+                <input type="radio" name="radio" value="opt-3">
+              </label>
+            </div>
+          </label>
+          <label class="field">
+            <span class="label">Size</span>
+            <div ui-toggle-group>
+              <label ui-toggle-item>
+                XL
+                <input type="radio" name="toggle" value="opt-1" checked>
+              </label>
+              <label ui-toggle-item>
+                L
+                <input type="radio" name="toggle" value="opt-2">
+              </label>
+              <label ui-toggle-item>
+                S
+                <input type="radio" name="toggle" value="opt-3">
+              </label>
+            </div>
+          </label>
+          <label class="field">
+            <span class="label">Style</span>
+            <div ui-image-group>
+              <label ui-image-item>
+                <img
+                  src="https://images.pexels.com/photos/5038250/pexels-photo-5038250.jpeg"
+                  alt="opt-1"
+                  width="40"
+                  height="40"
+                >
+                <input type="radio" name="image" value="opt-1" checked>
+              </label>
+              <label ui-image-item>
+                <img
+                  src="https://images.pexels.com/photos/5038250/pexels-photo-5038250.jpeg"
+                  alt="opt-2"
+                  width="40"
+                  height="40"
+                >
+                <input type="radio" name="image" value="opt-2">
+              </label>
+              <label ui-image-item>
+                <img
+                  src="https://images.pexels.com/photos/5038250/pexels-photo-5038250.jpeg"
+                  alt="opt-3"
+                  width="40"
+                  height="40"
+                >
+                <input type="radio" name="image" value="opt-3">
+              </label>
+            </div>
+          </label>
+        {% endcomment %}
+        {% comment %}
+          <label class="field">
+            <span class="label">Countries</span>
+            <ui-drawer>
+              <button ui-input ui-drawer="trigger">
+                Select
+                <i class="hgi hgi-stroke hgi-unfold-more"></i>
+              </button>
+              <div ui-drawer="content" class="drawer-select" data-state="closed">
+                <div class="head">
+                  <div class="info">
+                    <h4 class="title">Select an option</h4>
+                  </div>
+                </div>
+                <div class="core">
+                  <div class="options">
+                    {% for item in (1..10) %}
+                      <button
+                        ui-button
+                        data-variant="ghost"
+                        data-size="md"
+                        class="opt"
+                        data-checked="true"
+                        value="{{ item }}"
+                      >
+                        Option {{ item }}
+                      </button>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </ui-drawer>
+          </label>
+        {% endcomment %}
+      </div>
+    {% endif %}
+    <div class="actions-item">
+      <button ui-drawer="trigger" ui-button data-variant="secondary" data-size="lg">Keep shopping</button>
+      <button ui-button data-variant="primary" data-size="lg">Checkout</button>
+    </div>
+  </div>
+</div>

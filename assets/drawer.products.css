@@ -1,7 +1,7 @@
 /* DRAWER PRODUCTS */
 .drawer-products {
   /* CORE */
-  .core {
+  & > .core {
     padding-block-end: var(--spacing-32);
     overflow-y: scroll;
     scrollbar-width: none;
@@ -42,7 +42,7 @@
 
 @media (width <= 769px) {
   .drawer-products {
-    .core {
+    & > .core {
       .products {
         .product {
           img {
