@@ -60,7 +60,7 @@
     }
   }
 
-  .actions {
+  & > .actions {
     display: flex;
     position: relative;
     justify-content: center;
@@ -76,7 +76,7 @@
       inset-inline-start: 1%;
     }
 
-    [ui-button] {
+    & > label {
       position: relative;
       width: 100px;
 
