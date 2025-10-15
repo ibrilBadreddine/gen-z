@@ -1,34 +1,57 @@
 if (!customElements.get("ui-drawer")) {
   class Drawer extends HTMLElement {
+    static observedAttributes = ["id"];
+
     constructor() {
       super();
-
       this.isOpen = false;
-      this.ESC_KEY = "Escape";
+      this.triggers = this.querySelectorAll(
+        `[ui-drawer='trigger'][data-for='${this.getAttribute("id")}']`
+      );
+      this.content = this.querySelector("[ui-drawer='content']");
+      this.content?.setAttribute("data-id", this.getAttribute("id"));
+      this.content?.remove();
     }
 
     connectedCallback() {
-      this._render();
-    }
-
-    _render() {
-      this.triggers = this.querySelectorAll("[ui-drawer='trigger']");
-      this.content = this.querySelector("[ui-drawer='content']");
-
-      this.triggers.forEach((trigger) =>
-        trigger.addEventListener("click", () => this.toggle())
+      this.triggers.forEach((t) =>
+        t.addEventListener("click", () =>
+          this.toggle(t.dataset.state === "open")
+        )
       );
       this.addEventListener(
         "keydown",
-        (e) => e.key === this.ESC_KEY && this.toggle(false)
+        (e) => e.key === "Escape" && this.toggle(false)
       );
     }
 
     toggle(state) {
+      const body = document.body;
+      const id = this.getAttribute("id");
+      const overlayElement = `[ui-drawer="overlay"][data-for='${id}']`;
+
       this.isOpen = state ?? !this.isOpen;
-      this.content.setAttribute("data-state", this.isOpen ? "open" : "closed");
+
+      if (!this.isOpen) {
+        const content = `[ui-drawer="content"][data-id='${id}']`;
+        body.querySelector(content)?.setAttribute("data-state", "closed");
+
+        setTimeout(() => body.querySelector(overlayElement)?.remove(), 300);
+        setTimeout(() => body.querySelector(content)?.remove(), 500);
+
+        return;
+      }
+
+      if (body.querySelector(overlayElement)) return;
+
+      const overlay = document.createElement("div");
+      overlay.setAttribute("ui-drawer", "overlay");
+      overlay.dataset.for = id;
+      overlay.addEventListener("click", () => this.toggle(false));
+
+      body.append(overlay, this.content);
+      this.content.setAttribute("data-state", "open");
     }
   }
-
   customElements.define("ui-drawer", Drawer);
 }

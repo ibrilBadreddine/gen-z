@@ -1,87 +1,145 @@
 /* DRAWER */
-ui-drawer {
-  [ui-drawer="trigger"] {
-    &:first-child:has(+ [ui-drawer="content"][data-state="open"]) {
-      cursor: auto;
+:root {
+  --drawer-x: -50%;
+}
 
-      &:active {
-        scale: none;
-      }
+body:has([ui-drawer="content"][data-state="open"]) {
+  & > #app {
+    scale: 0.97;
+  }
+}
 
-      &::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 50;
-        backdrop-filter: blur(3px);
-        background: rgb(0 0 0 / 20%);
-      }
-    }
+[ui-drawer="overlay"] {
+  position: fixed;
+  z-index: 50;
+  background: rgb(0 0 0 / 20%);
+  inset: 0;
+  backdrop-filter: blur(3px);
+
+  &:has(+ [ui-drawer="content"][data-state="open"]) {
+    animation: open-overlay var(--transition-standard-default-effects) forwards;
   }
 
-  [ui-drawer="content"] {
-    display: flex;
-    position: fixed;
-    z-index: 50;
-    flex-direction: column;
-    width: 600px;
-    /* min-height: 50vh; */
-    max-height: 80vh;
-    padding: var(--spacing-24);
-    padding-block: var(--spacing-32) var(--spacing-0);
+  &:has(+ [ui-drawer="content"][data-state="closed"]) {
+    animation: close-overlay var(--transition-standard-default-effects) forwards;
+  }
+}
+
+[ui-drawer="content"] {
+  display: flex;
+  position: fixed;
+  z-index: 50;
+  flex-direction: column;
+  width: 600px;
+  max-height: 80vh;
+  padding: var(--spacing-24);
+  padding-block: var(--spacing-32) var(--spacing-0);
+  transform: translate(var(--drawer-x), 100%);
+  transform-origin: center center;
+  transition: var(--transition-standard-default-effects);
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  background-color: var(--color-background);
+  inset-inline-start: 50%;
+  gap: var(--spacing-12);
+  inset-block-end: 0;
+  animation-fill-mode: forwards;
+
+  &::before {
+    content: "";
+    display: grid;
+    position: absolute;
+    width: 80px;
+    height: 6px;
     transform: translateX(-50%);
-    transition: var(--transition-expressive-default-spatial);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-    background-color: var(--color-background);
-    inset-block-end: 0;
+    border-radius: var(--radius-rounded);
+    background-color: var(--color-surface-container-high);
+    inset-block-start: var(--spacing-12);
     inset-inline-start: 50%;
+  }
+
+  &[data-state="open"] {
+    animation-name: open-drawer;
+  }
+
+  &[data-state="closed"] {
+    animation-name: close-drawer;
+  }
+
+  .head {
+    display: flex;
     gap: var(--spacing-12);
+    justify-content: space-between;
 
-    &::before {
-      content: "";
-      display: grid;
-      position: absolute;
-      width: 80px;
-      height: 6px;
-      transform: translateX(-50%);
-      border-radius: var(--radius-rounded);
-      background-color: var(--color-surface-container-high);
-      inset-block-start: var(--spacing-12);
-      inset-inline-start: 50%;
-    }
-
-    &[data-state="closed"] {
-      inset-block-end: -100%;
-    }
-
-    .head {
+    .info {
       display: flex;
-      gap: var(--spacing-12);
-      justify-content: space-between;
+      flex-direction: column;
 
-      .info {
-        display: flex;
-        flex-direction: column;
+      .title {
+        font: var(--font-body-lg);
+      }
 
-        .title {
-          font: var(--font-body-lg);
-        }
-
-        .description {
-          opacity: 0.8;
-          font: var(--font-body-sm);
-        }
+      .description {
+        opacity: 0.8;
+        font: var(--font-body-sm);
       }
     }
   }
 }
 
 @media (width <= 769px) {
-  ui-drawer {
-    [ui-drawer="content"] {
-      width: 100%;
-      transform: none;
-      inset-inline-start: 0;
-    }
+  :root {
+    --drawer-x: 0%;
+  }
+
+  [ui-drawer="content"] {
+    width: 100%;
+    transform: none;
+    inset-inline-start: 0;
+  }
+}
+
+@keyframes open-overlay {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes close-overlay {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes open-drawer {
+  from {
+    transform: translate(var(--drawer-x), 100%);
+  }
+
+  to {
+    transform: translate(var(--drawer-x), 0%);
+  }
+}
+
+@keyframes close-drawer {
+  from {
+    transform: translate(var(--drawer-x), 0%);
+  }
+
+  to {
+    transform: translate(var(--drawer-x), 100%);
   }
 }

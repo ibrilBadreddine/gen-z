@@ -35,6 +35,7 @@ body {
     min-height: calc(100vh - var(--spacing-24));
     margin: var(--spacing-12);
     padding: var(--spacing-24);
+    transition: var(--transition-standard-slow-effects);
     border-radius: var(--radius-lg);
     background-color: var(--color-background);
     gap: var(--spacing-24);

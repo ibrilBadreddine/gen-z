@@ -5,12 +5,21 @@
   {% render 'drawer-cart'%}
 {% endcomment %}
 
-<div ui-drawer="content" class="drawer-cart" data-state="closed">
+<div ui-drawer="content" class="drawer-cart">
   <div class="head">
     <div class="info">
       <h4 class="title">My cart</h4>
     </div>
-    <button ui-drawer="trigger" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="close">
+    <button
+      ui-drawer="trigger"
+      data-for="cart"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
       <i class="hgi hgi-stroke hgi-cancel-01"></i>
     </button>
   </div>

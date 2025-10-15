@@ -5,12 +5,21 @@
   {% render 'drawer-product'%}
 {% endcomment %}
 
-<div ui-drawer="content" class="drawer-product" data-state="closed">
+<div ui-drawer="content" class="drawer-product">
   <div class="head">
     <div class="info">
       <h4 class="title">Hot coffee mug</h4>
     </div>
-    <button ui-drawer="trigger" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="close">
+    <button
+      ui-drawer="trigger"
+      data-for="product"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
       <i class="hgi hgi-stroke hgi-cancel-01"></i>
     </button>
   </div>
@@ -45,8 +54,16 @@
         accusamus atque temporibus vel.
       </p>
     </div>
-    <ui-drawer class="actions">
-      <button ui-drawer="trigger" ui-button data-variant="primary" data-size="lg" class="add-to-cart">
+    <ui-drawer class="actions" id="quantity">
+      <button
+        ui-drawer="trigger"
+        data-for="quantity"
+        data-state="open"
+        ui-button
+        data-variant="primary"
+        data-size="lg"
+        class="add-to-cart"
+      >
         <i class="hgi hgi-stroke hgi-shopping-cart-add-01"></i>
         Add to cart
       </button>
