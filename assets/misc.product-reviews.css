@@ -1,0 +1,149 @@
+/* PRODUCT REVIEWS */
+ui-product-reviews {
+  display: grid;
+  gap: var(--spacing-12);
+
+  [ui-product-reviews="results"] {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: var(--spacing-12);
+
+    .total-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-6);
+
+      .total-stars {
+        font: var(--font-title-lg);
+        text-align: center;
+      }
+
+      .stars {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-6);
+
+        & > i,
+        & > svg {
+          color: var(--color-star);
+        }
+      }
+
+      .total-reviews {
+        opacity: 0.8;
+        font: var(--font-body-sm);
+      }
+    }
+
+    .statistics-box {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: var(--spacing-2);
+
+      .state {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-6);
+
+        .index {
+          width: 20px;
+          opacity: 0.8;
+          text-align: center;
+        }
+
+        .bar {
+          position: relative;
+          width: 100%;
+          height: 4px;
+          border-radius: var(--radius-rounded);
+          background-color: var(--color-surface-container-high);
+
+          &::before {
+            content: "";
+            inset: 0;
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            border-radius: var(--radius-rounded);
+            background-color: var(--color-primary);
+          }
+        }
+      }
+    }
+  }
+
+  [ui-product-reviews="reviews"] {
+    display: grid;
+    gap: var(--spacing-8);
+
+    .review-card {
+      display: grid;
+      gap: var(--spacing-6);
+      padding-block: var(--spacing-12);
+      border-block-start: 1px solid var(--color-surface-variant);
+
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .author {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-8);
+
+          .avatar {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            background-color: var(--color-surface-container-high);
+            color: var(--color-outline);
+            clip-path: circle();
+            place-items: center;
+          }
+
+          .name {
+            font: var(--font-body-md);
+            font-weight: 600;
+          }
+        }
+
+        .date {
+          opacity: 0.8;
+          font: var(--font-body-sm);
+        }
+      }
+
+      .content {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+
+      .rating {
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-6);
+
+        .stars {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-2);
+
+          & > i,
+          & > svg {
+            color: var(--color-star);
+          }
+        }
+
+        .value {
+          display: grid;
+          place-items: center;
+          opacity: 0.8;
+          font: var(--font-body-sm);
+        }
+      }
+    }
+  }
+}
