@@ -90,6 +90,9 @@
         }
 
         .tabs-trigger {
+          display: flex;
+          align-items: center;
+          justify-content: center;
           width: 100%;
           height: calc(var(--spacing-32) + var(--spacing-4));
           padding-inline: var(--spacing-16);
@@ -98,11 +101,27 @@
           background-color: transparent;
           font: var(--font-body-md);
           cursor: pointer;
+          gap: var(--spacing-8);
+
+          .badge {
+            display: grid;
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-surface-container-high);
+            font: var(--font-label-md);
+            clip-path: circle();
+            place-items: center;
+          }
 
           &[data-active="true"] {
             opacity: 1;
             color: var(--color-primary);
             font-weight: 600;
+
+            .badge {
+              background-color: var(--color-primary);
+              color: var(--color-on-primary);
+            }
           }
         }
       }
