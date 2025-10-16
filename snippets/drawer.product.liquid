@@ -46,14 +46,24 @@
       <h3 class="title">Hot coffee mug</h3>
       <span class="price">$25.00</span>
     </div>
-    <div class="description">
-      <span class="label">Description</span>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident consequatur asperiores necessitatibus minima
-        facilis doloribus reiciendis labore animi voluptatum? Fugiat necessitatibus sed ipsam sit. Cum perspiciatis
-        accusamus atque temporibus vel.
-      </p>
-    </div>
+    <ui-tabs>
+      <div ui-tabs="list" class="tabs-list">
+        <button ui-tabs="trigger" value="description" class="tabs-trigger" data-active="true">Description</button>
+        <button ui-tabs="trigger" value="reviews" class="tabs-trigger" data-active="false">Reviews</button>
+      </div>
+      <div ui-tabs="group" class="tabs-group">
+        <div ui-tabs="content" data-value="description" class="tabs-content">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo rerum mollitia placeat repellendus labore
+            at repellat error accusantium voluptate molestias sit totam, distinctio esse molestiae dicta fuga vel. Et,
+            molestiae.
+          </p>
+        </div>
+        <div ui-tabs="content" data-value="reviews" class="tabs-content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio sed atque ducimus inventore, impedit excepturi.
+        </div>
+      </div>
+    </ui-tabs>
     <ui-drawer class="actions" id="quantity">
       <button
         ui-drawer="trigger"
