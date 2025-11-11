@@ -1,0 +1,95 @@
+/* DRAWER ADD REVIEW */
+.drawer-add-review {
+  /* CORE */
+  & > .core {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding-block: var(--spacing-64) var(--spacing-24);
+    gap: var(--spacing-64);
+
+    .rating {
+      display: flex;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      -webkit-overflow-scrolling: touch;
+
+      .rate {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 100%;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        gap: var(--spacing-12);
+
+        & > i {
+          font-size: 60px;
+        }
+
+        .value {
+          opacity: 0.8;
+          font: var(--font-headline-md);
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+      }
+    }
+
+    .rating-slider {
+      display: grid;
+      gap: var(--spacing-24);
+
+      input[type="range"] {
+        width: 100%;
+        height: var(--spacing-8);
+        border-radius: var(--radius-rounded);
+        background-color: var(--color-surface-container-high);
+        appearance: none;
+
+        &::-webkit-slider-thumb {
+          width: var(--spacing-32);
+          height: var(--spacing-32);
+          border-radius: var(--radius-circled);
+          background-color: var(--color-primary);
+          cursor: grab;
+          appearance: none;
+        }
+
+        &:active {
+          &::-webkit-slider-thumb {
+            cursor: grabbing;
+          }
+        }
+      }
+
+      .steps {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .step {
+          position: relative;
+          opacity: 0.8;
+          font: var(--font-body-sm);
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: var(--spacing-16);
+            height: var(--spacing-16);
+            transform: translateX(-50%);
+            border-radius: var(--radius-circled);
+            background-color: var(--color-surface-container-high);
+            inset-block-start: -36px;
+            inset-inline-start: 50%;
+          }
+        }
+      }
+    }
+  }
+}

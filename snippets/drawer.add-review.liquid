@@ -1,0 +1,61 @@
+{% comment %}
+  Renders the add review drawer
+
+  Usage:
+  {% render 'drawer.add-review'%}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-add-review">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">How was your shopping experience?</h4>
+    </div>
+    <button
+      ui-drawer="trigger"
+      data-for="add-review"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <div class="rating">
+      <div class="rate">
+        <i class="hgi hgi-stroke hgi-sad-02"></i>
+        <span class="value">Terrible</span>
+      </div>
+      <div class="rate">
+        <i class="hgi hgi-stroke hgi-sad-01"></i>
+        <span class="value">Bad</span>
+      </div>
+      <div class="rate">
+        <i class="hgi hgi-stroke hgi-neutral"></i>
+        <span class="value">Okay</span>
+      </div>
+      <div class="rate">
+        <i class="hgi hgi-stroke hgi-smile"></i>
+        <span class="value">Good</span>
+      </div>
+      <div class="rate">
+        <i class="hgi hgi-stroke hgi-in-love"></i>
+        <span class="value">Amazing</span>
+      </div>
+    </div>
+    <div class="rating-slider">
+      <input type="range" name="rating" value="0" step="5" min="0" max="20">
+      <div class="steps">
+        <span class="step">Terrible</span>
+        <span class="step">Bad</span>
+        <span class="step">Okay</span>
+        <span class="step">Good</span>
+        <span class="step">Amazing</span>
+      </div>
+    </div>
+    <div class="actions"></div>
+  </div>
+</div>

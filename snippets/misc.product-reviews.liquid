@@ -33,6 +33,10 @@
       {% endfor %}
     </div>
   </div>
+  {% comment %} <ui-drawer id="add-review">
+    <button ui-drawer="trigger" data-for="add-review" data-state="open">Add Review</button>
+    {% render 'drawer.add-review' %}
+  </ui-drawer> {% endcomment %}
   <div ui-product-reviews="reviews">
     {% for review in (1..2) %}
       <div class="review-card">

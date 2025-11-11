@@ -50,6 +50,7 @@ ui-product-reviews {
         .index {
           width: 20px;
           opacity: 0.8;
+          font: var(--font-body-md);
           text-align: center;
         }
 
