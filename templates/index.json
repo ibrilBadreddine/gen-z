@@ -15,6 +15,9 @@
     "social-links": {
       "type": "social-links"
     },
+    "map": {
+      "type": "map"
+    },
     "collections": {
       "type": "collections"
     },
@@ -27,6 +30,7 @@
     "gallery",
     "bio",
     "faq",
+    "map",
     "social-links",
     "collections",
     "products"

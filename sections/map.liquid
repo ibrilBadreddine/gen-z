@@ -1,0 +1,28 @@
+{{ 'section.map.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="map" ui-nav="about">
+  <div class="map-card">
+    <iframe
+      frameborder="0"
+      scrolling="no"
+      marginheight="0"
+      marginwidth="0"
+      src="https://maps.google.com/maps?width=600&height=400&hl=en&q=University%20of%20Oxford&t=k&z=20&ie=UTF8&iwloc=B&output=embed"
+    ></iframe>
+    <div class="info">
+      <div class="bio">
+        <span class="label">Store location</span>
+        <p class="value">Casablanca, Morocco</p>
+      </div>
+      <a href="#" ui-button data-variant="outline" data-size="md" data-icon aria-label="expend">
+        <i class="hgi hgi-stroke hgi-arrow-expand-01"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "label": "Map"
+}
+{% endschema %}
