@@ -62,7 +62,7 @@
     inset-inline-start: calc(var(--spacing-24) * -1);
     gap: var(--spacing-24);
 
-    & > *:not(:first-child, .action) {
+    & > *:not(:first-child, .note, .action) {
       padding-block-start: var(--spacing-24);
       border-block-start: 1px solid var(--color-surface-variant);
     }
@@ -153,6 +153,18 @@
       }
     }
 
+    .note {
+      display: flex;
+      position: fixed;
+      align-items: center;
+      background-color: var(--color-background);
+      gap: var(--spacing-8);
+
+      & > i {
+        color: var(--color-primary);
+      }
+    }
+
     .action {
       display: flex;
       position: fixed;
@@ -176,6 +188,27 @@
   }
 }
 
+@media (width > 769px) {
+  [ui-section="single-product"] {
+    .content {
+      .note {
+        padding: var(--spacing-12) var(--spacing-16);
+        transform: translateX(-50%);
+        border: 1px solid var(--color-surface-variant);
+        border-radius: var(--radius-md);
+        box-shadow: rgb(17 12 46 / 15%) 0 48px 100px 0;
+        inset-inline-start: 50%;
+        inset-block-end: 92px;
+        font: var(--font-body-md);
+
+        & > i {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+
 @media (width <= 769px) {
   [ui-section="single-product"] {
     --media-height: 50vh;
@@ -187,6 +220,24 @@
     }
 
     .content {
+      &:has(.note) {
+        padding-block-end: 80px;
+      }
+
+      .note {
+        justify-content: center;
+        width: 100%;
+        padding: var(--spacing-12);
+        inset-inline-start: 0;
+        inset-block-end: 80px;
+        font: var(--font-body-sm);
+        border-block-start: 1px solid var(--color-surface-variant);
+
+        & > i {
+          font-size: 16px;
+        }
+      }
+
       .action {
         width: 100%;
       }

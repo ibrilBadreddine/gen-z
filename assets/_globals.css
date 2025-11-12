@@ -72,7 +72,7 @@ body {
 
       &[data-template="product"] {
         position: fixed;
-        z-index: 3;
+        z-index: 50;
         gap: var(--spacing-12);
         width: calc(600px - var(--spacing-48));
 

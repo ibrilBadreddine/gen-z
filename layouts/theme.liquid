@@ -36,18 +36,14 @@
       <header ui-layout="header" data-template="{{ template.name }}">
         {% if template.name == 'product' %}
           <div class="back">
-            <a href="/" ui-button data-variant="blurry" data-size="md" data-icon aria-label="back">
+            <a href="/" ui-button data-variant="outline" data-size="md" data-icon aria-label="back">
               <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
             </a>
           </div>
         {% endif %}
         <button
           ui-button
-          {% if template.name == 'product' %}
-            data-variant="blurry"
-          {% else %}
-            data-variant="outline"
-          {% endif %}
+          data-variant="outline"
           data-size="md"
           data-icon
           aria-label="menu"
@@ -60,11 +56,7 @@
             data-for="cart"
             data-state="open"
             ui-button
-            {% if template.name == 'product' %}
-              data-variant="blurry"
-            {% else %}
-              data-variant="outline"
-            {% endif %}
+            data-variant="outline"
             data-size="md"
             data-icon
             aria-label="cart"

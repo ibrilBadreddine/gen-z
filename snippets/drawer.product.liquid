@@ -66,118 +66,120 @@
         </div>
       </div>
     </ui-tabs>
-    {% comment %} <ui-drawer id="countries">
-      <button ui-drawer="trigger" data-for="countries" data-state="open">Select</button>
-      <div ui-drawer="content" class="drawer-select">
-        <div class="head">
-          <div class="info">
-            <h4 class="title">Select a country</h4>
-          </div>
-          <button
-            ui-drawer="trigger"
-            data-for="countries"
-            data-state="close"
-            ui-button
-            data-variant="ghost"
-            data-size="xs"
-            data-icon
-            aria-label="close"
-          >
-            <i class="hgi hgi-stroke hgi-cancel-01"></i>
-          </button>
-        </div>
-        <ui-select class="core">
-          <div class="search">
-            <input ui-select="input" ui-input type="text" name="countries-search" placeholder="Search..">
-            <button ui-select="clear" ui-button data-variant="destructive" data-size="md" data-icon aria-label="clear">
-              <i class="hgi hgi-stroke hgi-eraser-01"></i>
+    {% comment %}
+      <ui-drawer id="countries">
+        <button ui-drawer="trigger" data-for="countries" data-state="open">Select</button>
+        <div ui-drawer="content" class="drawer-select">
+          <div class="head">
+            <div class="info">
+              <h4 class="title">Select a country</h4>
+            </div>
+            <button
+              ui-drawer="trigger"
+              data-for="countries"
+              data-state="close"
+              ui-button
+              data-variant="ghost"
+              data-size="xs"
+              data-icon
+              aria-label="close"
+            >
+              <i class="hgi hgi-stroke hgi-cancel-01"></i>
             </button>
           </div>
-          <div ui-select="options" class="options">
-            <label class="opt">
-              Morocco
-              <input ui-radio type="radio" name="countries" value="morocco">
-            </label>
-            <label class="opt">
-              Canada
-              <input ui-radio type="radio" name="countries" value="canada">
-            </label>
-            <label class="opt">
-              Japan
-              <input ui-radio type="radio" name="countries" value="japan">
-            </label>
-            <label class="opt">
-              Brazil
-              <input ui-radio type="radio" name="countries" value="brazil">
-            </label>
-            <label class="opt">
-              Germany
-              <input ui-radio type="radio" name="countries" value="germany">
-            </label>
-            <label class="opt">
-              Australia
-              <input ui-radio type="radio" name="countries" value="australia">
-            </label>
-            <label class="opt">
-              India
-              <input ui-radio type="radio" name="countries" value="india">
-            </label>
-            <label class="opt">
-              Egypt
-              <input ui-radio type="radio" name="countries" value="egypt">
-            </label>
-            <label class="opt">
-              Italy
-              <input ui-radio type="radio" name="countries" value="italy">
-            </label>
-            <label class="opt">
-              Spain
-              <input ui-radio type="radio" name="countries" value="spain">
-            </label>
-            <label class="opt">
-              France
-              <input ui-radio type="radio" name="countries" value="france">
-            </label>
-            <label class="opt">
-              South Africa
-              <input ui-radio type="radio" name="countries" value="south-africa">
-            </label>
-            <label class="opt">
-              China
-              <input ui-radio type="radio" name="countries" value="china">
-            </label>
-            <label class="opt">
-              Mexico
-              <input ui-radio type="radio" name="countries" value="mexico">
-            </label>
-            <label class="opt">
-              Argentina
-              <input ui-radio type="radio" name="countries" value="argentina">
-            </label>
-            <label class="opt">
-              Turkey
-              <input ui-radio type="radio" name="countries" value="turkey">
-            </label>
-            <label class="opt">
-              Norway
-              <input ui-radio type="radio" name="countries" value="norway">
-            </label>
-            <label class="opt">
-              South Korea
-              <input ui-radio type="radio" name="countries" value="south-korea">
-            </label>
-            <label class="opt">
-              Saudi Arabia
-              <input ui-radio type="radio" name="countries" value="saudi-arabia">
-            </label>
-            <label class="opt">
-              United States
-              <input ui-radio type="radio" name="countries" value="united-states">
-            </label>
-          </div>
-        </ui-select>
-      </div>
-    </ui-drawer> {% endcomment %}
+          <ui-select class="core">
+            <div class="search">
+              <input ui-select="input" ui-input type="text" name="countries-search" placeholder="Search..">
+              <button ui-select="clear" ui-button data-variant="destructive" data-size="md" data-icon aria-label="clear">
+                <i class="hgi hgi-stroke hgi-eraser-01"></i>
+              </button>
+            </div>
+            <div ui-select="options" class="options">
+              <label class="opt">
+                Morocco
+                <input ui-radio type="radio" name="countries" value="morocco">
+              </label>
+              <label class="opt">
+                Canada
+                <input ui-radio type="radio" name="countries" value="canada">
+              </label>
+              <label class="opt">
+                Japan
+                <input ui-radio type="radio" name="countries" value="japan">
+              </label>
+              <label class="opt">
+                Brazil
+                <input ui-radio type="radio" name="countries" value="brazil">
+              </label>
+              <label class="opt">
+                Germany
+                <input ui-radio type="radio" name="countries" value="germany">
+              </label>
+              <label class="opt">
+                Australia
+                <input ui-radio type="radio" name="countries" value="australia">
+              </label>
+              <label class="opt">
+                India
+                <input ui-radio type="radio" name="countries" value="india">
+              </label>
+              <label class="opt">
+                Egypt
+                <input ui-radio type="radio" name="countries" value="egypt">
+              </label>
+              <label class="opt">
+                Italy
+                <input ui-radio type="radio" name="countries" value="italy">
+              </label>
+              <label class="opt">
+                Spain
+                <input ui-radio type="radio" name="countries" value="spain">
+              </label>
+              <label class="opt">
+                France
+                <input ui-radio type="radio" name="countries" value="france">
+              </label>
+              <label class="opt">
+                South Africa
+                <input ui-radio type="radio" name="countries" value="south-africa">
+              </label>
+              <label class="opt">
+                China
+                <input ui-radio type="radio" name="countries" value="china">
+              </label>
+              <label class="opt">
+                Mexico
+                <input ui-radio type="radio" name="countries" value="mexico">
+              </label>
+              <label class="opt">
+                Argentina
+                <input ui-radio type="radio" name="countries" value="argentina">
+              </label>
+              <label class="opt">
+                Turkey
+                <input ui-radio type="radio" name="countries" value="turkey">
+              </label>
+              <label class="opt">
+                Norway
+                <input ui-radio type="radio" name="countries" value="norway">
+              </label>
+              <label class="opt">
+                South Korea
+                <input ui-radio type="radio" name="countries" value="south-korea">
+              </label>
+              <label class="opt">
+                Saudi Arabia
+                <input ui-radio type="radio" name="countries" value="saudi-arabia">
+              </label>
+              <label class="opt">
+                United States
+                <input ui-radio type="radio" name="countries" value="united-states">
+              </label>
+            </div>
+          </ui-select>
+        </div>
+      </ui-drawer>
+    {% endcomment %}
     <ui-drawer class="actions" id="quantity">
       <button
         ui-drawer="trigger"
@@ -189,7 +191,7 @@
         class="add-to-cart"
       >
         <i class="hgi hgi-stroke hgi-shopping-cart-add-01"></i>
-        Add to cart
+        <span class="label">Add to cart</span>
       </button>
       {% render 'drawer.quantity' %}
     </ui-drawer>

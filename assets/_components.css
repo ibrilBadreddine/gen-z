@@ -134,6 +134,10 @@
     border-radius: var(--radius-md);
   }
 
+  &:has(> :only-child:is(i)) {
+    border-radius: var(--radius-circled);
+  }
+
   /* Icon */
   & > i {
     flex-shrink: 0;
