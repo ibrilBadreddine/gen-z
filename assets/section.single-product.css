@@ -67,29 +67,66 @@
       border-block-start: 1px solid var(--color-surface-variant);
     }
 
-    .reviews-overview {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-8);
-
-      .rating {
-        display: flex;
-        align-items: center;
-        gap: var(--spacing-4);
-      }
-    }
-
     .bio {
       display: grid;
-      gap: var(--spacing-12);
+      gap: var(--spacing-24);
 
       .title {
         font: var(--font-title-lg);
       }
 
-      .reviews-overview {
-        opacity: 0.8;
-        font: var(--font-body-md);
+      .about {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        height: 40px;
+
+        & > *:not(:first-child) {
+          border-inline-start: 1px solid var(--color-surface-variant);
+        }
+
+        .rating {
+          text-align: center;
+
+          .stars {
+            & > i {
+              font-size: 10px;
+            }
+          }
+        }
+
+        .inventory {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          .status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+            padding: var(--spacing-4) var(--spacing-8);
+            border-radius: var(--radius-sm);
+            background-color: color-mix(in srgb, currentcolor 15%, transparent);
+            color: rgb(196 42 44);
+            font: var(--font-body-sm);
+            gap: var(--spacing-8);
+
+            .dot {
+              font-size: 35px;
+            }
+          }
+        }
+
+        .total-reviews {
+          display: grid;
+          align-items: center;
+          font: var(--font-body-md);
+          text-align: center;
+
+          .label {
+            font: var(--font-body-sm);
+          }
+        }
       }
     }
 
@@ -103,8 +140,17 @@
       gap: var(--spacing-24);
 
       .reviews-overview {
-        font: var(--font-title-lg);
-        font-size: 20px;
+        display: flex;
+        align-items: center;
+        gap: var(--spacing-8);
+
+        .rating {
+          display: flex;
+          align-items: center;
+          gap: var(--spacing-4);
+          font: var(--font-title-lg);
+          font-size: 20px;
+        }
       }
 
       .cards {

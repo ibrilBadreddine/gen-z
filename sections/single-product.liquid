@@ -27,13 +27,22 @@
   <div class="content">
     <div class="bio">
       <h1 class="title">Private bedroom in Manhattan Upper East Side</h1>
-      <div class="reviews-overview">
+      <div class="about">
         <div class="rating">
-          <i class="hgi hgi-stroke hgi-star"></i>
-          <span class="value">4.6</span>
+          <span class="value">4.8</span>
+          <div class="stars">
+            {% for star in (1..5) %}
+              <i class="hgi hgi-stroke hgi-star"></i>
+            {% endfor %}
+          </div>
         </div>
-        <span class="separator">·</span>
-        <span class="total">90 reviews</span>
+        <div class="inventory">
+          <div class="status"><span class="dot">·</span> Low stock</div>
+        </div>
+        <div class="total-reviews">
+          <span class="value">39</span>
+          <span class="label">Reviews</span>
+        </div>
       </div>
     </div>
     {% render 'misc.variants' %}
