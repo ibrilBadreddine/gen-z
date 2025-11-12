@@ -1,0 +1,70 @@
+{% comment %}
+  Renders a gallery drawer
+
+  Usage:
+  {% render 'drawer-gallery' %}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-gallery">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Product Images</h4>
+    </div>
+    <button
+      ui-drawer="trigger"
+      data-for="gallery"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <ul class="images">
+      <li class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Y5zJcwYGY6SC189RXCpW99QVFnK0Jm05JgIwhDcP.webp"
+          alt="product"
+          height="100%"
+          width="100%"
+        >
+      </li>
+      <li class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/DZ3YQS11J77e1RuFHBPvWNB3ueOz9GT4oXoRJI2d.webp"
+          alt="product"
+          height="100%"
+          width="100%"
+        >
+      </li>
+      <li class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/cRwuOnIrOACV8qJ4OVqMhFdE85nTISfvev4jhhj2.webp"
+          alt="product"
+          height="100%"
+          width="100%"
+        >
+      </li>
+      <li class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Q5AekMGaLwyZ1mGBnS7QCbTbh6KJLapEj1UScPlY.webp"
+          alt="product"
+          height="100%"
+          width="100%"
+        >
+      </li>
+      <li class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Q5AekMGaLwyZ1mGBnS7QCbTbh6KJLapEj1UScPlY.webp"
+          alt="product"
+          height="100%"
+          width="100%"
+        >
+      </li>
+    </ul>
+  </div>
+</div>
