@@ -30,6 +30,7 @@ body {
 
   & > #app {
     display: flex;
+    position: relative;
     flex-direction: column;
     width: 600px;
     min-height: calc(100vh - var(--spacing-24));
@@ -68,6 +69,17 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      &[data-template="product"] {
+        position: fixed;
+        z-index: 3;
+        gap: var(--spacing-12);
+        width: calc(600px - var(--spacing-48));
+
+        .back {
+          flex: 2;
+        }
+      }
     }
 
     /* FOOTER */
@@ -115,6 +127,12 @@ body {
       min-height: 100vh;
       margin: var(--spacing-0);
       border-radius: var(--radius-none);
+
+      [ui-layout="header"] {
+        &[data-template="product"] {
+          width: calc(100% - var(--spacing-48));
+        }
+      }
     }
   }
 }

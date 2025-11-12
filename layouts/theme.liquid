@@ -22,16 +22,35 @@
 
     {{ 'misc.tabs.js' | asset_url | script_tag_deferred }}
     {{ 'misc.select.js' | asset_url | script_tag_deferred }}
+    {{ 'drawer.select.css' | asset_url | stylesheet_tag }}
     {{ 'misc.drawer.js' | asset_url | script_tag_deferred }}
     {{ 'misc.drawer.css' | asset_url | stylesheet_tag }}
     {{ 'drawer.cart.css' | asset_url | stylesheet_tag }}
     {{ 'misc.product-reviews.css' | asset_url | stylesheet_tag }}
     {{ 'drawer.add-review.css' | asset_url | stylesheet_tag }}
+    {{ 'misc.variants.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     <div id="app">
-      <header ui-layout="header">
-        <button ui-button data-variant="outline" data-size="md" data-icon aria-label="menu">
+      <header ui-layout="header" data-template="{{ template.name }}">
+        {% if template.name == 'product' %}
+          <div class="back">
+            <a href="/" ui-button data-variant="blurry" data-size="md" data-icon aria-label="back">
+              <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
+            </a>
+          </div>
+        {% endif %}
+        <button
+          ui-button
+          {% if template.name == 'product' %}
+            data-variant="blurry"
+          {% else %}
+            data-variant="outline"
+          {% endif %}
+          data-size="md"
+          data-icon
+          aria-label="menu"
+        >
           <i class="hgi hgi-stroke hgi-menu-05"></i>
         </button>
         <ui-drawer id="cart">
@@ -40,7 +59,11 @@
             data-for="cart"
             data-state="open"
             ui-button
-            data-variant="outline"
+            {% if template.name == 'product' %}
+              data-variant="blurry"
+            {% else %}
+              data-variant="outline"
+            {% endif %}
             data-size="md"
             data-icon
             aria-label="cart"
