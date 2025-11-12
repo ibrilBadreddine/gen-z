@@ -1,0 +1,81 @@
+/* FAQ */
+[ui-section="faq"] {
+  display: grid;
+  gap: var(--spacing-8);
+
+  .title {
+    font: var(--font-title-md);
+  }
+
+  & > .accordion-list {
+    display: grid;
+    gap: var(--spacing-12);
+
+    .accordion-item {
+      display: flex;
+
+      .item-wrapper {
+        display: grid;
+        position: relative;
+        padding-block-end: var(--spacing-0);
+        transition: var(--transition-expressive-default-spatial);
+        border: 1px solid var(--color-surface-variant);
+        border-radius: var(--radius-md);
+        font: var(--font-body-md);
+        cursor: pointer;
+        user-select: none;
+
+        input[type="checkbox"] {
+          position: absolute;
+          scale: 0;
+          opacity: 0;
+        }
+
+        .trigger {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: var(--spacing-16);
+          gap: var(--spacing-8);
+          color: var(--color-primary);
+
+          .label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          i {
+            transition: var(--transition-expressive-default-spatial);
+            font-size: 20px;
+          }
+        }
+
+        .content {
+          display: grid;
+          grid-template-rows: 0fr;
+          padding-inline: var(--spacing-16);
+          transition: var(--transition-expressive-default-spatial);
+          filter: blur(5px);
+
+          & > article {
+            overflow: hidden;
+            opacity: 0.8;
+            text-wrap: balance;
+          }
+        }
+
+        &:has(input[type="checkbox"]:checked) {
+          .trigger i {
+            rotate: 180deg;
+          }
+
+          .content {
+            grid-template-rows: 1fr;
+            padding-block-end: var(--spacing-16);
+            filter: blur(0);
+          }
+        }
+      }
+    }
+  }
+}

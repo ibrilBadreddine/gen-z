@@ -1,0 +1,16 @@
+{{ 'section.faq.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="faq" ui-nav="shop">
+  <h3 class="title">FAQ</h3>
+  <ul class="accordion-list">
+    {% for item in (1..4) %}
+      {% render 'block.accordion' %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "label": "FAQ"
+}
+{% endschema %}

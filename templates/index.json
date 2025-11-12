@@ -9,6 +9,9 @@
     "bio": {
       "type": "bio"
     },
+    "faq": {
+      "type": "faq"
+    },
     "social-links": {
       "type": "social-links"
     },
@@ -19,5 +22,13 @@
       "type": "products"
     }
   },
-  "order": ["hero", "gallery", "bio", "social-links", "collections", "products"]
+  "order": [
+    "hero",
+    "gallery",
+    "bio",
+    "faq",
+    "social-links",
+    "collections",
+    "products"
+  ]
 }

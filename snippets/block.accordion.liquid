@@ -1,0 +1,21 @@
+{% comment %}
+  Renders an accordion item (Block)
+
+  Usage:
+  {% render 'accordion-item'%}
+{% endcomment %}
+
+<li class="accordion-item">
+  <label class="item-wrapper">
+    <div class="trigger">
+      <span class="label">What coffees do you sell?</span>
+      <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
+    </div>
+    <div class="content">
+      <article>
+        <p>Single-origin beans, house blends, decaf, and flavored options. Whole-bean and pre-ground available.</p>
+      </article>
+    </div>
+    <input type="checkbox" name="accordion">
+  </label>
+</li>
