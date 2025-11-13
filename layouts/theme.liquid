@@ -34,11 +34,14 @@
   <body>
     <div id="app">
       <header ui-layout="header" data-template="{{ template.name }}">
-        {% if template.name == 'product' or template.name == 'collection' %}
+        {% if template.name == 'product' or template.name == 'collection' or template.name == 'search' %}
           <div class="back">
             <a href="/" ui-button data-variant="outline" data-size="md" data-icon aria-label="back">
               <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
             </a>
+            <form action="/search">
+              <input ui-input type="text" name="search" placeholder="Search a product..">
+            </form>
           </div>
         {% endif %}
         <button

@@ -1,0 +1,33 @@
+{{ 'section.search.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="search">
+  <div class="head">
+    <h4 class="label"><span>4</span> products found, sorted by <span>Price (Ascending)</span></h4>
+    <ui-drawer id="filter">
+      <button
+        ui-drawer="trigger"
+        data-for="filter"
+        data-state="open"
+        ui-button
+        data-variant="secondary"
+        data-size="md"
+        data-icon
+        aria-label="sort"
+      >
+        <i class="hgi hgi-stroke hgi-filter-horizontal"></i>
+      </button>
+      {% render 'drawer.filter' %}
+    </ui-drawer>
+  </div>
+  <ul class="products">
+    {% for product in (1..4) %}
+      {% render 'block.product' %}
+    {% endfor %}
+  </ul>
+</div>
+
+{% schema %}
+{
+  "label": "Search"
+}
+{% endschema %}

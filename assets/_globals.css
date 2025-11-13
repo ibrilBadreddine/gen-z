@@ -70,6 +70,25 @@ body {
       align-items: center;
       justify-content: space-between;
 
+      &[data-template="search"] {
+        gap: var(--spacing-12);
+
+        .back {
+          display: flex;
+          flex: 2;
+          align-items: center;
+          gap: var(--spacing-12);
+
+          form {
+            width: 100%;
+
+            input {
+              border-radius: var(--radius-rounded);
+            }
+          }
+        }
+      }
+
       &[data-template="product"],
       &[data-template="collection"] {
         position: fixed;
