@@ -1,0 +1,74 @@
+{{ 'section.single-collection.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="single-collection">
+  <div
+    class="media"
+    style="background-image: url(https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/6FSLi4UY40cEoxuQLwh58CLhdJATbyxmuT4KDgCb.jpg);"
+  >
+    <div class="info">
+      <h3 class="name">Man</h3>
+      <p class="description">Handcrafted ceramic mug with a two-tone glaze and natural speckle finish simple.</p>
+    </div>
+  </div>
+  <div class="listing">
+    <div class="list">
+      <ul class="sub-collections">
+        <li
+          class="sub-collection-item"
+          style="background-image: url(https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/DoFGcOdYXXGbQXU8A2u7tFVUmHobub7uD2OsQXPX.jpg);"
+        >
+          <a href="#">
+            <span class="name">Jeans</span>
+          </a>
+        </li>
+        <li
+          class="sub-collection-item"
+          style="background-image: url(https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/HhYkZzgHI1mL6JX6fiQLlpf8WFjK2NvXQ1yNzgeZ.jpg);"
+        >
+          <a href="#">
+            <span class="name">Accessories</span>
+          </a>
+        </li>
+        <li
+          class="sub-collection-item"
+          style="background-image: url(https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/duQzkwLvOMAtsI5g6Awbb8Ks3xK56K3995Zj977V.jpg);"
+        >
+          <a href="#">
+            <span class="name">Sac</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="list">
+      <div class="head">
+        <h4 class="label">4 products sorted by <span>Price (Ascending)</span></h4>
+        <ui-drawer id="filter">
+          <button
+            ui-drawer="trigger"
+            data-for="filter"
+            data-state="open"
+            ui-button
+            data-variant="secondary"
+            data-size="md"
+            data-icon
+            aria-label="sort"
+          >
+            <i class="hgi hgi-stroke hgi-filter-horizontal"></i>
+          </button>
+          {% render 'drawer.filter' %}
+        </ui-drawer>
+      </div>
+      <ul class="products">
+        {% for product in (1..4) %}
+          {% render 'block.product' %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "label": "Single Collection"
+}
+{% endschema %}

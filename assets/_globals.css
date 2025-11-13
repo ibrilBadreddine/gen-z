@@ -70,7 +70,8 @@ body {
       align-items: center;
       justify-content: space-between;
 
-      &[data-template="product"] {
+      &[data-template="product"],
+      &[data-template="collection"] {
         position: fixed;
         z-index: 50;
         gap: var(--spacing-12);
@@ -129,7 +130,8 @@ body {
       border-radius: var(--radius-none);
 
       [ui-layout="header"] {
-        &[data-template="product"] {
+        &[data-template="product"],
+        &[data-template="collection"] {
           width: calc(100% - var(--spacing-48));
         }
       }
