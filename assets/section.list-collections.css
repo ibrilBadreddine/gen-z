@@ -1,0 +1,71 @@
+/* LIST COLLECTIONS */
+[ui-section="list-collections"] {
+  display: grid;
+  gap: var(--spacing-24);
+
+  .title {
+    font: var(--font-title-lg);
+  }
+
+  & > .collections {
+    column-gap: var(--spacing-12);
+    column-count: 2;
+
+    .collection {
+      width: 100%;
+      margin-block-end: var(--spacing-12);
+
+      & > a {
+        display: grid;
+        gap: var(--spacing-4);
+        position: relative;
+        color: var(--color-on-background);
+
+        img {
+          height: 30vh;
+          transition: var(--transition-standard-default-effects);
+          border-radius: var(--radius-md);
+          object-fit: cover;
+        }
+
+        .name {
+          padding-inline: var(--spacing-4);
+          overflow: hidden;
+          font: var(--font-body-md);
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        i {
+          visibility: hidden;
+          position: absolute;
+          transition: var(--transition-standard-default-effects);
+          opacity: 0;
+          color: var(--color-background);
+          font-size: 24px;
+          translate: -50% -50%;
+          inset-block-start: 50%;
+          inset-inline-start: 50%;
+        }
+      }
+
+      &:nth-child(3n + 1) img {
+        height: 20vh;
+      }
+
+      &:hover {
+        & > a {
+          img {
+            filter: blur(2px);
+          }
+
+          i {
+            visibility: visible;
+            opacity: 1;
+            inset-block-start: 45%;
+          }
+        }
+      }
+    }
+  }
+}

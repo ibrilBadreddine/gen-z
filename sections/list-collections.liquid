@@ -1,0 +1,49 @@
+{{ 'section.list-collections.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="list-collections">
+  <h3 class="title">Collections</h3>
+  <ul class="collections">
+    <li class="collection">
+      <a href="#">
+        <img
+          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/965bSPjYdRTzA30Oqav4W3wWQfC0LkpqQ3SdF2MI.jpg"
+          alt="collection"
+          height="100%"
+          width="100%"
+        >
+        <span class="name">Man</span>
+        <i class="hgi hgi-stroke hgi-view"></i>
+      </a>
+    </li>
+    <li class="collection">
+      <a href="#">
+        <img
+          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/6FSLi4UY40cEoxuQLwh58CLhdJATbyxmuT4KDgCb.jpg"
+          alt="collection"
+          height="100%"
+          width="100%"
+        >
+        <span class="name">Woman</span>
+        <i class="hgi hgi-stroke hgi-view"></i>
+      </a>
+    </li>
+    <li class="collection">
+      <a href="#">
+        <img
+          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/WhRgVBZgsQmURYFE20oXVrGwgVWoFEuadrrtwKh0.jpg"
+          alt="collection"
+          height="100%"
+          width="100%"
+        >
+        <span class="name">Best offers</span>
+        <i class="hgi hgi-stroke hgi-view"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+{% schema %}
+{
+  "label": "List Collections"
+}
+{% endschema %}
