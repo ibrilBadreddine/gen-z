@@ -1,0 +1,62 @@
+{{ 'drawer.filter.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders the product filter drawer
+
+  Usage:
+  {% render 'drawer.filter' %}
+{% endcomment %}
+
+{% assign options = 'Alphabetical A-Z,Alphabetical Z-A,Oldest,Newest,Price: Low to hight,Price: Hight to low' %}
+{% assign optionsAsArray = options | split: ',' %}
+
+<div ui-drawer="content" class="drawer-filter">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Sort by</h4>
+    </div>
+    <button
+      ui-drawer="trigger"
+      data-for="filter"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <ul class="sort-options">
+      {% for opt in optionsAsArray %}
+        {% assign index = forloop.index %}
+
+        <li class="opt">
+          <a
+            href="#"
+            ui-button
+            {% if index == 1 %}
+              data-variant="secondary"
+            {% else %}
+              data-variant="ghost"
+            {% endif %}
+            data-size="md"
+          >
+            <input
+              ui-radio
+              type="radio"
+              name="sort"
+              value="{{opt}}"
+              {% if index == 1 %}
+                checked
+              {% endif %}
+            >
+            {{ opt }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>

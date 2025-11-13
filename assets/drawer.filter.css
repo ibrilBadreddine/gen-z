@@ -1,0 +1,17 @@
+/* DRAWER FILTER */
+.drawer-filter {
+  /* CORE */
+  & > .core {
+    display: grid;
+    gap: var(--spacing-32);
+    padding-block-end: var(--spacing-24);
+
+    .sort-options {
+      .opt {
+        & > a {
+          justify-content: start;
+        }
+      }
+    }
+  }
+}
