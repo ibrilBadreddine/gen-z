@@ -91,12 +91,15 @@ body {
         }
       }
 
-      &[data-template="product"],
-      &[data-template="collection"] {
-        position: fixed;
-        z-index: 50;
+      &:has(.back) {
         gap: var(--spacing-12);
-        width: calc(600px - var(--spacing-48));
+
+        &[data-template="product"],
+        &[data-template="collection"] {
+          position: fixed;
+          z-index: 50;
+          width: calc(600px - var(--spacing-48));
+        }
 
         .back {
           flex: 2;

@@ -1,0 +1,114 @@
+{{ 'section.thankyou.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="thankyou">
+  <div class="head">
+    <div class="shapes">
+      {% for shape in (1..4) %}
+        <span class="shape"></span>
+      {% endfor %}
+    </div>
+    <h3 class="title">Thank you for your purchase!</h3>
+    <p class="description">Your order has been received and is being processed.</p>
+  </div>
+  <div class="core">
+    <div class="card">
+      <span class="title">Order summary</span>
+      <div class="content">
+        <ul class="list">
+          <li class="item">
+            <span class="label">Status</span>
+            <span class="value" data-status>
+              <i class="hgi hgi-stroke hgi-checkmark-circle-01"></i>
+              Paid
+            </span>
+          </li>
+          <li class="item">
+            <span class="label">Subtotal</span>
+            <span class="value">$500</span>
+          </li>
+          <li class="item">
+            <span class="label">Shipping</span>
+            <span class="value">$20</span>
+          </li>
+          <li class="item">
+            <span class="label">Total</span>
+            <span class="value">$520</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <span class="title">Payment</span>
+      <div class="content">
+        <ul class="list">
+          <li class="item">
+            <span class="label">Payment method</span>
+            <span class="value">Cash on Delivery</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="card">
+      <span class="title">Products</span>
+      <div class="content">
+        <ul class="list">
+          <li class="item product">
+            <img
+              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/sbZLw8j0k8SsFDp8SGNCECMdKHEfVpFUO9jl1Jnn.jpg"
+              alt="product"
+              height="70"
+              width="70"
+            >
+            <div class="info">
+              <a href="#" class="name">Rubberised Multi Pocket Backpack </a>
+              <div class="more">
+                <span class="price">$500</span>
+                <span class="quantity">x1</span>
+              </div>
+            </div>
+          </li>
+          <li class="item product">
+            <img
+              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/XDIRXrNbH0IWqxHjUQB6OIyeSVy7LD23M6GrcDDS.jpg"
+              alt="product"
+              height="70"
+              width="70"
+            >
+            <div class="info">
+              <a href="#" class="name">Fabric Multi Pocket Backpack</a>
+              <div class="more">
+                <span class="price">$500</span>
+                <span class="quantity">x2</span>
+              </div>
+            </div>
+          </li>
+          <li class="item product">
+            <img
+              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/FEW5kx6LGNBKKUhpPwCqTYjrY5ciQmUnLEnpwZ8J.jpg"
+              alt="product"
+              height="70"
+              width="70"
+            >
+            <div class="info">
+              <a href="#" class="name">Fabric Multi Pocket Backpack</a>
+              <div class="more">
+                <span class="price">$500</span>
+                <span class="quantity">x1</span>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <a href="/" class="action" ui-button data-variant="secondary" data-size="lg">
+      <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
+      <span class="label">Continue shopping</span>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "label": "Thank You"
+}
+{% endschema %}
