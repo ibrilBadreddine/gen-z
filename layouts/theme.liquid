@@ -30,8 +30,17 @@
     {{ 'drawer.add-review.css' | asset_url | stylesheet_tag }}
     {{ 'misc.variants.css' | asset_url | stylesheet_tag }}
     {{ 'drawer.gallery.css' | asset_url | stylesheet_tag }}
+    {{ 'section.announcement.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
+    <div ui-section="announcement">
+      <div class="content">
+        <span class="tag">Save 30%</span>
+        <p class="info">due to high demand, expect shipping delays on cetain products.</p>
+        <a href="#" class="action">Learn more</a>
+      </div>
+    </div>
+
     <div id="app">
       <header ui-layout="header" data-template="{{ template.name }}">
         {% if template.name == 'product' or template.name == 'collection' or template.name == 'search' %}

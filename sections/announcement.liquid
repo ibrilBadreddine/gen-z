@@ -1,0 +1,16 @@
+{{ 'section.announcement.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="announcement">
+  <button class="preview">
+    <span class="tag">Save 30%</span>
+    <span class="label">on orders over $70</span>
+    <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
+  </button>
+  <div class="core"></div>
+</div>
+
+{% schema %}
+{
+  "label": "Announcement"
+}
+{% endschema %}
