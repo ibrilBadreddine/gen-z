@@ -1,0 +1,66 @@
+{% comment %}
+  Renders a menu drawer
+
+  Usage:
+  {% render 'drawer-menu' %}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-menu">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Menu</h4>
+    </div>
+    <button
+      ui-drawer="trigger"
+      data-for="menu"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <div class="about">
+      <div class="logo">
+        <img
+          src="https://images.pexels.com/photos/34046748/pexels-photo-34046748.jpeg"
+          alt="logo"
+          width="60"
+          height="60"
+        >
+      </div>
+      <h4 class="store-name">Cokimocha</h4>
+    </div>
+    <ul class="links">
+      <li class="link">
+        <a href="/" ui-button data-variant="ghost" data-size="lg">
+          <span class="label">Home</span> <i class="hgi hgi-stroke hgi-arrow-right-01"></i>
+        </a>
+      </li>
+      <li class="link">
+        <a href="/" ui-button data-variant="ghost" data-size="lg">
+          <span class="label">Best offers</span> <i class="hgi hgi-stroke hgi-arrow-right-01"></i>
+        </a>
+      </li>
+      <li class="link">
+        <a href="/" ui-button data-variant="ghost" data-size="lg">
+          <span class="label">Man</span> <i class="hgi hgi-stroke hgi-arrow-right-01"></i>
+        </a>
+      </li>
+      <li class="link">
+        <a href="/" ui-button data-variant="ghost" data-size="lg">
+          <span class="label">Woman</span> <i class="hgi hgi-stroke hgi-arrow-right-01"></i>
+        </a>
+      </li>
+      <li class="link">
+        <a href="/" ui-button data-variant="ghost" data-size="lg">
+          <span class="label">Contact us</span> <i class="hgi hgi-stroke hgi-arrow-right-01"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

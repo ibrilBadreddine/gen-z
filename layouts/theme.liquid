@@ -31,6 +31,7 @@
     {{ 'misc.variants.css' | asset_url | stylesheet_tag }}
     {{ 'drawer.gallery.css' | asset_url | stylesheet_tag }}
     {{ 'section.announcement.css' | asset_url | stylesheet_tag }}
+    {{ 'drawer.menu.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
     <div ui-section="announcement">
@@ -53,15 +54,21 @@
             </form>
           </div>
         {% endif %}
-        <button
-          ui-button
-          data-variant="outline"
-          data-size="md"
-          data-icon
-          aria-label="menu"
-        >
-          <i class="hgi hgi-stroke hgi-menu-05"></i>
-        </button>
+        <ui-drawer id="menu">
+          <button
+            ui-drawer="trigger"
+            data-for="menu"
+            data-state="open"
+            ui-button
+            data-variant="outline"
+            data-size="md"
+            data-icon
+            aria-label="menu"
+          >
+            <i class="hgi hgi-stroke hgi-menu-05"></i>
+          </button>
+          {% render 'drawer.menu' %}
+        </ui-drawer>
         <ui-drawer id="cart">
           <button
             ui-drawer="trigger"

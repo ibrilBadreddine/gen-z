@@ -1,0 +1,37 @@
+/* DRAWER MENU */
+.drawer-menu {
+  /* CORE */
+  & > .core {
+    display: grid;
+    gap: var(--spacing-12);
+    padding-block-end: var(--spacing-24);
+
+    .about {
+      display: grid;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-8);
+
+      .logo {
+        text-align: center;
+
+        img {
+          border-radius: var(--radius-circled);
+        }
+      }
+
+      .store-name {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+    }
+
+    .links {
+      .link {
+        & > a {
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
