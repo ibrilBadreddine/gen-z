@@ -1,0 +1,77 @@
+{{ 'section.page.css' | asset_url | stylesheet_tag }}
+
+<div ui-section="page">
+  <div class="media">
+    <h3 class="title">
+      {% if page.template == 'contact' %}
+        {{ 'contact.title' | t }}
+      {% else %}
+        {{ page.name }}
+      {% endif %}
+    </h3>
+    <div class="store">
+      <img
+        src="https://images.pexels.com/photos/34046748/pexels-photo-34046748.jpeg"
+        alt="logo"
+        height="30"
+        width="30"
+      >
+      <a href="/" class="name">Cokimocha</a>
+    </div>
+  </div>
+  <div class="content">
+    {% unless page.template == 'contact' %}
+      {{ page.content }}
+    {% else %}
+      {% form 'contact' %}
+        <div class="fields">
+          <div class="field">
+            <label for="email">{{ 'contact.fields.email' | t }}</label>
+            <input
+              ui-input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="{{ 'contact.fields.email' | t }}"
+              required
+            >
+          </div>
+          <div class="field">
+            <label for="subject">{{ 'contact.fields.subject' | t }}</label>
+            <input
+              ui-input
+              id="subject"
+              name="subject"
+              type="text"
+              placeholder="{{ 'contact.fields.subject' | t }}"
+              required
+            >
+          </div>
+          <div class="field">
+            <label for="message">{{ 'contact.fields.message' | t }}</label>
+            <textarea
+              ui-input
+              type="text"
+              id="message"
+              name="message"
+              minlength="5"
+              rows="8"
+              placeholder="{{ 'contact.fields.message' | t }}"
+              required
+            ></textarea>
+          </div>
+        </div>
+        <button ui-button data-variant="primary" data-size="lg">
+          <span class="label">Send</span>
+          <i class="hgi hgi-stroke hgi-sent"></i>
+        </button>
+      {% endform %}
+    {% endunless %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "label": "Page"
+}
+{% endschema %}

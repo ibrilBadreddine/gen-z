@@ -1,0 +1,105 @@
+/* PAGE */
+[ui-section="page"] {
+  --media-height: 40vh;
+
+  padding-block-start: calc(var(--media-height) - var(--spacing-48));
+
+  .media {
+    display: flex;
+    position: fixed;
+    z-index: 2;
+    flex-direction: column;
+    justify-content: end;
+    gap: var(--spacing-12);
+    width: 600px;
+    height: var(--media-height);
+    padding: var(--spacing-24);
+    padding-block-end: var(--spacing-48);
+    overflow: hidden;
+    transform: translateX(-50%);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background-image: linear-gradient(
+      -45deg,
+      var(--color-surface-container-low),
+      var(--color-surface-container-highest)
+    );
+    inset-inline-start: 50%;
+    inset-block-start: var(--spacing-12);
+
+    .title {
+      font: var(--font-title-lg);
+    }
+
+    .store {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-8);
+
+      img {
+        clip-path: circle();
+      }
+
+      .name {
+        opacity: 0.8;
+        color: var(--color-on-background);
+        font: var(--font-body-md);
+        text-underline-offset: 2px;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .content {
+    display: grid;
+    position: relative;
+    z-index: 3;
+    flex-direction: column;
+    width: calc(100% + var(--spacing-48));
+    padding: var(--spacing-24);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    background-color: var(--color-background);
+    inset-inline-start: calc(var(--spacing-24) * -1);
+    gap: var(--spacing-8);
+
+    p {
+      font: var(--font-body-md);
+    }
+
+    form {
+      display: grid;
+      gap: var(--spacing-24);
+
+      [ui-button] {
+        width: 100%;
+      }
+
+      .fields {
+        display: grid;
+        gap: var(--spacing-12);
+
+        .field {
+          display: grid;
+          gap: var(--spacing-4);
+          opacity: 0.8;
+
+          label {
+            font: var(--font-body-md);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 769px) {
+  [ui-section="page"] {
+    .media {
+      width: 100%;
+      border-radius: var(--radius-none);
+      inset-block-start: var(--spacing-0);
+    }
+  }
+}
