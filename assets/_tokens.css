@@ -35,6 +35,10 @@
   --color-on-success: #fff;
   --color-success-container: #9ef6b0;
   --color-on-success-container: #00210b;
+  --color-info: #414bda;
+  --color-on-info: #fff;
+  --color-info-container: #e0e0ff;
+  --color-on-info-container: #00036b;
   --color-star: rgb(250 165 72);
   --color-overlay: rgb(0 0 0 / 30%);
   --spacing-0: 0;

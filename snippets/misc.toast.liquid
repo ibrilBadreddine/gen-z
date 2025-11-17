@@ -1,0 +1,17 @@
+{{ 'misc.toast.css' | asset_url | stylesheet_tag }}
+{{ 'misc.toast.js' | asset_url | script_tag_deferred }}
+
+{% comment %}
+  Renders a toast message
+
+  Usage:
+  {% render 'misc-toast' %}
+{% endcomment %}
+
+<ui-toast data-state="closed">
+  <div ui-toast-status="warning"></div>
+  <span ui-toast-message></span>
+  <button ui-toast-action ui-button data-variant="ghost" data-size="sm" data-icon type="button">
+    <i class="hgi hgi-stroke hgi-cancel-01"></i>
+  </button>
+</ui-toast>

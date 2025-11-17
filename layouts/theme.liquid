@@ -19,6 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
 
     {{ '_globals.css' | asset_url | stylesheet_tag }}
+    {{ '_globals.js' | asset_url | script_tag_deferred }}
 
     {{ 'misc.tabs.js' | asset_url | script_tag_deferred }}
     {{ 'misc.select.js' | asset_url | script_tag_deferred }}
@@ -34,13 +35,17 @@
     {{ 'drawer.menu.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
-    {% comment %} <div ui-section="announcement">
-      <div class="content">
-        <span class="tag">Save 30%</span>
-        <p class="info">due to high demand, expect shipping delays on cetain products.</p>
-        <a href="#" class="action">Learn more</a>
+    {% comment %}
+      <div ui-section="announcement">
+        <div class="content">
+          <span class="tag">Save 30%</span>
+          <p class="info">due to high demand, expect shipping delays on cetain products.</p>
+          <a href="#" class="action">Learn more</a>
+        </div>
       </div>
-    </div> {% endcomment %}
+    {% endcomment %}
+
+    {% render 'misc.toast' %}
 
     <div id="app">
       <header ui-layout="header" data-template="{{ template.name }}">
