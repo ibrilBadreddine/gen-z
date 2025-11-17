@@ -1,6 +1,6 @@
 if (!customElements.get("ui-drawer")) {
   class Drawer extends HTMLElement {
-    static observedAttributes = ["id"];
+    static observedAttributes = ["id", "default-open"];
 
     constructor() {
       super();
@@ -23,6 +23,8 @@ if (!customElements.get("ui-drawer")) {
         "keydown",
         (e) => e.key === "Escape" && this.toggle(false)
       );
+
+      this.hasAttribute("default-open") && this.toggle(true);
     }
 
     toggle(state) {
