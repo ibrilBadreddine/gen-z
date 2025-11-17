@@ -1,0 +1,35 @@
+{{ 'drawer.promo.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders the promotion drawer
+
+  Usage:
+  {% render 'drawer.promo' %}
+{% endcomment %}
+
+<div ui-drawer="content" class="drawer-promo">
+  <div class="head" style="background-image: url('https://images.pexels.com/photos/5868262/pexels-photo-5868262.jpeg')">
+    <button
+      ui-drawer="trigger"
+      data-for="promo"
+      data-state="close"
+      ui-button
+      data-variant="blurry"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <div class="core">
+    <div class="content">
+      <h3 class="heading">Hello lucky guy!</h3>
+      <p class="subheading">You're in golden time! Please use the coupon code below to get 10$ discount.</p>
+    </div>
+    <div class="actions">
+      <button ui-button data-variant="secondary" data-size="lg">Maybe later</button>
+      <button ui-button data-variant="primary" data-size="lg">Try it now</button>
+    </div>
+  </div>
+</div>

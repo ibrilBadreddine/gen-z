@@ -1,0 +1,56 @@
+/* DRAWER PROMO */
+.drawer-promo {
+  padding: var(--spacing-0) !important;
+  overflow: hidden;
+  gap: var(--spacing-0);
+
+  /* HEAD */
+  & > .head {
+    position: relative;
+    justify-content: flex-end;
+    height: 40vh;
+    padding: var(--spacing-24);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    &::before {
+      content: "";
+      position: absolute;
+      background-image: linear-gradient(
+        to bottom,
+        transparent,
+        transparent,
+        rgb(0 0 0 / 60%)
+      );
+      inset: 0;
+    }
+  }
+
+  /* CORE */
+  & > .core {
+    display: grid;
+    padding: var(--spacing-24);
+    gap: var(--spacing-24);
+
+    .content {
+      display: grid;
+      gap: var(--spacing-4);
+
+      .heading {
+        font: var(--font-title-lg);
+      }
+
+      .subheading {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+    }
+
+    .actions {
+      display: grid;
+      gap: var(--spacing-12);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}

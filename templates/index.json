@@ -23,9 +23,13 @@
     },
     "products": {
       "type": "products"
+    },
+    "promotion": {
+      "type": "promotion"
     }
   },
   "order": [
+    "promotion",
     "hero",
     "gallery",
     "bio",
