@@ -34,13 +34,13 @@
     {{ 'drawer.menu.css' | asset_url | stylesheet_tag }}
   </head>
   <body>
-    <div ui-section="announcement">
+    {% comment %} <div ui-section="announcement">
       <div class="content">
         <span class="tag">Save 30%</span>
         <p class="info">due to high demand, expect shipping delays on cetain products.</p>
         <a href="#" class="action">Learn more</a>
       </div>
-    </div>
+    </div> {% endcomment %}
 
     <div id="app">
       <header ui-layout="header" data-template="{{ template.name }}">
