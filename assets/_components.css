@@ -178,6 +178,12 @@
     gap: var(--spacing-8);
   }
 
+  &:is(textarea) {
+    height: auto;
+    padding-block: var(--spacing-12);
+    resize: vertical;
+  }
+
   /* Invalid */
   &[aria-invalid="true"] {
     border-color: var(--color-error);

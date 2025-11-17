@@ -92,8 +92,10 @@ body {
       }
 
       &:has(.back) {
+        z-index: 50;
         gap: var(--spacing-12);
 
+        &[data-template="page"],
         &[data-template="product"],
         &[data-template="collection"] {
           position: fixed;
@@ -153,7 +155,8 @@ body {
       margin: var(--spacing-0);
       border-radius: var(--radius-none);
 
-      [ui-layout="header"] {
+      [ui-layout="header"]:has(.back) {
+        &[data-template="page"],
         &[data-template="product"],
         &[data-template="collection"] {
           width: calc(100% - var(--spacing-48));
