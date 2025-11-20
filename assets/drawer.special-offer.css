@@ -1,0 +1,109 @@
+/* DRAWER SPECIAL OFFER */
+.drawer-special-offer {
+  padding: var(--spacing-0) !important;
+  overflow: hidden;
+  gap: var(--spacing-0);
+
+  /* HEAD */
+  & > .head {
+    position: absolute;
+    z-index: 2;
+    inset-block-start: var(--spacing-12);
+    inset-inline-end: var(--spacing-12);
+
+    [ui-button] {
+      color: var(--color-primary-container);
+
+      &:hover {
+        background-color: color-mix(
+          in srgb,
+          var(--color-primary-container) 10%,
+          transparent
+        );
+      }
+    }
+  }
+
+  /* MEDIA */
+  & > .media {
+    display: grid;
+    position: relative;
+    padding: var(--spacing-24);
+    background-color: var(--color-on-primary-container);
+    color: var(--color-primary-container);
+    gap: var(--spacing-12);
+
+    .content {
+      display: grid;
+      text-align: center;
+      gap: var(--spacing-4);
+
+      .heading {
+        font: var(--font-title-lg);
+      }
+
+      .subheading {
+        opacity: 0.8;
+        font: var(--font-body-md);
+      }
+    }
+
+    ui-countdown-timer {
+      display: flex;
+      justify-content: center;
+      gap: var(--spacing-12);
+
+      .time-slot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30px;
+        padding-inline: var(--spacing-12);
+        border: 1px solid color-mix(in srgb, currentcolor 30%, transparent);
+        border-radius: var(--radius-sm);
+        background-color: color-mix(in srgb, currentcolor 8%, transparent);
+        color: var(--color-primary-container);
+        font: var(--font-label-sm);
+        text-align: center;
+        gap: var(--spacing-4);
+
+        & > span:last-child {
+          text-transform: uppercase;
+        }
+      }
+    }
+  }
+
+  /* CORE */
+  & > .core {
+    display: grid;
+    gap: var(--spacing-12);
+    padding: var(--spacing-24);
+
+    .product {
+      display: flex;
+      gap: var(--spacing-12);
+
+      img {
+        object-fit: cover;
+        border-radius: var(--radius-sm);
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-4);
+
+        .name {
+          color: var(--color-on-background);
+          font: var(--font-body-md);
+        }
+
+        .price {
+          color: var(--color-primary);
+          font: var(--font-body-lg);
+        }
+      }
+    }
+  }
+}

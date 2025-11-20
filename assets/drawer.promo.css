@@ -7,7 +7,6 @@
   /* HEAD */
   & > .head {
     position: relative;
-    justify-content: flex-end;
     height: 40vh;
     padding: var(--spacing-24);
     background-repeat: no-repeat;

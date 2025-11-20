@@ -26,10 +26,14 @@
     },
     "promotion": {
       "type": "promotion"
+    },
+    "special-offer": {
+      "type": "special-offer"
     }
   },
   "order": [
     "promotion",
+    "special-offer",
     "hero",
     "gallery",
     "bio",

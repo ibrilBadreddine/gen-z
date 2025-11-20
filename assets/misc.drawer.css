@@ -70,7 +70,11 @@ body:has([ui-drawer="content"][data-state="open"]) {
   .head {
     display: flex;
     gap: var(--spacing-12);
-    justify-content: space-between;
+    justify-content: flex-end;
+
+    &:has(.info) {
+      justify-content: space-between;
+    }
 
     .info {
       display: flex;
