@@ -1,0 +1,29 @@
+{{ 'misc.empty.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders an empty message state
+
+  Accepts:
+  - heading: {String} Heading text
+  - subheading: {String} (optional) Subheading text
+
+  Usage:
+  {% render 'misc-empty' %}
+{% endcomment %}
+
+<ui-empty>
+  <div class="illustration">
+    <div class="card">
+      <i class="hgi hgi-stroke hgi-border-none-02"></i>
+    </div>
+    <div class="card">
+      <i class="hgi hgi-stroke hgi-border-none-02"></i>
+    </div>
+  </div>
+  <div class="content">
+    <span class="heading">{{ heading }}</span>
+    {% if subheading %}
+      <p class="subheading">{{ subheading }}</p>
+    {% endif %}
+  </div>
+</ui-empty>
