@@ -2,44 +2,46 @@
 
 <div ui-section="list-collections">
   <h3 class="title">Collections</h3>
-  <ul class="collections">
-    <li class="collection">
-      <a href="#">
-        <img
-          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/965bSPjYdRTzA30Oqav4W3wWQfC0LkpqQ3SdF2MI.jpg"
-          alt="collection"
-          height="100%"
-          width="100%"
-        >
-        <span class="name">Man</span>
-        <i class="hgi hgi-stroke hgi-view"></i>
-      </a>
-    </li>
-    <li class="collection">
-      <a href="#">
-        <img
-          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/6FSLi4UY40cEoxuQLwh58CLhdJATbyxmuT4KDgCb.jpg"
-          alt="collection"
-          height="100%"
-          width="100%"
-        >
-        <span class="name">Woman</span>
-        <i class="hgi hgi-stroke hgi-view"></i>
-      </a>
-    </li>
-    <li class="collection">
-      <a href="#">
-        <img
-          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/categories/WhRgVBZgsQmURYFE20oXVrGwgVWoFEuadrrtwKh0.jpg"
-          alt="collection"
-          height="100%"
-          width="100%"
-        >
-        <span class="name">Best offers</span>
-        <i class="hgi hgi-stroke hgi-view"></i>
-      </a>
-    </li>
-  </ul>
+  {% paginate collections by 24 cod %}
+    {% if items.size > 0 %}
+      <ul class="collections">
+        {% for collection in items %}
+          <li class="collection">
+            <a aria-label="{{ collection.name }}" href="/collections/{{ collection.slug }}">
+              <div class="image">
+                {% if collection.preview_image.original %}
+                  <img
+                    width="100%"
+                    height="100%"
+                    srcset="
+                      {{ collection.preview_image.medium }} 480w,
+                      {{ collection.preview_image.large }} 800w,
+                      {{ collection.preview_image.original }} 1200w
+                    "
+                    sizes="
+                      (max-width: 640px) 50vw,
+                      (max-width: 768px) 33vw,
+                      (max-width: 1024px) 25vw,
+                      33vw
+                    "
+                    src="{{ collection.preview_image.original }}"
+                    alt=""
+                    loading="lazy"
+                  >
+                {% else %}
+                  {% render 'misc.image-fallback' %}
+                {% endif %}
+              </div>
+              <span class="name">{{ collection.name }}</span>
+              <i class="hgi hgi-stroke hgi-view view"></i>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      {% render 'misc.empty', heading: 'No collections' %}
+    {% endif %}
+  {% endpaginate %}
 </div>
 
 {% schema %}
