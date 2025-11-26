@@ -1,13 +1,12 @@
 {{ 'section.collections.css' | asset_url | stylesheet_tag }}
-{{ 'drawer.products.css' | asset_url | stylesheet_tag }}
 
 <div ui-section="collections" ui-nav="shop">
   <div class="head">
     <h3 class="title">Collections</h3>
     <a href="/collections" ui-button data-variant="link" data-size="sm" class="see-all"> See all</a>
   </div>
-  <ul class="collections" data-style="grid">
-    {% for item in (1..4) %}
+  <ul class="collections" data-style="{{ section.settings.style }}">
+    {% for block in section.blocks %}
       {% render 'block.collection' %}
     {% endfor %}
   </ul>
@@ -18,6 +17,41 @@
   "label": "Collections",
   "templates": ["index"],
   "limit": 3,
-  "max_blocks": 9
+  "max_blocks": 12,
+  "settings": [
+    {
+      "id": "style",
+      "type": "select",
+      "label": "Style",
+      "options": [
+        {
+          "label": "Scrollable",
+          "value": "scrollable"
+        },
+        {
+          "label": "Gallery",
+          "value": "gallery"
+        },
+        {
+          "label": "Grid",
+          "value": "grid"
+        }
+      ],
+      "default": "scrollable"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "label": "Collection",
+      "settings": [
+        {
+          "type": "category",
+          "id": "collection",
+          "label": "Collection"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

@@ -19,6 +19,18 @@
   }
 
   .collections {
+    .collection {
+      .collection-card {
+        color: var(--color-on-background);
+
+        .image {
+          & > img {
+            object-fit: cover;
+          }
+        }
+      }
+    }
+
     &[data-style="scrollable"] {
       display: flex;
       width: calc(100% + var(--spacing-24));
@@ -73,10 +85,6 @@
             inset: 0;
             position: absolute;
             transition: scale var(--transition-expressive-default-spatial);
-
-            & > img {
-              object-fit: cover;
-            }
 
             &::before,
             &::after {
@@ -148,6 +156,7 @@
 
           .content {
             .name {
+              opacity: 0.8;
               font: var(--font-body-md);
             }
           }
@@ -176,6 +185,12 @@
             .image {
               width: 40px;
               height: 40px;
+            }
+
+            .content {
+              .name {
+                font: var(--font-body-sm);
+              }
             }
           }
         }
