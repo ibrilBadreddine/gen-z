@@ -53,7 +53,7 @@
   </ui-drawer>
   {% unless section.settings.style == 'pack' %}
     <div class="content">
-      <a href="/products/{{ product.id }}" class="title">{{ product.name }}</a>
+      <a href="/products/{{ product.id }}" class="title">{{ product.name | default: 'Product name' }}</a>
       {% comment %}
         {% if forloop.index == 3 %}
           <span class="badge">Saved 30 MAD extra</span>
@@ -63,7 +63,7 @@
         {{ price | default: 0 | money }}
       </p>
     </div>
-    <div id="product" class="action">
+    <div class="action">
       <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart">
         <i class="hgi hgi-stroke hgi-plus-sign"></i>
       </button>

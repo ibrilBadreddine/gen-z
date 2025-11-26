@@ -27,8 +27,8 @@
           {% for block in items limit: 4 %}
             {% render 'block.product' %}
           {% endfor %}
+          {% render 'drawer.products', products: items %}
         {% endpaginate %}
-        {% render 'drawer.products' %}
       </ul>
     </ui-drawer>
   {% else %}

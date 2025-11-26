@@ -1,5 +1,10 @@
+{{ 'drawer.products.css' | asset_url | stylesheet_tag }}
+
 {% comment %}
   Renders a products drawer
+
+  Accepts:
+  - products: {Array} products array
 
   Usage:
   {% render 'drawer-products'%}
@@ -9,7 +14,7 @@
   <div class="head">
     <div class="info">
       <h4 class="title">Man</h4>
-      <p class="description">[{{ section.blocks.size }}] Products</p>
+      <p class="description">[{{ products.size }}] Products</p>
     </div>
     <button
       ui-drawer="trigger"
@@ -26,8 +31,51 @@
   </div>
   <div class="core">
     <ul class="products">
-      {% for index in (1..8) %}
-        {% render 'block.product' %}
+      {% for block in products %}
+        {% assign product = block.settings.product | default: block %}
+        {% assign default_variant = product.selected_or_first_available_variant %}
+        {% assign price = default_variant.price | default: product.price %}
+        {% assign compare_at_price = default_variant.compare_at_price | default: product.compare_at_price %}
+
+        <li class="product">
+          <ui-drawer id="product">
+            <div class="image" ui-drawer="trigger" data-for="product" data-state="open">
+              {% if product.preview_image %}
+                <img
+                  srcset="
+                    {{ product.preview_image.medium }} 480w,
+                    {{ product.preview_image.large }} 800w,
+                    {{ product.preview_image.original }} 1200w
+                  "
+                  sizes="
+                    (max-width: 640px) 50vw,
+                    (max-width: 768px) 33vw,
+                    (max-width: 1024px) 25vw,
+                    33vw
+                  "
+                  src="{{ product.preview_image.original }}"
+                  alt="{{ product.name }}"
+                  height="100%"
+                  width="100%"
+                >
+              {% else %}
+                {% render 'misc.image-fallback' %}
+              {% endif %}
+            </div>
+            {% render 'drawer.product' %}
+          </ui-drawer>
+          <div class="content">
+            <a href="/products/{{ product.id }}" class="title">{{ product.name | default: 'Product name' }}</a>
+            <p class="price">
+              {{ price | default: 0 | money }}
+            </p>
+          </div>
+          <div class="action">
+            <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart">
+              <i class="hgi hgi-stroke hgi-plus-sign"></i>
+            </button>
+          </div>
+        </li>
       {% endfor %}
     </ul>
   </div>
