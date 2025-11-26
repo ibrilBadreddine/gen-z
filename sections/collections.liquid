@@ -2,8 +2,11 @@
 {{ 'drawer.products.css' | asset_url | stylesheet_tag }}
 
 <div ui-section="collections" ui-nav="shop">
-  <h3 class="title">Collections</h3>
-  <ul class="collections">
+  <div class="head">
+    <h3 class="title">Collections</h3>
+    <a href="/collections" ui-button data-variant="link" data-size="sm" class="see-all"> See all</a>
+  </div>
+  <ul class="collections" data-style="grid">
     {% for item in (1..4) %}
       {% render 'block.collection' %}
     {% endfor %}
