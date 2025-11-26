@@ -1,0 +1,82 @@
+{{ 'section.products.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.product.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.quantity.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.select.css' | asset_url | stylesheet_tag }}
+
+{% assign collection = section.settings.collection %}
+
+<div ui-section="products" ui-nav="shop">
+  <div class="head">
+    <h3 class="title">Products by Collection</h3>
+    <span class="count">
+      {% paginate collection.products by 12 id category_id: collection.id %}
+        [{{ items.size }}] Products
+      {% endpaginate %}
+    </span>
+  </div>
+  {% if section.settings.style == 'pack' %}
+    <ui-drawer id="products">
+      <ul
+        class="products"
+        data-style="pack"
+        ui-drawer="trigger"
+        data-for="products"
+        data-state="open"
+      >
+        {% paginate collection.products by 12 id category_id: collection.id %}
+          {% for block in items limit: 4 %}
+            {% render 'block.product' %}
+          {% endfor %}
+        {% endpaginate %}
+        {% render 'drawer.products' %}
+      </ul>
+    </ui-drawer>
+  {% else %}
+    <ul
+      class="products"
+      data-style="{{ section.settings.style }}"
+    >
+      {% paginate collection.products by 12 id category_id: collection.id %}
+        {% for block in items %}
+          {% render 'block.product' %}
+        {% endfor %}
+      {% endpaginate %}
+    </ul>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "label": "Products by Collection",
+  "templates": ["index", "product"],
+  "limit": 3,
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "category",
+      "id": "collection",
+      "label": "t:sections.products_by_collection.label"
+    },
+    {
+      "id": "style",
+      "type": "select",
+      "label": "Style",
+      "options": [
+        {
+          "label": "Scrollable",
+          "value": "scrollable"
+        },
+        {
+          "label": "Gallery",
+          "value": "gallery"
+        },
+        {
+          "label": "Pack",
+          "value": "pack"
+        }
+      ],
+      "default": "scrollable"
+    }
+  ]
+}
+{% endschema %}
