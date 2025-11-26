@@ -4,16 +4,77 @@
 {{ 'drawer.select.css' | asset_url | stylesheet_tag }}
 
 <div ui-section="products" ui-nav="shop">
-  <h3 class="title">All Products</h3>
-  <ul class="products">
-    {% for item in (1..4) %}
-      {% render 'block.product' %}
-    {% endfor %}
-  </ul>
+  <div class="head">
+    <h3 class="title">All Products</h3>
+    <span class="count">[{{ section.blocks.size }}] Products</span>
+  </div>
+  {% if section.settings.style == 'pack' %}
+    <ui-drawer id="products">
+      <ul
+        class="products"
+        data-style="pack"
+        ui-drawer="trigger"
+        data-for="products"
+        data-state="open"
+      >
+        {% for block in section.blocks limit: 4 %}
+          {% render 'block.product' %}
+        {% endfor %}
+        {% render 'drawer.products' %}
+      </ul>
+    </ui-drawer>
+  {% else %}
+    <ul
+      class="products"
+      data-style="{{ section.settings.style }}"
+    >
+      {% for block in section.blocks %}
+        {% render 'block.product' %}
+      {% endfor %}
+    </ul>
+  {% endif %}
 </div>
 
 {% schema %}
 {
-  "label": "Products"
+  "label": "Products",
+  "templates": ["index", "product"],
+  "limit": 3,
+  "max_blocks": 12,
+  "settings": [
+    {
+      "id": "style",
+      "type": "select",
+      "label": "Style",
+      "options": [
+        {
+          "label": "Scrollable",
+          "value": "scrollable"
+        },
+        {
+          "label": "Gallery",
+          "value": "gallery"
+        },
+        {
+          "label": "Pack",
+          "value": "pack"
+        }
+      ],
+      "default": "scrollable"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "label": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Products"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

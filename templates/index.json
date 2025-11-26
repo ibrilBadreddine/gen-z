@@ -24,6 +24,9 @@
     "products": {
       "type": "products"
     },
+    "products-by-collection": {
+      "type": "products-by-collection"
+    },
     "promotion": {
       "type": "promotion"
     },
@@ -41,6 +44,7 @@
     "map",
     "social-links",
     "collections",
-    "products"
+    "products",
+    "products-by-collection"
   ]
 }

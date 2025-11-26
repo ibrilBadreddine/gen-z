@@ -5,32 +5,68 @@
   {% render 'block-product'%}
 {% endcomment %}
 
+{% assign product = block.settings.product | default: block %}
+{% assign default_variant = product.selected_or_first_available_variant %}
+{% assign price = default_variant.price | default: product.price %}
+{% assign compare_at_price = default_variant.compare_at_price | default: product.compare_at_price %}
+
 <li class="product">
-  <img
-    src="https://images.pexels.com/photos/32972549/pexels-photo-32972549.jpeg"
-    alt="product"
-    width="100%"
-    height="100%"
-  >
-  <span class="name">Whole bean coffee</span>
   <ui-drawer id="product">
-    <button
-      ui-drawer="trigger"
-      data-for="product"
-      data-state="open"
-      ui-button
-      data-variant="outline"
-      data-size="sm"
-      data-icon
-      aria-label="add to cart"
-      class="action"
+    <div
+      {% unless section.settings.style == 'pack' %}
+        ui-drawer="trigger" data-for="product" data-state="open"
+      {% endunless %}
+      class="image"
     >
-      {% if item < 5 %}
-        <i class="hgi hgi-stroke hgi-plus-sign"></i>
+      {% if product.preview_image %}
+        <img
+          srcset="
+            {{ product.preview_image.medium }} 480w,
+            {{ product.preview_image.large }} 800w,
+            {{ product.preview_image.original }} 1200w
+          "
+          sizes="
+            (max-width: 640px) 50vw,
+            (max-width: 768px) 33vw,
+            (max-width: 1024px) 25vw,
+            33vw
+          "
+          src="{{ product.preview_image.original }}"
+          alt="{{ product.name }}"
+          height="100%"
+          width="100%"
+        >
       {% else %}
-        <i class="hgi hgi-stroke hgi-shopping-basket-01"></i>
+        {% render 'misc.image-fallback' %}
       {% endif %}
-    </button>
-    {% render 'drawer.product' %}
+      {% if forloop.index == 4 %}
+        {% if section.blocks.size > 4 or items.size > 4 %}
+          <div class="total">
+            <span>+{{ section.blocks.size | default: items.size | minus: 4 }}</span>
+          </div>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% unless section.settings.style == 'pack' %}
+      {% render 'drawer.product' %}
+    {% endunless %}
   </ui-drawer>
+  {% unless section.settings.style == 'pack' %}
+    <div class="content">
+      <a href="/products/{{ product.id }}" class="title">{{ product.name }}</a>
+      {% comment %}
+        {% if forloop.index == 3 %}
+          <span class="badge">Saved 30 MAD extra</span>
+        {% endif %}
+      {% endcomment %}
+      <p class="price">
+        {{ price | default: 0 | money }}
+      </p>
+    </div>
+    <div id="product" class="action">
+      <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart">
+        <i class="hgi hgi-stroke hgi-plus-sign"></i>
+      </button>
+    </div>
+  {% endunless %}
 </li>
