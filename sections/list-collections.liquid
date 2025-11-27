@@ -36,6 +36,12 @@
             </a>
           </li>
         {% endfor %}
+        {% render 'misc.pagination',
+          next_page_url: next_page,
+          previous_page_url: previous_page,
+          current: current,
+          last: last
+        %}
       </ul>
     {% else %}
       {% render 'misc.empty', heading: 'No collections' %}
