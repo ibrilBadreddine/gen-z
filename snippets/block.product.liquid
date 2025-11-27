@@ -53,7 +53,7 @@
   </ui-drawer>
   {% unless section.settings.style == 'pack' %}
     <div class="content">
-      <a href="/products/{{ product.id }}" class="title">{{ product.name | default: 'Product name' }}</a>
+      <a href="/products/{{ product.slug }}" class="title">{{ product.name | default: 'Product name' }}</a>
       {% comment %}
         {% if forloop.index == 3 %}
           <span class="badge">Saved 30 MAD extra</span>

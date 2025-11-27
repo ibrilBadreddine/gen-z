@@ -17,11 +17,12 @@
 
       & > a {
         display: grid;
-        gap: var(--spacing-4);
+        gap: var(--spacing-8);
         position: relative;
         color: var(--color-on-background);
 
         .image {
+          position: relative;
           height: 30vh;
           overflow: hidden;
           border-radius: var(--radius-md);
@@ -32,26 +33,37 @@
             transition: var(--transition-standard-default-effects);
             object-fit: cover;
           }
+
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+          }
+
+          &::before {
+            background-color: rgb(0 0 0 / 30%);
+            mask: linear-gradient(transparent, transparent, black);
+            backdrop-filter: blur(3px);
+          }
+
+          &::after {
+            transition: background-color
+              var(--transition-expressive-default-spatial);
+            background-color: rgb(0 0 0 / 8%);
+          }
         }
 
         .name {
+          position: absolute;
           padding-inline: var(--spacing-4);
           overflow: hidden;
-          font: var(--font-body-md);
+          color: var(--color-on-primary);
+          font: var(--font-body-lg);
           text-overflow: ellipsis;
           white-space: nowrap;
-        }
-
-        .view {
-          visibility: hidden;
-          position: absolute;
-          transition: var(--transition-standard-default-effects);
-          opacity: 0;
-          color: var(--color-background);
-          font-size: 24px;
-          translate: -50% -50%;
-          inset-block-start: 50%;
-          inset-inline-start: 50%;
+          inset-inline-start: var(--spacing-12);
+          inset-block-end: var(--spacing-12);
         }
       }
 
@@ -61,14 +73,8 @@
 
       &:hover {
         & > a {
-          .image {
-            filter: blur(2px);
-          }
-
-          .view {
-            visibility: visible;
-            opacity: 1;
-            inset-block-start: 45%;
+          .image::after {
+            background-color: rgb(0 0 0 / 20%);
           }
         }
       }
