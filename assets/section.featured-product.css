@@ -1,0 +1,57 @@
+/* FEATURED PRODUCT */
+[ui-section="featured-product"] {
+  .card {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--color-surface-container);
+    border-radius: var(--radius-md);
+
+    .image {
+      height: 40vh;
+
+      & > img {
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      display: grid;
+
+      .info {
+        display: grid;
+        gap: var(--spacing-4);
+        padding: var(--spacing-24) var(--spacing-16);
+        border-block-end: 1px solid var(--color-surface-container);
+
+        .title {
+          width: fit-content;
+          transition: color var(--transition-expressive-default-spatial);
+          color: inherit;
+          font: var(--font-title-lg);
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+
+        .rating {
+          opacity: 0.8;
+          font: var(--font-body-md);
+        }
+      }
+
+      .action {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--spacing-12);
+        padding: var(--spacing-12) var(--spacing-16);
+
+        .price {
+          color: var(--color-primary);
+          font: var(--font-title-lg);
+        }
+      }
+    }
+  }
+}

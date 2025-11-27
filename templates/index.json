@@ -9,6 +9,9 @@
     "bio": {
       "type": "bio"
     },
+    "featured-product": {
+      "type": "featured-product"
+    },
     "faq": {
       "type": "faq"
     },
@@ -40,6 +43,7 @@
     "hero",
     "gallery",
     "bio",
+    "featured-product",
     "faq",
     "map",
     "social-links",
