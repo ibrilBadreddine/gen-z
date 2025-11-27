@@ -25,41 +25,63 @@
   </div>
   <div class="core">
     <ul class="products">
-      {% for item in (1..8) %}
+      {% for item in (1..2) %}
         <li class="product">
-          <img
-            src="https://images.pexels.com/photos/6946071/pexels-photo-6946071.jpeg"
-            alt="product"
-            width="100%"
-            height="100%"
-          >
+          <div class="image">
+            {% comment %}
+              <img
+                src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/Bjpmyg3OuuRUicg03vkY1YHsSi55BUnZ7XVWX7b1_md.jpg"
+                alt="product"
+                height="80"
+                width="80"
+              >
+            {% endcomment %}
+            {% render 'misc.image-fallback' %}
+          </div>
           <div class="info">
-            <span class="name">Hot Chocolate cup</span>
-            <span class="price">$25.00</span>
+            <h4 class="name">Fabric Tote Bag</h4>
+            <p class="price">$359</p>
           </div>
           <div class="actions">
+            <button ui-button data-variant="ghost" data-size="xs" data-icon aria-label="delete">
+              <i class="hgi hgi-stroke hgi-delete-02"></i>
+            </button>
             <div class="quantity">
-              <button ui-button data-variant="outline" data-size="xs" data-icon aria-label="decrease">
+              <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="decrease">
                 <i class="hgi hgi-stroke hgi-minus-sign"></i>
               </button>
               <span class="value">1</span>
-              <button ui-button data-variant="outline" data-size="xs" data-icon aria-label="increase">
-                <i class="hgi hgi-stroke hgi-plus-sign"></i>
+              <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="increase">
+                <i class="hgi hgi-stroke hgi-add-01"></i>
               </button>
             </div>
-            <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="remove">
-              <i class="hgi hgi-stroke hgi-delete-04"></i>
-            </button>
           </div>
         </li>
       {% endfor %}
     </ul>
-    <div class="total">
-      <h4 class="label">Total Amount</h4>
-      <span class="value">$599</span>
+    {% comment %} {% render 'misc.empty', heading: 'Your cart is empty' %} {% endcomment %}
+    <div class="more-products">
+      <div class="nav">
+        <h4 class="title">Did you also want?</h4>
+      </div>
+      <ul
+        class="products"
+        data-style="scrollable"
+      >
+        {% for block in (1..4) %}
+          {% render 'block.product' %}
+        {% endfor %}
+      </ul>
     </div>
-    <div class="actions">
-      <button ui-button data-variant="primary" data-size="lg">Make Payment</button>
+    <div class="summary">
+      <div class="total">
+        <h4 class="label">Total Amount [8]:</h4>
+        <span class="value">$599</span>
+      </div>
+      <button ui-button data-variant="primary" data-size="lg">
+        <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>
+        <span>Go to Cart</span>
+      </button>
     </div>
   </div>
 </div>
