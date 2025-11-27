@@ -21,6 +21,9 @@
     "map": {
       "type": "map"
     },
+    "carousel": {
+      "type": "carousel"
+    },
     "collections": {
       "type": "collections"
     },
@@ -43,6 +46,7 @@
     "hero",
     "gallery",
     "bio",
+    "carousel",
     "featured-product",
     "faq",
     "map",
