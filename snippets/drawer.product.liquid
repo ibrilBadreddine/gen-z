@@ -6,192 +6,124 @@
 {% endcomment %}
 
 <div ui-drawer="content" class="drawer-product">
-  <div class="head">
-    <div class="info">
-      <h4 class="title">Hot coffee mug</h4>
-    </div>
-    <button
-      ui-drawer="trigger"
-      data-for="product"
-      data-state="close"
-      ui-button
-      data-variant="ghost"
-      data-size="xs"
-      data-icon
-      aria-label="close"
-    >
-      <i class="hgi hgi-stroke hgi-cancel-01"></i>
-    </button>
-  </div>
   <div class="core">
     <div class="media">
-      <div class="slides">
-        {% for img in (1..3) %}
-          <img
-            src="https://images.pexels.com/photos/5038250/pexels-photo-5038250.jpeg"
-            alt="slide"
-            width="100%"
-            height="100%"
-            class="slide"
-          >
-        {% endfor %}
-      </div>
-      <div class="pagination">
-        {% for page in (1..3) %}
-          <button class="page" aria-label="page"></button>
-        {% endfor %}
-      </div>
-    </div>
-    <div class="bio">
-      <h3 class="title">Hot coffee mug</h3>
-      <span class="price">$25.00</span>
-    </div>
-    <ui-tabs>
-      <div ui-tabs="list" class="tabs-list">
-        <button ui-tabs="trigger" value="description" class="tabs-trigger" data-active="true">Description</button>
-        <button ui-tabs="trigger" value="reviews" class="tabs-trigger" data-active="false">
-          Reviews <small class="badge">2</small>
-        </button>
-      </div>
-      <div ui-tabs="group" class="tabs-group">
-        <div ui-tabs="content" data-value="description" class="tabs-content">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo rerum mollitia placeat repellendus labore
-            at repellat error accusantium voluptate molestias sit totam, distinctio esse molestiae dicta fuga vel. Et,
-            molestiae.
-          </p>
+      <ul class="slides">
+        {% if product.images.size %}
+          {% for img in product.images %}
+            <li class="slide">
+              <div class="image">
+                <img
+                  src="{{ img }}"
+                  alt="{{ product.name }}"
+                  height="100%"
+                  width="100%"
+                >
+              </div>
+            </li>
+          {% endfor %}
+        {% else %}
+          <li class="slide">
+            <div class="image">
+              {% render 'misc.image-fallback' %}
+            </div>
+          </li>
+        {% endif %}
+      </ul>
+      {% if product.images.size > 1 %}
+        <div class="pagination">
+          <span class="index">1</span> / <span class="total"></span>{{ product.images.size }}
         </div>
-        <div ui-tabs="content" data-value="reviews" class="tabs-content">
-          {% render 'misc.product-reviews' %}
-        </div>
-      </div>
-    </ui-tabs>
-    {% comment %} <ui-drawer id="countries">
-      <button ui-drawer="trigger" data-for="countries" data-state="open">Select</button>
-      <div ui-drawer="content" class="drawer-select">
-        <div class="head">
-          <div class="info">
-            <h4 class="title">Select a country</h4>
+      {% endif %}
+    </div>
+    <div class="content">
+      <div class="bio">
+        <a href="/products/{{ product.slug }}" class="title">
+          {{ product.name | default: 'Product name' }}
+        </a>
+        <div class="about">
+          <div class="rating">
+            <span class="value">{{ product.averageRating }}</span>
+            <div class="stars">
+              {% for star in (1..5) %}
+                {% if star <= product.averageRating %}
+                  {% render 'icon.start', size: 10 %}
+                {% else %}
+                  <i class="hgi hgi-stroke hgi-star"></i>
+                {% endif %}
+              {% endfor %}
+            </div>
           </div>
-          <button
-            ui-drawer="trigger"
-            data-for="countries"
-            data-state="close"
-            ui-button
-            data-variant="ghost"
-            data-size="xs"
-            data-icon
-            aria-label="close"
-          >
-            <i class="hgi hgi-stroke hgi-cancel-01"></i>
+          <div class="inventory">
+            <div class="status"><span class="dot">·</span> Low stock</div>
+          </div>
+          <div class="total-reviews">
+            <span class="value">39</span>
+            <span class="label">Reviews</span>
+          </div>
+        </div>
+      </div>
+      {% if product.options.size > 0 %}
+        {% render 'misc.variants' %}
+      {% endif %}
+      {% if product.description %}
+        <article class="description">
+          {{ product.description }}
+        </article>
+      {% endif %}
+      <div class="reviews">
+        <div class="reviews-overview">
+          <div class="rating">
+            {% render 'icon.start', size: 20 %}
+            <span class="value">{{ product.averageRating }}</span>
+          </div>
+          <span class="separator">·</span>
+          <span class="total">90 reviews</span>
+        </div>
+        <ul class="cards">
+          {% for review in (1..5) %}
+            <li class="card">
+              <div class="rating">
+                <div class="stars">
+                  {% for star in (1..5) %}
+                    {% if forloop.index < 4 %}
+                      {% render 'icon.start', size: 14 %}
+                    {% else %}
+                      <i class="hgi hgi-stroke hgi-star"></i>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <span class="separator">·</span>
+                <span class="date">1 week ago</span>
+              </div>
+              <article>
+                <p>
+                  We had a lovely stay in the cabin in the woods! The cabin was surrounded by gorgeous countryside and
+                  in a perfect location to see all the idyllic villages of the Cotswolds.
+                </p>
+              </article>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="events">
+        <span class="price">
+          {{ price | default: 0 | money }}
+          {% if compare_at_price %}
+            {{ compare_at_price | default: 0 | money }}
+          {% endif %}
+        </span>
+        <div class="actions">
+          <button ui-button data-variant="secondary" data-size="lg">
+            <i class="hgi hgi-stroke hgi-shopping-bag-01"></i>
+            <span class="label">Buy Now</span>
+          </button>
+          <button ui-button data-variant="primary" data-size="lg">
+            <i class="hgi hgi-stroke hgi-plus-sign"></i>
+            <span class="label">Add to Cart</span>
           </button>
         </div>
-        <ui-select class="core">
-          <div class="search">
-            <input ui-select="input" ui-input type="text" name="countries-search" placeholder="Search..">
-            <button ui-select="clear" ui-button data-variant="destructive" data-size="md" data-icon aria-label="clear">
-              <i class="hgi hgi-stroke hgi-eraser-01"></i>
-            </button>
-          </div>
-          <div ui-select="options" class="options">
-            <label class="opt">
-              Morocco
-              <input ui-radio type="radio" name="countries" value="morocco">
-            </label>
-            <label class="opt">
-              Canada
-              <input ui-radio type="radio" name="countries" value="canada">
-            </label>
-            <label class="opt">
-              Japan
-              <input ui-radio type="radio" name="countries" value="japan">
-            </label>
-            <label class="opt">
-              Brazil
-              <input ui-radio type="radio" name="countries" value="brazil">
-            </label>
-            <label class="opt">
-              Germany
-              <input ui-radio type="radio" name="countries" value="germany">
-            </label>
-            <label class="opt">
-              Australia
-              <input ui-radio type="radio" name="countries" value="australia">
-            </label>
-            <label class="opt">
-              India
-              <input ui-radio type="radio" name="countries" value="india">
-            </label>
-            <label class="opt">
-              Egypt
-              <input ui-radio type="radio" name="countries" value="egypt">
-            </label>
-            <label class="opt">
-              Italy
-              <input ui-radio type="radio" name="countries" value="italy">
-            </label>
-            <label class="opt">
-              Spain
-              <input ui-radio type="radio" name="countries" value="spain">
-            </label>
-            <label class="opt">
-              France
-              <input ui-radio type="radio" name="countries" value="france">
-            </label>
-            <label class="opt">
-              South Africa
-              <input ui-radio type="radio" name="countries" value="south-africa">
-            </label>
-            <label class="opt">
-              China
-              <input ui-radio type="radio" name="countries" value="china">
-            </label>
-            <label class="opt">
-              Mexico
-              <input ui-radio type="radio" name="countries" value="mexico">
-            </label>
-            <label class="opt">
-              Argentina
-              <input ui-radio type="radio" name="countries" value="argentina">
-            </label>
-            <label class="opt">
-              Turkey
-              <input ui-radio type="radio" name="countries" value="turkey">
-            </label>
-            <label class="opt">
-              Norway
-              <input ui-radio type="radio" name="countries" value="norway">
-            </label>
-            <label class="opt">
-              South Korea
-              <input ui-radio type="radio" name="countries" value="south-korea">
-            </label>
-            <label class="opt">
-              Saudi Arabia
-              <input ui-radio type="radio" name="countries" value="saudi-arabia">
-            </label>
-            <label class="opt">
-              United States
-              <input ui-radio type="radio" name="countries" value="united-states">
-            </label>
-          </div>
-        </ui-select>
       </div>
-    </ui-drawer> {% endcomment %}
-    <ui-drawer class="actions" id="quantity">
-      <button
-        ui-drawer="trigger"
-        data-for="quantity"
-        data-state="open"
-        ui-button
-        data-variant="primary"
-        data-size="lg"
-        class="add-to-cart"
-      >
-        <i class="hgi hgi-stroke hgi-shopping-cart-add-01"></i>
-        <span class="label">Add to cart</span>
-      </button>
-      {% render 'drawer.quantity' %}
-    </ui-drawer>
+    </div>
   </div>
 </div>
