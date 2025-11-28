@@ -56,9 +56,11 @@
               <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
             </a>
             {% if template.name == 'search' %}
-              <form action="/search">
-                <input ui-input type="text" name="q" placeholder="Search a product..">
-              </form>
+              {% paginate search.products by 24 cod %}
+                <form action="/search">
+                  <input ui-input type="text" name="q" placeholder="Search a product.." value="{{ terms }}">
+                </form>
+              {% endpaginate %}
             {% endif %}
           </div>
         {% endunless %}
