@@ -1,14 +1,38 @@
 {{ 'drawer.filter.css' | asset_url | stylesheet_tag }}
 
 {% comment %}
-  Renders the product filter drawer
+  Renders a filter drawer
 
   Usage:
   {% render 'drawer.filter' %}
 {% endcomment %}
 
-{% assign options = 'Alphabetical A-Z,Alphabetical Z-A,Oldest,Newest,Price: Low to hight,Price: Hight to low' %}
-{% assign optionsAsArray = options | split: ',' %}
+{% assign sort_field = '' %}
+{% assign sort_order = '' -%}
+{% assign query_params = url | split: '?' | last | split: '&' %}
+
+{% for param in query_params %}
+  {% if param contains 'sort_field=' %}
+    {% assign sort_field = param | split: '=' | last %}
+  {% elsif param contains 'sort_order=' %}
+    {% assign sort_order = param | split: '=' | last %}
+  {% endif %}
+{% endfor %}
+
+{% assign alphabetical_asc = 'general.sort.alphabetical_asc' | t %}
+{% assign alphabetical_desc = 'general.sort.alphabetical_desc' | t %}
+{% assign oldest = 'general.sort.oldest' | t %}
+{% assign newest = 'general.sort.newest' | t %}
+{% assign price_low_high = 'general.sort.price_low_high' | t %}
+{% assign price_high_low = 'general.sort.price_high_low' | t %}
+
+{% capture labels %}
+  {{ alphabetical_asc }}, {{ alphabetical_desc }}, {{ oldest }}, {{ newest }}, {{ price_low_high }}, {{ price_high_low }}
+{% endcapture -%}
+
+{% assign keys = ',name,name,created_at,created_at,price,price' | split: ',' %}
+{% assign values = 'desc,asc' | split: ',' %}
+{% assign options = labels | split: ',' %}
 
 <div ui-drawer="content" class="drawer-filter">
   <div class="head">
@@ -30,14 +54,20 @@
   </div>
   <div class="core">
     <ul class="sort-options">
-      {% for opt in optionsAsArray %}
+      {% for opt in options %}
         {% assign index = forloop.index %}
+        {% assign field = keys[index] %}
+        {% assign order = index | modulo: 2 == 0 %}
+        {% assign href = '?sort_field=' | append: field | append: '&sort_order=' | append: values[order] %}
+        {% unless terms == null or terms == '' %}
+          {% assign href = href | append: '&q=' | append: terms %}
+        {% endunless %}
 
         <li class="opt">
           <a
-            href="#"
+            href="{{ href }}"
             ui-button
-            {% if index == 1 %}
+            {% if field == sort_field and values[order] == sort_order %}
               data-variant="secondary"
             {% else %}
               data-variant="ghost"
@@ -49,7 +79,7 @@
               type="radio"
               name="sort"
               value="{{opt}}"
-              {% if index == 1 %}
+              {% if field == sort_field and values[order] == sort_order %}
                 checked
               {% endif %}
             >
