@@ -1,6 +1,9 @@
 {% comment %}
   Renders a gallery drawer
 
+  Accepts:
+  - images: {Array} images list
+
   Usage:
   {% render 'drawer-gallery' %}
 {% endcomment %}
@@ -25,46 +28,20 @@
   </div>
   <div class="core">
     <ul class="images">
-      <li class="image">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Y5zJcwYGY6SC189RXCpW99QVFnK0Jm05JgIwhDcP.webp"
-          alt="product"
-          height="100%"
-          width="100%"
-        >
-      </li>
-      <li class="image">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/DZ3YQS11J77e1RuFHBPvWNB3ueOz9GT4oXoRJI2d.webp"
-          alt="product"
-          height="100%"
-          width="100%"
-        >
-      </li>
-      <li class="image">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/cRwuOnIrOACV8qJ4OVqMhFdE85nTISfvev4jhhj2.webp"
-          alt="product"
-          height="100%"
-          width="100%"
-        >
-      </li>
-      <li class="image">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Q5AekMGaLwyZ1mGBnS7QCbTbh6KJLapEj1UScPlY.webp"
-          alt="product"
-          height="100%"
-          width="100%"
-        >
-      </li>
-      <li class="image">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Q5AekMGaLwyZ1mGBnS7QCbTbh6KJLapEj1UScPlY.webp"
-          alt="product"
-          height="100%"
-          width="100%"
-        >
-      </li>
+      {% for img in images %}
+        <li class="image">
+          {% capture alt %}
+            {{ product.name }} - {{ forloop.index  }}
+          {% endcapture %}
+
+          <img
+            src="{{ img }}"
+            alt="{{ alt }}"
+            height="100%"
+            width="100%"
+          >
+        </li>
+      {% endfor %}
     </ul>
   </div>
 </div>
