@@ -84,10 +84,25 @@
             font: var(--font-body-md);
             gap: var(--spacing-12);
 
+            &[data-total="true"] {
+              font: var(--font-title-lg);
+              font-size: 20px;
+
+              .label {
+                opacity: 0.8;
+              }
+            }
+
             &.product {
-              img {
+              .image {
+                width: 70px;
+                height: 70px;
+                overflow: hidden;
                 border-radius: var(--radius-md);
-                object-fit: cover;
+
+                & > img {
+                  object-fit: cover;
+                }
               }
 
               .info {
@@ -101,6 +116,10 @@
                   color: var(--color-on-background);
                   text-overflow: ellipsis;
                   white-space: nowrap;
+
+                  &:hover {
+                    text-decoration: underline;
+                  }
                 }
 
                 .more {
@@ -125,9 +144,28 @@
                 align-items: center;
                 padding: var(--spacing-2) var(--spacing-8);
                 border-radius: var(--radius-sm);
-                background-color: var(--color-success-container);
-                color: var(--color-on-success-container);
                 gap: var(--spacing-4);
+
+                &[data-status="paid"] {
+                  background-color: var(--color-success-container);
+                  color: var(--color-on-success-container);
+                }
+
+                &[data-status="captured"] {
+                  background-color: var(--color-info-container);
+                  color: var(--color-on-info-container);
+                }
+
+                &[data-status="unpaid"],
+                &[data-status="refunded"] {
+                  background-color: var(--color-surface-container-highest);
+                  color: var(--color-on-surface);
+                }
+
+                &[data-status="pending"] {
+                  background-color: var(--color-error-container);
+                  color: var(--color-on-error-container);
+                }
               }
             }
           }

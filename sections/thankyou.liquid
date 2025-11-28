@@ -17,22 +17,42 @@
         <ul class="list">
           <li class="item">
             <span class="label">Status</span>
-            <span class="value" data-status>
-              <i class="hgi hgi-stroke hgi-checkmark-circle-01"></i>
-              Paid
-            </span>
+            {% render 'const.payment-status', status: order.paymentStatusSlug %}
           </li>
           <li class="item">
-            <span class="label">Subtotal</span>
-            <span class="value">$500</span>
+            <span class="label">{{ 'order.subtotal' | t }}</span>
+            <span class="value">{{ order.sub_total | default: 0 | money }}</span>
           </li>
+          {% if order.coupon != null %}
+            <div class="item">
+              <span class="label">{{ 'order.coupon_code' | t }}</span>
+              <div class="value">{{ order.coupon.code }}</div>
+            </div>
+            <div class="item">
+              <span class="label">{{ 'order.discount_amount' | t }}</span>
+              <span class="value">
+                {% render 'const.discount-value', coupon: order.coupon %}
+              </span>
+            </div>
+          {% endif %}
+          {% if order.vat != 0 %}
+            <div class="item">
+              <span class="label">{{ 'cart.page.summary.vat' | t }} ({{ order.vat | times: 100 | append: '%' }})</span>
+              <span class="value">{{ order.total_tax_amount | default: 0 | money }}</span>
+            </div>
+          {% endif %}
           <li class="item">
-            <span class="label">Shipping</span>
-            <span class="value">$20</span>
+            <span class="label">{{ 'order.shipping' | t }}</span>
+            {% if order.shippingCost == 0 or order.shippingCost == null %}
+              {% assign shipping_cost = 'order.free' | t %}
+            {% else %}
+              {% assign shipping_cost = order.shippingCost | default: 0 | money %}
+            {% endif %}
+            <span class="value">{{ shipping_cost }}</span>
           </li>
-          <li class="item">
-            <span class="label">Total</span>
-            <span class="value">$520</span>
+          <li class="item" data-total="true">
+            <span class="label">{{ 'order.total' | t }}</span>
+            <span class="value">{{ order.total | default: 0 | money }}</span>
           </li>
         </ul>
       </div>
@@ -42,8 +62,10 @@
       <div class="content">
         <ul class="list">
           <li class="item">
-            <span class="label">Payment method</span>
-            <span class="value">Cash on Delivery</span>
+            <span class="label">{{ 'order.payment_method.label' | t }}:</span>
+            <span class="value">
+              {% render 'const.payment-gateway', type: order.gatewayType %}
+            </span>
           </li>
         </ul>
       </div>
@@ -52,51 +74,29 @@
       <span class="title">Products</span>
       <div class="content">
         <ul class="list">
-          <li class="item product">
-            <img
-              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/sbZLw8j0k8SsFDp8SGNCECMdKHEfVpFUO9jl1Jnn.jpg"
-              alt="product"
-              height="70"
-              width="70"
-            >
-            <div class="info">
-              <a href="#" class="name">Rubberised Multi Pocket Backpack </a>
-              <div class="more">
-                <span class="price">$500</span>
-                <span class="quantity">x1</span>
+          {% for product in order.order_variants %}
+            <li class="item product">
+              <div class="image">
+                {% if product.image %}
+                  <img
+                    src="{{ product.image }}"
+                    alt="{{ product.name }}"
+                    height="70"
+                    width="70"
+                  >
+                {% else %}
+                  {% render 'misc.image-fallback' %}
+                {% endif %}
               </div>
-            </div>
-          </li>
-          <li class="item product">
-            <img
-              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/XDIRXrNbH0IWqxHjUQB6OIyeSVy7LD23M6GrcDDS.jpg"
-              alt="product"
-              height="70"
-              width="70"
-            >
-            <div class="info">
-              <a href="#" class="name">Fabric Multi Pocket Backpack</a>
-              <div class="more">
-                <span class="price">$500</span>
-                <span class="quantity">x2</span>
+              <div class="info">
+                <a href="/products/{{ product.slug }}" class="name">{{ product.name }} </a>
+                <div class="more">
+                  <span class="price">{{ product.price | default: 0 | money }}</span>
+                  <span class="quantity">x{{ product.quantity }}</span>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="item product">
-            <img
-              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/FEW5kx6LGNBKKUhpPwCqTYjrY5ciQmUnLEnpwZ8J.jpg"
-              alt="product"
-              height="70"
-              width="70"
-            >
-            <div class="info">
-              <a href="#" class="name">Fabric Multi Pocket Backpack</a>
-              <div class="more">
-                <span class="price">$500</span>
-                <span class="quantity">x1</span>
-              </div>
-            </div>
-          </li>
+            </li>
+          {% endfor %}
         </ul>
       </div>
     </div>
