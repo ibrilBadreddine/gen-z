@@ -5,6 +5,7 @@ if (!customElements.get("ui-stories")) {
 
       this.isOpen = false;
       this.ESC_KEY = "Escape";
+      this.DURATION = 5000;
     }
 
     connectedCallback() {
@@ -14,6 +15,8 @@ if (!customElements.get("ui-stories")) {
     _render() {
       this.triggers = this.querySelectorAll("[ui-stories='trigger']");
       this.content = this.querySelector("[ui-stories='content']");
+      this.items = this.querySelector("[ui-stories='items']");
+      this.bars = this.querySelector("[ui-stories='bars']");
 
       this.triggers.forEach((trigger) =>
         trigger.addEventListener("click", () => this.toggle())

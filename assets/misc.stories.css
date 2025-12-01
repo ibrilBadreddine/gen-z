@@ -26,7 +26,7 @@ ui-stories {
     .head {
       display: flex;
       position: relative;
-      z-index: 2;
+      z-index: 3;
       flex-direction: column;
       padding: var(--spacing-24);
       gap: var(--spacing-16);
@@ -67,14 +67,6 @@ ui-stories {
             font: var(--font-body-md);
           }
         }
-
-        .action {
-          color: var(--color-background);
-
-          &:hover {
-            background-color: color-mix(in srgb, currentcolor 15%, transparent);
-          }
-        }
       }
     }
 
@@ -90,39 +82,96 @@ ui-stories {
         background-size: cover;
         color: var(--color-background);
         inset: 0;
-        gap: var(--spacing-12);
+        gap: var(--spacing-32);
 
-        &::before {
+        &::before,
+        &::after {
           content: "";
           position: fixed;
           inset: 0;
+        }
+
+        &::before {
+          z-index: 2;
           background-image: linear-gradient(
             to bottom,
-            rgb(0 0 0 / 20%),
+            rgb(0 0 0 / 15%),
             transparent,
-            rgb(0 0 0 / 60%)
+            rgb(0 0 0 / 15%)
           );
+        }
+
+        &::after {
+          background-color: rgb(0 0 0 / 30%);
+          mask: linear-gradient(transparent, transparent, black);
+          backdrop-filter: blur(3px);
+        }
+
+        .image {
+          inset: 0;
+          position: absolute;
+          overflow: hidden;
+          color: var(--color-on-background);
+
+          img {
+            object-fit: cover;
+          }
         }
 
         .content {
           display: flex;
           position: relative;
+          z-index: 2;
           flex-direction: column;
           text-align: start;
-          gap: var(--spacing-6);
+          gap: var(--spacing-12);
 
-          .description {
-            opacity: 0.8;
-            font: var(--font-body-md);
-            text-wrap: balance;
+          .title {
+            font: var(--font-title-lg);
+          }
+
+          .info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-12);
+
+            span {
+              display: flex;
+              align-items: center;
+              gap: var(--spacing-4);
+              padding: var(--spacing-8) var(--spacing-16);
+              border-radius: var(--radius-rounded);
+              background-color: rgb(255 255 255 / 20%);
+              font: var(--font-body-md);
+              backdrop-filter: blur(2px);
+            }
           }
         }
 
         .actions {
-          display: contents;
+          display: flex;
+          position: relative;
+          z-index: 2;
+          align-items: center;
+          height: 64px;
+          padding: var(--spacing-8);
+          padding-inline-start: var(--spacing-16);
+          border-radius: var(--radius-rounded);
+          background-color: rgb(255 255 255 / 20%);
+          gap: var(--spacing-12);
+          backdrop-filter: blur(2px);
+
+          .price {
+            font: var(--font-title-md);
+          }
 
           [ui-button] {
             position: relative;
+            flex: 2;
+            height: 100% !important;
+            border-radius: var(--radius-rounded);
+            background-color: var(--color-background);
+            color: var(--color-on-background);
           }
         }
       }
