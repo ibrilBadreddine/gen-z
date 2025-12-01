@@ -64,9 +64,21 @@
       </p>
     </div>
     <div class="action">
-      <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart">
-        <i class="hgi hgi-stroke hgi-plus-sign"></i>
-      </button>
+      <ui-drawer id="quantity">
+        <button
+          ui-drawer="trigger"
+          data-for="quantity"
+          data-state="open"
+          ui-button
+          data-variant="outline"
+          data-size="sm"
+          data-icon
+          aria-label="add to cart"
+        >
+          <i class="hgi hgi-stroke hgi-plus-sign"></i>
+        </button>
+        {% render 'drawer.quantity' %}
+      </ui-drawer>
     </div>
   {% endunless %}
 </li>

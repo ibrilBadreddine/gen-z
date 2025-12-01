@@ -1,4 +1,6 @@
 {{ 'section.search.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.product.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.quantity.css' | asset_url | stylesheet_tag }}
 
 <div ui-section="search">
   {% paginate search.products by 24 cod %}

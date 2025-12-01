@@ -1,5 +1,6 @@
 {{ 'section.single-product.css' | asset_url | stylesheet_tag }}
 {{ 'drawer.product.css' | asset_url | stylesheet_tag }}
+{{ 'drawer.quantity.css' | asset_url | stylesheet_tag }}
 
 {% assign default_variant = product.selected_or_first_available_variant %}
 {% assign price = default_variant.price | default: product.price %}
@@ -130,16 +131,31 @@
           {{ compare_at_price | default: 0 | money }}
         {% endif %}
       </span>
-      <div class="actions">
-        <button ui-button data-variant="secondary" data-size="lg">
+      <ui-drawer id="quantity" class="actions">
+        <button
+          ui-drawer="trigger"
+          data-for="quantity"
+          data-state="open"
+          ui-button
+          data-variant="secondary"
+          data-size="lg"
+        >
           <i class="hgi hgi-stroke hgi-shopping-bag-01"></i>
           <span class="label">Buy Now</span>
         </button>
-        <button ui-button data-variant="primary" data-size="lg">
+        <button
+          ui-drawer="trigger"
+          data-for="quantity"
+          data-state="open"
+          ui-button
+          data-variant="primary"
+          data-size="lg"
+        >
           <i class="hgi hgi-stroke hgi-plus-sign"></i>
           <span class="label">Add to Cart</span>
         </button>
-      </div>
+        {% render 'drawer.quantity' %}
+      </ui-drawer>
     </div>
     {% for block in section.blocks %}
       {% if block.type == 'related_products' %}

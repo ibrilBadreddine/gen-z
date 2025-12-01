@@ -113,16 +113,31 @@
             {{ compare_at_price | default: 0 | money }}
           {% endif %}
         </span>
-        <div class="actions">
-          <button ui-button data-variant="secondary" data-size="lg">
+        <ui-drawer id="quantity" class="actions">
+          <button
+            ui-drawer="trigger"
+            data-for="quantity"
+            data-state="open"
+            ui-button
+            data-variant="secondary"
+            data-size="lg"
+          >
             <i class="hgi hgi-stroke hgi-shopping-bag-01"></i>
             <span class="label">Buy Now</span>
           </button>
-          <button ui-button data-variant="primary" data-size="lg">
+          <button
+            ui-drawer="trigger"
+            data-for="quantity"
+            data-state="open"
+            ui-button
+            data-variant="primary"
+            data-size="lg"
+          >
             <i class="hgi hgi-stroke hgi-plus-sign"></i>
             <span class="label">Add to Cart</span>
           </button>
-        </div>
+          {% render 'drawer.quantity' %}
+        </ui-drawer>
       </div>
     </div>
   </div>
