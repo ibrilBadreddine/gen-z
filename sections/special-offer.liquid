@@ -1,6 +1,37 @@
-<ui-drawer ui-section="special-offer" id="special-offer">
-  {% render 'drawer.special-offer' %}
-</ui-drawer>
+{{ 'section.special-offer.css' | asset_url | stylesheet_tag }}
+{{ 'section.special-offer.js' | asset_url | script_tag_deferred }}
+
+<ui-special-offer ui-section="special-offer">
+  <div ui-special-offer="content" class="card" data-state="open">
+    <div class="product">
+      <div class="image">
+        <img
+          src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/Bjpmyg3OuuRUicg03vkY1YHsSi55BUnZ7XVWX7b1_md.jpg"
+          alt="product"
+          height="150"
+          width="150"
+        >
+        {% comment %} {% render 'misc.image-fallback' %} {% endcomment %}
+      </div>
+      <div class="content">
+        <div class="info">
+          <h4 class="name">Nylon Backpack</h4>
+          <p class="reviews">4.8 <i class="hgi hgi-stroke hgi-star"></i></p>
+        </div>
+        <div class="price">
+          <h3 class="original">499 MAD</h3>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <button ui-special-offer="close" ui-button data-variant="secondary" data-size="lg">Dismiss</button>
+      <a href="/products/nylon-backpack" ui-button data-variant="primary" data-size="lg">
+        <span>Buy Now</span>
+      </a>
+    </div>
+  </div>
+  <div ui-special-offer="overlay" class="overlay"></div>
+</ui-special-offer>
 
 {% schema %}
 {

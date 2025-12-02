@@ -1,0 +1,218 @@
+/* SPECIAL OFFER */
+[ui-section="special-offer"] {
+  --drawer-x: -50%;
+
+  position: fixed;
+  z-index: 50;
+
+  .overlay {
+    position: fixed;
+    z-index: 51;
+    background: rgb(0 0 0 / 20%);
+    inset: 0;
+    backdrop-filter: blur(3px);
+  }
+
+  .card {
+    display: grid;
+    position: fixed;
+    z-index: 52;
+    width: 600px;
+    padding: var(--spacing-12);
+    overflow: hidden;
+    transform: translate(var(--drawer-x), 100%);
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.27, 1.06, 0.18, 1);
+    border-radius: var(--radius-lg);
+    background-color: var(--color-background);
+    inset-inline-start: 50%;
+    inset-block-start: var(--spacing-12);
+    gap: var(--spacing-12);
+    animation-fill-mode: forwards;
+
+    &[data-state="open"] {
+      animation-name: open-offer;
+
+      & + .overlay {
+        animation: open-overlay var(--transition-standard-default-effects)
+          forwards;
+      }
+    }
+
+    &[data-state="closed"] {
+      animation-name: close-offer;
+
+      & + .overlay {
+        animation: close-overlay var(--transition-standard-default-effects)
+          forwards;
+      }
+    }
+
+    .product {
+      display: grid;
+      gap: var(--spacing-12);
+      grid-template-columns: 150px auto;
+
+      .image {
+        width: 100%;
+        height: 150px;
+        overflow: hidden;
+        border-radius: var(--radius-md);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-block: var(--spacing-8);
+
+        .info {
+          display: flex;
+          flex-direction: column;
+          gap: var(--spacing-6);
+
+          .name {
+            font: var(--font-title-lg);
+          }
+
+          .reviews {
+            display: flex;
+            align-items: center;
+            opacity: 0.8;
+            gap: var(--spacing-8);
+            font: var(--font-body-lg);
+          }
+        }
+
+        .price {
+          grid-column: 1 / 3;
+
+          .original {
+            color: var(--color-primary);
+            font: var(--font-title-lg);
+          }
+        }
+      }
+    }
+
+    .actions {
+      display: grid;
+      gap: var(--spacing-12);
+      grid-template-columns: repeat(2, 1fr);
+
+      [ui-button]:last-child {
+        position: relative;
+        overflow: hidden;
+        background-color: color-mix(
+          in srgb,
+          var(--color-primary) 50%,
+          transparent
+        );
+
+        span {
+          position: relative;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          inset: 0;
+          animation: timer 12s linear forwards;
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+}
+
+@media (width <= 760px) {
+  [ui-section="special-offer"] {
+    .card {
+      width: calc(100% - var(--spacing-24));
+
+      .product {
+        grid-template-columns: 25vw auto;
+
+        .image {
+          height: 25vw;
+        }
+
+        .content {
+          padding-block: var(--spacing-4);
+
+          .info {
+            gap: var(--spacing-2);
+
+            .name {
+              font: var(--font-title-md);
+            }
+          }
+
+          .price {
+            .original {
+              font: var(--font-title-md);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes timer {
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes open-overlay {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes close-overlay {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+@keyframes open-offer {
+  from {
+    transform: translate(var(--drawer-x), calc(-100% - 12px));
+  }
+
+  to {
+    transform: translate(var(--drawer-x), 0%);
+  }
+}
+
+@keyframes close-offer {
+  from {
+    transform: translate(var(--drawer-x), 0%);
+  }
+
+  to {
+    transform: translate(var(--drawer-x), calc(-100% - 12px));
+  }
+}
