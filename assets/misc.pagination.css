@@ -28,6 +28,10 @@ ui-pagination {
       border-radius: var(--radius-rounded) !important;
       color: var(--color-background) !important;
 
+      &[data-disabled] {
+        background-color: transparent !important;
+      }
+
       &[data-active="true"] {
         background-color: var(--color-background) !important;
         color: var(--color-on-background) !important;

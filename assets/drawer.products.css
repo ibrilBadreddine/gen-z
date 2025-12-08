@@ -61,6 +61,31 @@
           inset-inline-end: var(--spacing-12);
           inset-block-start: var(--spacing-12);
         }
+
+        &:has(ui-product-button[not-available]) {
+          .action {
+            display: none;
+          }
+
+          .out-of-stoke {
+            display: flex !important;
+            position: absolute;
+            align-items: center;
+            justify-content: center;
+            height: inherit;
+            border-radius: inherit;
+            inset: 0;
+            backdrop-filter: grayscale(1) brightness(0.6);
+
+            .label {
+              padding: var(--spacing-4) var(--spacing-12);
+              border-radius: var(--radius-xs);
+              background-color: rgb(255 255 255 / 15%);
+              color: var(--color-on-primary);
+              font: var(--font-body-sm);
+            }
+          }
+        }
       }
     }
   }

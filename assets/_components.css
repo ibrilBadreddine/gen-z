@@ -586,7 +586,7 @@ ui-cart-summary {
 
 /* PRODUCT BUTTON */
 ui-product-button {
-  [ui-button] {
+  [ui-button]:not([data-icon]) {
     &::before {
       content: attr(data-cta);
     }
@@ -596,8 +596,8 @@ ui-product-button {
     }
   }
 
-  &:has([ui-button]:empty)[not-available] {
-    [ui-button] {
+  &[not-available] {
+    [ui-button]:not([data-icon]) {
       &::before {
         content: attr(data-out-of-stock);
       }

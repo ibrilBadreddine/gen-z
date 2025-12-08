@@ -46,6 +46,9 @@
           </div>
         {% endif %}
       {% endif %}
+      <div hidden class="out-of-stoke">
+        <span class="label">Out of Stock</span>
+      </div>
     </div>
     {% unless section.settings.style == 'pack' %}
       {% render 'drawer.product' %}
@@ -64,21 +67,7 @@
       </p>
     </div>
     <div class="action">
-      <ui-drawer id="quantity">
-        <button
-          ui-drawer="trigger"
-          data-for="quantity"
-          data-state="open"
-          ui-button
-          data-variant="outline"
-          data-size="sm"
-          data-icon
-          aria-label="add to cart"
-        >
-          <i class="hgi hgi-stroke hgi-plus-sign"></i>
-        </button>
-        {% render 'drawer.quantity' %}
-      </ui-drawer>
+      {% render 'core.product-button', product: product, as_icon: true %}
     </div>
   {% endunless %}
 </li>

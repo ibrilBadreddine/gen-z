@@ -61,6 +61,9 @@
               {% else %}
                 {% render 'misc.image-fallback' %}
               {% endif %}
+              <div hidden class="out-of-stoke">
+                <span class="label">Out of Stock</span>
+              </div>
             </div>
             {% render 'drawer.product' %}
           </ui-drawer>
@@ -71,9 +74,7 @@
             </p>
           </div>
           <div class="action">
-            <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="add to cart">
-              <i class="hgi hgi-stroke hgi-plus-sign"></i>
-            </button>
+            {% render 'core.product-button', product: product, as_icon: true %}
           </div>
         </li>
       {% endfor %}
