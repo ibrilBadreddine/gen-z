@@ -14,7 +14,7 @@
     background-color: var(--color-primary);
     color: var(--color-on-primary);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: color-mix(
         in oklab,
         var(--color-primary) 90%,
@@ -27,18 +27,18 @@
     background-color: var(--color-surface-container-low);
     color: var(--color-primary);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: var(--color-surface-container-highest);
     }
   }
 
   &[data-variant="outline"] {
     border-color: var(--color-surface-variant);
-    background-color: var(--color-on-secondary);
+    background-color: var(--color-on-primary);
     box-shadow: var(--shadow-xs);
     color: var(--color-primary);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: var(--color-surface-container-low);
     }
   }
@@ -47,7 +47,7 @@
     background-color: transparent;
     color: var(--color-primary);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: var(--color-surface-container-low);
     }
   }
@@ -57,7 +57,7 @@
     color: var(--color-background);
     backdrop-filter: blur(3px);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: var(--color-background);
       color: var(--color-on-background);
     }
@@ -67,7 +67,7 @@
     background-color: var(--color-error-container);
     color: var(--color-error);
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       background-color: var(--color-error);
       color: var(--color-error-container);
     }
@@ -79,7 +79,7 @@
     text-decoration: none;
     text-underline-offset: 4px;
 
-    &:hover {
+    &:hover:not(:disabled, [data-disabled], [data-loading]) {
       text-decoration: underline;
     }
   }
@@ -141,6 +141,11 @@
     pointer-events: none;
   }
 
+  /* Loading */
+  &[data-loading] {
+    position: relative;
+  }
+
   /* Active */
   &:active {
     scale: 0.98;
@@ -148,14 +153,17 @@
 
   /* Disabled */
   &:disabled,
-  &[data-disabled] {
+  &[data-disabled],
+  &[data-loading] {
     opacity: 0.5;
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface-variant);
     pointer-events: none;
   }
 
-  &:has(> :only-child:is(i)) {
+  /* &:has(> :only-child:is(i)) {
     border-radius: var(--radius-circled);
-  }
+  } */
 }
 
 /* INPUT */
@@ -168,7 +176,7 @@
   border: 1px solid var(--color-surface-container-highest);
   border-radius: var(--radius-sm);
   outline: none;
-  background-color: var(--color-on-secondary);
+  background-color: var(--color-on-primary);
   box-shadow: 0 1px 2px 0 #0000000d;
   color: var(--color-on-background);
   font: var(--font-body-md);
@@ -573,5 +581,26 @@ ui-cart-summary {
     transform: translateX(-50%) translateY(0) scale(1);
     opacity: 1;
     filter: blur(0);
+  }
+}
+
+/* PRODUCT BUTTON */
+ui-product-button {
+  [ui-button] {
+    &::before {
+      content: attr(data-cta);
+    }
+
+    > i {
+      order: -1;
+    }
+  }
+
+  &:has([ui-button]:empty)[not-available] {
+    [ui-button] {
+      &::before {
+        content: attr(data-out-of-stock);
+      }
+    }
   }
 }

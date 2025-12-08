@@ -1,3 +1,4 @@
+@import url("./_colors.css");
 @import url("./_tokens.css");
 @import url("./_components.css");
 
@@ -71,6 +72,24 @@ body {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
+      ui-drawer#cart {
+        > [ui-button] {
+          position: relative;
+
+          ui-cart-bubble {
+            position: absolute;
+            clip-path: circle();
+            padding: var(--spacing-2) var(--spacing-6);
+            background-color: var(--color-primary-container);
+            color: var(--color-primary);
+            font: var(--font-label-sm);
+            text-align: center;
+            inset-block-start: calc(var(--spacing-8) * -1);
+            inset-inline-end: calc(var(--spacing-8) * -1);
+          }
+        }
+      }
 
       &[data-template="search"] {
         gap: var(--spacing-12);
