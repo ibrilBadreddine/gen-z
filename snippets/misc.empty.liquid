@@ -6,12 +6,17 @@
   Accepts:
   - heading: {String} Heading text
   - subheading: {String} (optional) Subheading text
+  - hidden: {Boolean} (optional) Hide icon
 
   Usage:
   {% render 'misc-empty' %}
 {% endcomment %}
 
-<ui-empty>
+<ui-empty
+  {% if hidden %}
+    hidden
+  {% endif %}
+>
   <div class="illustration">
     <div class="card">
       <i class="hgi hgi-stroke hgi-border-none-02"></i>

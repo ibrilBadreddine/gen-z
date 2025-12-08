@@ -1,11 +1,19 @@
 {% comment %}
   Renders an image fallback
 
+  Accepts:
+  - hidden: {Boolean} (optional) Hide icon
+
   Usage:
   {% render 'misc-image-fallback' %}
 {% endcomment %}
 
-<ui-image-fallback data-size="{{ icon_size }}">
+<ui-image-fallback
+  data-size="{{ icon_size }}"
+  {% if hidden %}
+    hidden
+  {% endif %}
+>
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="32"
