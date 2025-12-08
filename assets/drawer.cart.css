@@ -12,7 +12,7 @@
     -webkit-overflow-scrolling: touch;
     gap: var(--spacing-24);
 
-    & > .products {
+    ui-cart-drawer-items {
       display: grid;
       gap: var(--spacing-12);
 

@@ -1,0 +1,53 @@
+{% comment %}
+  Renders the cart item template (cart page)
+
+  Accepts:
+  - product: {Object} cart item info
+
+  Usage:
+  {% render 'misc-cart-item', product: {...} %}
+{% endcomment %}
+
+{% assign subtotal = product.quantity | times: product.price %}
+
+<li class="product">
+  <div class="image" ui-cart-item="image">
+    <img
+      src="{{ product.image }}"
+      alt="{{ product.name }}"
+      height="80"
+      width="80"
+      {% if product.image contains '/store-front/images/product-default' %}
+        hidden
+      {% endif %}
+    >
+    {% if product.image contains '/store-front/images/product-default' %}
+      {% render 'misc.image-fallback' %}
+    {% else %}
+      {% render 'misc.image-fallback', hidden: true %}
+    {% endif %}
+  </div>
+  <div class="info">
+    <h4 class="name" ui-cart-item="title">{{ product.name }}</h4>
+    <p class="price" ui-cart-item="price" hidden>{{ product.price | default: 0 | money }}</p>
+    <p class="price" ui-cart-item="subtotal">{{ subtotal | money }}</p>
+  </div>
+  <div class="actions">
+    <ui-cart-remove
+      item="{{ product.id }}"
+      product-variant="{{ product.product_variant_id }}"
+    >
+      <button
+        ui-button
+        data-variant="ghost"
+        data-size="xs"
+        data-icon
+        aria-label="delete"
+        ui-cart-item="delete-button"
+      >
+        <i class="hgi hgi-stroke hgi-delete-02"></i>
+      </button>
+    </ui-cart-remove>
+    {% render 'core.quantity', product: product, variant: 'ghost', size: 'xs' %}
+  </div>
+</li>

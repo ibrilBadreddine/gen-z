@@ -24,42 +24,21 @@
     </button>
   </div>
   <div class="core">
-    <ul class="products">
-      {% for item in (1..2) %}
-        <li class="product">
-          <div class="image">
-            {% comment %}
-              <img
-                src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/Bjpmyg3OuuRUicg03vkY1YHsSi55BUnZ7XVWX7b1_md.jpg"
-                alt="product"
-                height="80"
-                width="80"
-              >
-            {% endcomment %}
-            {% render 'misc.image-fallback' %}
-          </div>
-          <div class="info">
-            <h4 class="name">Fabric Tote Bag</h4>
-            <p class="price">$359</p>
-          </div>
-          <div class="actions">
-            <button ui-button data-variant="ghost" data-size="xs" data-icon aria-label="delete">
-              <i class="hgi hgi-stroke hgi-delete-02"></i>
-            </button>
-            <div class="quantity">
-              <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="decrease">
-                <i class="hgi hgi-stroke hgi-minus-sign"></i>
-              </button>
-              <span class="value">1</span>
-              <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="increase">
-                <i class="hgi hgi-stroke hgi-add-01"></i>
-              </button>
-            </div>
-          </div>
-        </li>
-      {% endfor %}
-    </ul>
-    {% comment %} {% render 'misc.empty', heading: 'Your cart is empty' %} {% endcomment %}
+    <div class="products">
+      <template ui-cart-drawer-item>
+        {% render 'block.cart-drawer-product', product: product %}
+      </template>
+      <ui-cart-drawer-items>
+        {% for product in cart.items %}
+          {% render 'block.cart-drawer-product', product: product %}
+        {% endfor %}
+      </ui-cart-drawer-items>
+    </div>
+    {% unless cart.count > 0 %}
+      {% render 'misc.empty', heading: 'Your cart is empty' %}
+    {% else %}
+      {% render 'misc.empty', heading: 'Your cart is empty', hidden: true %}
+    {% endunless %}
     <div class="more-products">
       <div class="nav">
         <h4 class="title">Did you also want?</h4>
@@ -75,8 +54,10 @@
     </div>
     <div class="summary">
       <div class="total">
-        <h4 class="label">Total Amount [8]:</h4>
-        <span class="value">$599</span>
+        <h4 class="label">
+          Total Amount [<ui-cart-bubble>{{ cart.count | default: 0 }}</ui-cart-bubble>]:
+        </h4>
+        <span class="value" ui-cart-item="subtotal">{{ cart.sub_total | default: 0 | money }}</span>
       </div>
       <a href="/cart" ui-button data-variant="primary" data-size="lg">
         <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>

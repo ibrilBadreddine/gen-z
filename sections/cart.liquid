@@ -2,64 +2,97 @@
 
 <div ui-section="cart">
   <h3 class="title">Shopping Cart</h3>
-  <div class="core">
+  <div
+    class="core"
+    {% unless cart.items.size > 0 %}
+      hidden
+    {% endunless %}
+  >
     <div class="card">
       <span class="title">Products</span>
-      <ul class="box products">
-        {% for item in (1..3) %}
-          <li class="product">
-            <img
-              src="https://cdn.youcan.shop/stores/8c0f76d0ef7e3d4694bc90e537d522d1/products/Bjpmyg3OuuRUicg03vkY1YHsSi55BUnZ7XVWX7b1_md.jpg"
-              alt="product"
-              height="80"
-              width="80"
-            >
-            <div class="info">
-              <h4 class="name">Fabric Tote Bag</h4>
-              <p class="price">$359</p>
-            </div>
-            <div class="actions">
-              <button ui-button data-variant="ghost" data-size="xs" data-icon aria-label="delete">
-                <i class="hgi hgi-stroke hgi-delete-02"></i>
-              </button>
-              <div class="quantity">
-                <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="decrease">
-                  <i class="hgi hgi-stroke hgi-minus-sign"></i>
-                </button>
-                <span class="value">1</span>
-                <button ui-button data-variant="secondary" data-size="xs" data-icon aria-label="increase">
-                  <i class="hgi hgi-stroke hgi-add-01"></i>
-                </button>
-              </div>
-            </div>
-          </li>
+      <template ui-cart-item>
+        {% render 'misc.cart-item', product: product %}
+      </template>
+      <ui-cart-items
+        class="box products"
+        {% unless cart.items.size > 0 %}
+          hidden
+        {% endunless %}
+      >
+        {% for product in cart.items %}
+          {% render 'misc.cart-item', product: product %}
         {% endfor %}
-      </ul>
+      </ui-cart-items>
     </div>
-    <div class="card">
+    <ui-summary-box
+      class="card"
+      {% unless cart.items.size > 0 %}
+        hidden
+      {% endunless %}
+    >
       <span class="title">Summary</span>
       <ul class="box summary">
-        <div class="item">
-          <input ui-input type="text" placeholder="Enter coupon code">
-          <button ui-button data-variant="secondary" data-size="lg" disabled>
+        <form class="item" ui-summary-box="coupon-form">
+          <input
+            ui-input
+            type="text"
+            name="coupon_code"
+            placeholder="Enter coupon code"
+            data-coupon="coupon-input"
+          >
+          <button ui-button data-variant="secondary" data-size="lg" type="submit" data-coupon="coupon-button">
             <i class="hgi hgi-stroke hgi-coupon-percent"></i>
             <span class="label">Apply</span>
           </button>
-        </div>
+        </form>
+        <li
+          class="item"
+          ui-summary-box="coupon-code"
+          {% unless cart.coupon != null %}
+            hidden
+          {% endunless %}
+        >
+          <span class="label">{{ 'order.coupon_code' | t }}</span>
+          <span class="value coupon">
+            <span data-value>{{ cart.coupon.code }}</span>
+            <button ui-button data-variant="ghost" data-size="xs" data-icon ui-summary-box="remove-coupon">
+              <i class="hgi hgi-stroke hgi-cancel-01"></i>
+            </button>
+          </span>
+        </li>
         <li class="item">
           <span class="label">Subtotal</span>
-          <span class="value">$599</span>
+          <span class="value" ui-summary-box="subtotal">{{ cart.sub_total | default: 0 | money }}</span>
+        </li>
+        <li
+          class="item"
+          ui-summary-box="discount"
+          {% unless cart.coupon != null %}
+            hidden
+          {% endunless %}
+        >
+          <span class="label"> Discount amount </span>
+          <span class="value" data-value>
+            {% render 'const.discount-value', coupon: cart.coupon %}
+          </span>
         </li>
         <li class="item">
           <span class="label">Total</span>
-          <span class="value">$599</span>
+          <span class="value" ui-summary-box="total">{{ cart.discounted_sub_total | default: 0 | money }}</span>
         </li>
       </ul>
-    </div>
-    <button ui-button data-variant="primary" data-size="lg">
+    </ui-summary-box>
+    <a href="{{ cart.cart_submit_url }}" ui-button data-variant="primary" data-size="lg">
       <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>
       <span class="label">Processed to checkout</span>
-    </button>
+    </a>
+  </div>
+  <div class="core">
+    {% if cart.items.size > 0 %}
+      {% render 'misc.empty', heading: 'Cart is empty :(', hidden: true %}
+    {% else %}
+      {% render 'misc.empty', heading: 'Cart is empty :(' %}
+    {% endif %}
   </div>
 </div>
 

@@ -5,6 +5,12 @@
   {% render 'drawer-quantity' %}
 {% endcomment %}
 
+{% assign quantity = 1 %}
+
+{% if product.quantity != null %}
+  {% assign quantity = product.quantity %}
+{% endif %}
+
 <div ui-drawer="content" class="drawer-quantity">
   <div class="head">
     <div class="info">
@@ -42,18 +48,26 @@
         <span class="price">{{ price | default: 0 | money }}</span>
       </div>
     </div>
-    <div class="quantity-item">
+    <ui-quantity
+      class="quantity-item"
+      item="{{ product.id }}"
+      quantity="{{ quantity }}"
+      product-variant="{{ product.product_variant_id }}"
+      {% if product.inventory %}
+        inventory="{{ product.inventory }}"
+      {% endif %}
+    >
       <span class="label">Change quantity:</span>
       <div class="control">
-        <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="decrease">
+        <button ui-button data-variant="outline" data-size="sm" data-icon name="minus" aria-label="decrease">
           <i class="hgi hgi-stroke hgi-minus-sign"></i>
         </button>
-        <span class="value">1</span>
-        <button ui-button data-variant="outline" data-size="sm" data-icon aria-label="increase">
+        <span class="value">{{ quantity }}</span>
+        <button ui-button data-variant="outline" data-size="sm" data-icon name="plus" aria-label="increase">
           <i class="hgi hgi-stroke hgi-plus-sign"></i>
         </button>
       </div>
-    </div>
+    </ui-quantity>
     {% if false %}
       <div class="form-item">
         <label class="field">

@@ -1,0 +1,53 @@
+{% comment %}
+  Quantity input
+
+  Accepts:
+  - product: {Object} Cart item liquid object
+  - variant: {String} Buttons variant (primary, secondary, ghost, outline)
+  - size: {String} Buttons size (xs, sm, md, lg)
+
+  Usage:
+  {% render 'core.quantity' product: {...} %}
+{% endcomment %}
+
+{% assign quantity = 1 %}
+
+{% if product.quantity != null %}
+  {% assign quantity = product.quantity %}
+{% endif %}
+
+<ui-quantity
+  class="quantity"
+  item="{{ product.id }}"
+  product-variant="{{ product.product_variant_id }}"
+  {% if product.inventory %}
+    inventory="{{ product.inventory }}"
+  {% endif %}
+  quantity="{{ quantity }}"
+>
+  <button
+    ui-button
+    type="button"
+    data-variant="{{ variant }}"
+    data-size="{{ size }}"
+    data-icon
+    name="minus"
+    aria-label="decrease"
+  >
+    <i class="hgi hgi-stroke hgi-minus-sign"></i>
+  </button>
+  <span ui-quantity-value class="value" ui-cart-item="quantity">
+    {{ quantity }}
+  </span>
+  <button
+    ui-button
+    type="button"
+    data-variant="{{ variant }}"
+    data-size="{{ size }}"
+    data-icon
+    name="plus"
+    aria-label="increase"
+  >
+    <i class="hgi hgi-stroke hgi-add-01"></i>
+  </button>
+</ui-quantity>

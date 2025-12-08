@@ -11,6 +11,10 @@
     display: grid;
     gap: var(--spacing-12);
 
+    &:has(> *[hidden]) {
+      display: none;
+    }
+
     .card {
       padding: var(--spacing-8);
       border-radius: var(--radius-md);
@@ -42,9 +46,15 @@
               border-block-end: 1px dashed var(--color-surface-variant);
             }
 
-            img {
-              object-fit: cover;
+            .image {
+              width: 80px;
+              height: 80px;
+              overflow: hidden;
               border-radius: var(--radius-md);
+
+              img {
+                object-fit: cover;
+              }
             }
 
             .info {
@@ -101,6 +111,25 @@
             .value {
               color: var(--color-primary);
               font-weight: 500;
+
+              &.coupon {
+                display: flex;
+                align-items: center;
+                height: 28px;
+                border: 1px dashed currentcolor;
+                background-color: var(--color-primary-container);
+                color: var(--color-primary);
+
+                span {
+                  padding-inline: var(--spacing-8);
+                }
+
+                [ui-button] {
+                  height: 100%;
+                  border-inline-start: 1px dashed currentcolor;
+                  border-radius: var(--radius-none);
+                }
+              }
             }
 
             &:last-child {
