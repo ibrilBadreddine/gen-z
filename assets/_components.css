@@ -144,6 +144,24 @@
   /* Loading */
   &[data-loading] {
     position: relative;
+    overflow: hidden;
+    color: transparent !important;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      transform: translateY(80%);
+      animation-name: show-spinner, spin;
+      animation-duration: 0.3s, 1s;
+      animation-timing-function: cubic-bezier(0.27, 1.06, 0.18, 1), linear;
+      animation-iteration-count: 1, infinite;
+      border: 1.5px solid var(--color-outline);
+      border-radius: var(--radius-rounded);
+      animation-fill-mode: forwards, none;
+      border-block-end-color: transparent;
+    }
   }
 
   /* Active */
@@ -164,6 +182,18 @@
   /* &:has(> :only-child:is(i)) {
     border-radius: var(--radius-circled);
   } */
+}
+
+@keyframes show-spinner {
+  to {
+    transform: translateY(0%);
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
 }
 
 /* INPUT */
