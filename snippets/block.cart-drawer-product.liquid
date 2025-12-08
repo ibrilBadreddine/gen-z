@@ -1,0 +1,43 @@
+{% comment %}
+  Renders cart drawer product item
+
+  Accepts:
+  - product: {Object} product info
+
+  Usage:
+  {% render 'misc-cart-drawer-item' %}
+{% endcomment %}
+
+<div class="product">
+  <div class="image" ui-cart-item="image">
+    <img
+      src="{{ product.image }}"
+      alt="{{ product.name }}"
+      height="80"
+      width="80"
+      {% if product.image contains '/store-front/images/product-default' or product.image == null %}
+        hidden
+      {% endif %}
+    >
+    {% if product.image contains '/store-front/images/product-default' %}
+      {% render 'misc.image-fallback' %}
+    {% else %}
+      {% render 'misc.image-fallback', hidden: true %}
+    {% endif %}
+  </div>
+  <div class="info">
+    <h4 class="name" ui-cart-item="title">{{ product.name }}</h4>
+    <p class="price" ui-cart-item="price">{{ product.price | default: 0 | money }}</p>
+  </div>
+  <div class="actions">
+    <ui-cart-remove
+      item="{{ product.id }}"
+      product-variant="{{ product.product_variant_id }}"
+    >
+      <button ui-cart-item="delete-button" ui-button data-variant="ghost" data-size="xs" data-icon aria-label="delete">
+        <i class="hgi hgi-stroke hgi-delete-02"></i>
+      </button>
+    </ui-cart-remove>
+    {% render 'core.quantity', variant: 'secondary', size: 'xs' %}
+  </div>
+</div>

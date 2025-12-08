@@ -39,16 +39,15 @@
   },
   "order": [
     "promotion",
-    "special-offer",
     "hero",
     "gallery",
     "bio",
-    "featured-product",
-    "faq",
     "map",
     "social-links",
     "collections",
     "products",
-    "products-by-collection"
+    "products-by-collection",
+    "faq",
+    "featured-product"
   ]
 }
