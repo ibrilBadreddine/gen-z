@@ -69,7 +69,7 @@ ui-toast {
     color: var(--color-background);
 
     &:hover {
-      background-color: color-mix(in srgb, currentcolor 10%, transparent);
+      background-color: color-mix(in srgb, currentcolor 10%, transparent) !important;
     }
   }
 

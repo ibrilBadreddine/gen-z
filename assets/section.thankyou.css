@@ -30,7 +30,7 @@
         width: 32px;
         height: 16px;
         border-radius: var(--radius-rounded);
-        background-color: var(--color-success);
+        background-color: var(--color-primary);
 
         &:first-child {
           opacity: 0.2;
@@ -91,6 +91,10 @@
               .label {
                 opacity: 0.8;
               }
+
+              .value {
+                color: var(--color-primary);
+              }
             }
 
             &.product {
@@ -136,7 +140,7 @@
             }
 
             .value {
-              color: var(--color-primary);
+              color: var(--color-on-surface-variant);
               font-weight: 500;
 
               &[data-status] {

@@ -1,0 +1,25 @@
+{% comment %}
+  Renders a product button
+
+  Accepts:
+  - product: {Object} Product info
+  - as_icon: {Boolean} Button style
+
+  Usage:
+  {% render 'core.buy-now', product: {...}, as_icon: false %}
+{% endcomment %}
+
+<ui-drawer id="express-checkout">
+  <button
+    ui-drawer="trigger"
+    data-for="express-checkout"
+    data-state="open"
+    ui-button
+    data-variant="secondary"
+    data-size="lg"
+  >
+    <i class="hgi hgi-stroke hgi-shopping-bag-01"></i>
+    <span class="label">Buy Now</span>
+  </button>
+  {% render 'drawer.express-checkout' %}
+</ui-drawer>

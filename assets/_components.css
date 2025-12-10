@@ -223,6 +223,10 @@
     resize: vertical;
   }
 
+  &:is(select) {
+    appearance: none;
+  }
+
   /* Invalid */
   &[aria-invalid="true"] {
     border-color: var(--color-error);

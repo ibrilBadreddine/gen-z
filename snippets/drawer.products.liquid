@@ -68,7 +68,7 @@
             {% render 'drawer.product' %}
           </ui-drawer>
           <div class="content">
-            <a href="/products/{{ product.id }}" class="title">{{ product.name | default: 'Product name' }}</a>
+            <a href="/products/{{ product.slug }}" class="title">{{ product.name | default: 'Product name' }}</a>
             <p class="price">
               {{ price | default: 0 | money }}
             </p>

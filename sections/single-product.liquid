@@ -46,7 +46,7 @@
   {% if product.images.size > 1 %}
     </ui-drawer>
   {% endif %}
-  <div class="content">
+  <ui-product product-id="{{ product.id }}" class="content">
     <div class="bio">
       <h1 class="title">{{ product.name }}</h1>
       <div class="about">
@@ -125,27 +125,18 @@
     {% endfor %}
 
     <div class="events">
-      <span class="price">
-        {{ price | default: 0 | money }}
+      <div class="price">
+        <span class="original" ui-product-item="price">{{ price | default: 0 | money }}</span>
         {% if compare_at_price %}
-          {{ compare_at_price | default: 0 | money }}
+          <span class="compare-at" ui-product-item="compare-at-price">
+            {{ compare_at_price | default: 0 | money }}
+          </span>
         {% endif %}
-      </span>
-      <ui-drawer id="quantity" class="actions">
-        <button
-          ui-drawer="trigger"
-          data-for="quantity"
-          data-state="open"
-          ui-button
-          data-variant="secondary"
-          data-size="lg"
-        >
-          <i class="hgi hgi-stroke hgi-shopping-bag-01"></i>
-          <span class="label">Buy Now</span>
-        </button>
+      </div>
+      <div class="actions">
+        {% render 'core.buy-now' %}
         {% render 'core.product-button' %}
-        {% render 'drawer.quantity' %}
-      </ui-drawer>
+      </div>
     </div>
     {% for block in section.blocks %}
       {% if block.type == 'related_products' %}
@@ -161,8 +152,16 @@
         </div>
       {% endif %}
     {% endfor %}
-  </div>
+  </ui-product>
 </div>
+
+{% if product and product.options.size %}
+  {% javascript %}
+    if (!window.productsVariants["{{ product.id }}"]) {
+      window.productsVariants["{{ product.id }}"] = JSON.parse({{ product.variants | json }});
+    }
+  {% endjavascript %}
+{% endif %}
 
 {% schema %}
 {

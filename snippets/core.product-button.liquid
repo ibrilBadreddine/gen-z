@@ -6,7 +6,7 @@
   - as_icon: {Boolean} Button style
 
   Usage:
-  {% render 'core-product-button', product: {...}, as_icon: false %}
+  {% render 'core.product-button', product: {...}, as_icon: false %}
 {% endcomment %}
 
 {% assign default_variant = product.selected_or_first_available_variant %}
@@ -26,13 +26,13 @@
     {% endif %}
   >
     {% if product.skip_to_checkout %}
-      <button ui-button data-variant="primary" data-size="lg" class="add-to-cart">
+      <button ui-product-button="action" ui-button data-variant="primary" data-size="lg" class="add-to-cart">
         {{ 'general.shop_now' | t }}
       </button>
     {% else %}
       {% if as_icon %}
         <button
-          ui-button
+          ui-product-button="action"
           ui-button
           data-variant="outline"
           data-size="sm"
@@ -43,6 +43,7 @@
         </button>
       {% else %}
         <button
+          ui-product-button="action"
           ui-button
           data-variant="primary"
           data-size="lg"

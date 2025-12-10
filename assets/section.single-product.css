@@ -142,6 +142,11 @@
     .description {
       opacity: 0.8;
       font: var(--font-body-md);
+
+      img,
+      iframe {
+        max-width: 100%;
+      }
     }
 
     .reviews {
@@ -333,6 +338,11 @@
         color: var(--color-primary);
         font: var(--font-title-lg);
         font-size: 20px;
+
+        .compare-at {
+          opacity: 0.7;
+          text-decoration: line-through;
+        }
       }
 
       .actions {
