@@ -2,22 +2,24 @@
 [ui-section="single-product"] {
   --media-height: 60vh;
 
-  padding-block-start: calc(var(--media-height) - var(--spacing-48));
+  position: relative;
+  margin-block-start: calc(var(--spacing-48) * -1);
+
+  /* transform: translateY(calc(var(--spacing-48) * -1)); */
 
   .media {
-    position: fixed;
+    position: sticky;
     z-index: 2;
     width: 600px;
     height: var(--media-height);
     overflow: hidden;
-    transform: translateX(-50%);
-    inset-inline-start: 50%;
-    inset-block-start: var(--spacing-12);
+    transform: translateX(calc(var(--spacing-24) * -1));
+    inset-block-start: var(--spacing-0);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 
     .slides {
       display: flex;
-      overflow-x: scroll;
+      overflow: scroll hidden;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
@@ -59,6 +61,7 @@
     z-index: 3;
     flex-direction: column;
     width: calc(100% + var(--spacing-48));
+    margin-block-start: calc(var(--spacing-24) * -1);
     padding: var(--spacing-24);
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background-color: var(--color-background);
@@ -376,9 +379,8 @@
     --media-height: 50vh;
 
     .media {
-      width: 100%;
+      width: calc(100% + var(--spacing-48));
       border-radius: var(--radius-none);
-      inset-block-start: var(--spacing-0);
     }
 
     & > .content {

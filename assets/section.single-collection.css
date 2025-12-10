@@ -1,26 +1,24 @@
 /* SINGLE COLLECTION */
 [ui-section="single-collection"] {
-  --media-height: 40vh;
-
-  padding-block-start: calc(var(--media-height) - var(--spacing-48));
+  position: relative;
+  transform: translateY(calc(var(--spacing-48) * -1));
 
   .media {
     display: flex;
-    position: fixed;
+    position: sticky;
     z-index: 2;
     align-items: end;
     width: 600px;
-    height: var(--media-height);
+    height: 40vh;
     padding: var(--spacing-24);
     padding-block-end: var(--spacing-48);
     overflow: hidden;
-    transform: translateX(-50%);
+    transform: translateX(calc(var(--spacing-24) * -1));
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    inset-inline-start: 50%;
-    inset-block-start: var(--spacing-12);
+    inset-block-start: var(--spacing-0);
 
     &::before {
       content: "";
@@ -59,6 +57,7 @@
     flex-direction: column;
     width: calc(100% + var(--spacing-48));
     padding: var(--spacing-24);
+    transform: translateY(calc(var(--spacing-24) * -1));
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background-color: var(--color-background);
     inset-inline-start: calc(var(--spacing-24) * -1);
@@ -238,9 +237,8 @@
 @media (width <= 769px) {
   [ui-section="single-collection"] {
     .media {
-      width: 100%;
+      width: calc(100% + var(--spacing-48));
       border-radius: var(--radius-none);
-      inset-block-start: var(--spacing-0);
     }
 
     .listing {
