@@ -3,7 +3,7 @@
 <div ui-section="faq" ui-nav="shop">
   <h3 class="title">FAQ</h3>
   <ul class="accordion-list">
-    {% for item in (1..4) %}
+    {% for block in section.blocks %}
       {% render 'block.accordion' %}
     {% endfor %}
   </ul>
@@ -11,6 +11,37 @@
 
 {% schema %}
 {
-  "label": "FAQ"
+  "label": "FAQ",
+  "templates": ["index", "product", "page"],
+  "limit": 1,
+  "max_blocks": 8,
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "FAQ"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "label": "FAQ",
+      "settings": [
+        {
+          "id": "question",
+          "type": "text",
+          "label": "Question",
+          "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        },
+        {
+          "id": "answer",
+          "type": "richtext",
+          "label": "Answer",
+          "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias impedit illo quam culpa rem eius, eveniet sunt beatae officia consequuntur."
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

@@ -5,15 +5,15 @@
   {% render 'accordion-item'%}
 {% endcomment %}
 
-<li class="accordion-item">
+<li class="accordion-item" {{ block.youcan_attributes }}>
   <label class="item-wrapper">
     <div class="trigger">
-      <span class="label">What coffees do you sell?</span>
+      <span class="label">{{ block.settings.question }}</span>
       <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
     </div>
     <div class="content">
       <article>
-        <p>Single-origin beans, house blends, decaf, and flavored options. Whole-bean and pre-ground available.</p>
+        <p>{{ block.settings.answer }}</p>
       </article>
     </div>
     <input type="checkbox" name="accordion">

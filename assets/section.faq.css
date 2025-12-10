@@ -60,7 +60,7 @@
 
           & > article {
             overflow: hidden;
-            opacity: 0.8;
+            color: var(--color-on-surface-variant);
             text-wrap: balance;
           }
         }
