@@ -10,7 +10,6 @@ if (!customElements.get("ui-product")) {
 
       this.variants = [...this.querySelectorAll("[ui-variant]")];
       this.productForm = this.querySelector("ui-product-button");
-      console.log(this.productForm);
       this.productMedia = this.querySelector("ui-media");
       this.productVariants =
         window.productsVariants[this.getAttribute("product-id")];
