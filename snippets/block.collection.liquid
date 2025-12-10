@@ -38,7 +38,7 @@
       {% endif %}
     </div>
     <div class="content">
-      <span class="name">{{ collection.name }}</span>
+      <span class="name">{{ collection.name | default: 'Collection name' }}</span>
     </div>
   </a>
 </li>

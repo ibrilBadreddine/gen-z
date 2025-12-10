@@ -2,8 +2,10 @@
 
 <div ui-section="collections" ui-nav="shop">
   <div class="head">
-    <h3 class="title">Collections</h3>
-    <a href="/collections" ui-button data-variant="link" data-size="sm" class="see-all"> See all</a>
+    <h3 class="title">{{ section.settings.title }}</h3>
+    <a href="/collections" ui-button data-variant="link" data-size="sm" class="see-all">
+      {{ section.settings.link }}
+    </a>
   </div>
   <ul class="collections" data-style="{{ section.settings.style }}">
     {% for block in section.blocks %}
@@ -19,6 +21,26 @@
   "limit": 3,
   "max_blocks": 12,
   "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Title",
+      "default": "Collections"
+    },
+    {
+      "id": "link",
+      "type": "text",
+      "label": "Link label",
+      "default": "See all"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
     {
       "id": "style",
       "type": "select",
