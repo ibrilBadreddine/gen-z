@@ -47,7 +47,7 @@
             <div class="stars">
               {% for star in (1..5) %}
                 {% if star <= product.averageRating %}
-                  {% render 'icon.start', size: 10 %}
+                  {% render 'icon.star', size: 10 %}
                 {% else %}
                   <i class="hgi hgi-stroke hgi-star"></i>
                 {% endif %}
@@ -74,7 +74,7 @@
       <div class="reviews">
         <div class="reviews-overview">
           <div class="rating">
-            {% render 'icon.start', size: 20 %}
+            {% render 'icon.star', size: 20 %}
             <span class="value">{{ product.averageRating }}</span>
           </div>
           <span class="separator">·</span>
@@ -87,7 +87,7 @@
                 <div class="stars">
                   {% for star in (1..5) %}
                     {% if forloop.index < 4 %}
-                      {% render 'icon.start', size: 14 %}
+                      {% render 'icon.star', size: 14 %}
                     {% else %}
                       <i class="hgi hgi-stroke hgi-star"></i>
                     {% endif %}
