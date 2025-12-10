@@ -247,17 +247,6 @@ class CartDrawerItems extends BaseCartItem {
         : this.cart.toggle(true);
     }
 
-    if (payload.source === "quick-view") {
-      const quickViewModal = document.querySelector(
-        "yc-product yc-modal:has(yc-modal-content[data-visible])"
-      );
-
-      quickViewModal.close();
-      payload.skipCart
-        ? (window.location.href = "/cart")
-        : this.cart.toggle(true);
-    }
-
     this.updateCartSubTotal(sub_total);
   }
 
