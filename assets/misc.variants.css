@@ -23,7 +23,7 @@ ui-variants {
       }
     }
 
-    &:not([ui-variant="radio"]) {
+    &:not([ui-variant="radio_buttons"]) {
       .options {
         .opt {
           & > input[type="radio"] {
@@ -35,7 +35,7 @@ ui-variants {
       }
     }
 
-    &[ui-variant="toggle"] {
+    &[ui-variant="textual_buttons"] {
       .options {
         .opt {
           display: flex;
@@ -64,7 +64,7 @@ ui-variants {
       }
     }
 
-    &[ui-variant="color"] {
+    &[ui-variant="color_base_buttons"] {
       .options {
         .opt {
           display: flex;
@@ -113,13 +113,15 @@ ui-variants {
       }
     }
 
-    &[ui-variant="image"] {
+    &[ui-variant="image_based_buttons"] {
       .options {
         .opt {
           display: flex;
           position: relative;
           align-items: center;
           justify-content: center;
+          width: 80px;
+          height: 80px;
           overflow: hidden;
           transition: var(--transition-standard-default-effects);
           border: 2px solid white;
@@ -146,7 +148,10 @@ ui-variants {
           }
 
           & > img {
+            width: 100%;
+            height: 100%;
             border-radius: var(--radius-sm);
+            object-fit: cover;
           }
 
           &:has(> input[type="radio"]:checked) {
@@ -174,7 +179,7 @@ ui-variants {
       }
     }
 
-    &[ui-variant="radio"] {
+    &[ui-variant="radio_buttons"] {
       .options {
         .opt {
           display: flex;
@@ -232,12 +237,12 @@ ui-variants {
     }
 
     &[ui-variant="dropdown"] {
-      [ui-button] {
-        justify-content: space-between;
-        width: 100%;
-        border-radius: var(--radius-sm);
-        background-color: transparent;
-        color: currentcolor;
+      position: relative;
+
+      & > i {
+        inset-inline-end: var(--spacing-12);
+        inset-block-end: var(--spacing-12);
+        position: absolute;
       }
     }
   }

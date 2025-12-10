@@ -6,169 +6,110 @@
 {% endcomment %}
 
 <ui-variants>
-  <div ui-variant="toggle">
-    <span class="label">Size</span>
-    <div class="options">
-      <label class="opt">
-        S
-        <input type="radio" name="size" value="s" checked>
-      </label>
-      <label class="opt">
-        M
-        <input type="radio" name="size" value="m" disabled>
-      </label>
-      <label class="opt">
-        L
-        <input type="radio" name="size" value="l">
-      </label>
-      <label class="opt">
-        XL
-        <input type="radio" name="size" value="xl">
-      </label>
-    </div>
-  </div>
-  <div ui-variant="radio">
-    <span class="label">Color</span>
-    <div class="options">
-      <label class="opt">
-        <input type="radio" name="color" value="red">
-        Red
-      </label>
-      <label class="opt">
-        <input type="radio" name="color" value="blue" checked>
-        Blue
-      </label>
-      <label class="opt">
-        <input type="radio" name="color" value="green" disabled>
-        Green
-      </label>
-      <label class="opt">
-        <input type="radio" name="color" value="white">
-        White
-      </label>
-    </div>
-  </div>
-  <div ui-variant="color">
-    <span class="label">Style</span>
-    <div class="options">
-      <label class="opt" style="--color-value: #c1121f">
-        <i class="hgi hgi-stroke hgi-tick-02"></i>
-        <input type="radio" name="style" value="red" disabled>
-      </label>
-      <label class="opt" style="--color-value: #0077b6">
-        <i class="hgi hgi-stroke hgi-tick-02"></i>
-        <input type="radio" name="style" value="blue">
-      </label>
-      <label class="opt" style="--color-value: #588157">
-        <i class="hgi hgi-stroke hgi-tick-02"></i>
-        <input type="radio" name="style" value="green" checked>
-      </label>
-      <label class="opt" style="--color-value: #fff">
-        <i class="hgi hgi-stroke hgi-tick-02"></i>
-        <input type="radio" name="style" value="white">
-      </label>
-      <label class="opt" style="--color-value: #ffbe0b">
-        <i class="hgi hgi-stroke hgi-tick-02"></i>
-        <input type="radio" name="style" value="yellow">
-      </label>
-    </div>
-  </div>
-  <div ui-variant="image">
-    <span class="label">Image</span>
-    <div class="options">
-      <label class="opt">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Y5zJcwYGY6SC189RXCpW99QVFnK0Jm05JgIwhDcP.webp"
-          alt="image"
-          width="80"
-          height="80"
-        >
-        <input type="radio" name="image" value="image-1" disabled>
-        <div class="checked">
-          <i class="hgi hgi-stroke hgi-tick-02"></i>
+  {% for variant in product.options %}
+    {% assign default = '' %}
+    {% assign name_id = 100 | rand: 2000 %}
+    {% assign unique_name = variant.name | append: '_' | append: name_id %}
+
+    {% for variation in product.selected_or_first_available_variant.variations %}
+      {% if variation[0] == variant.name %}
+        {% assign default = variation[1] %}
+      {% endif %}
+    {% endfor %}
+
+    <div ui-variant="{{ variant.type }}">
+      <span class="label">{{ variant.name }}</span>
+      {% if variant.type == 'textual_buttons' %}
+        <div class="options">
+          {% for opt in variant.values %}
+            <label class="opt">
+              {{ opt }}
+              <input
+                type="radio"
+                name="{{ unique_name }}"
+                value="{{ opt }}"
+                {% if opt == default %}
+                  checked
+                {% endif %}
+              >
+            </label>
+          {% endfor %}
         </div>
-      </label>
-      <label class="opt">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/Q5AekMGaLwyZ1mGBnS7QCbTbh6KJLapEj1UScPlY.webp"
-          alt="image"
-          width="80"
-          height="80"
-        >
-        <input type="radio" name="image" value="image-1">
-        <div class="checked">
-          <i class="hgi hgi-stroke hgi-tick-02"></i>
+      {% elsif variant.type == 'radio_buttons' %}
+        <div class="options">
+          {% for opt in variant.values %}
+            <label class="opt">
+              <input
+                type="radio"
+                name="{{ unique_name }}"
+                value="{{ opt }}"
+                {% if opt == default %}
+                  checked
+                {% endif %}
+              >
+              {{ opt }}
+            </label>
+          {% endfor %}
         </div>
-      </label>
-      <label class="opt">
-        <img
-          src="https://cdn.youcan.shop/stores/28a34010e84b881fb087359c7e280a08/products/cRwuOnIrOACV8qJ4OVqMhFdE85nTISfvev4jhhj2.webp"
-          alt="image"
-          width="80"
-          height="80"
-        >
-        <input type="radio" name="image" value="image-1">
-        <div class="checked">
-          <i class="hgi hgi-stroke hgi-tick-02"></i>
+      {% elsif variant.type == 'color_base_buttons' %}
+        <div class="options">
+          {% for opt in variant.values %}
+            <label class="opt" style="--color-value: {{ opt.preview }}">
+              <i class="hgi hgi-stroke hgi-tick-02"></i>
+              <input
+                type="radio"
+                name="{{ unique_name }}"
+                value="{{ opt.value }}"
+                {% if opt.value == default %}
+                  checked
+                {% endif %}
+              >
+            </label>
+          {% endfor %}
         </div>
-      </label>
-    </div>
-  </div>
-  <div ui-variant="dropdown">
-    <span class="label">Country</span>
-    <ui-drawer id="countries">
-      <button
-        ui-button
-        data-variant="outline"
-        data-size="md"
-        ui-drawer="trigger"
-        data-for="countries"
-        data-state="open"
-      >
-        Select
+      {% elsif variant.type == 'dropdown' %}
+        <select ui-input class="options" name="{{ unique_name }}">
+          {% for opt in variant.values %}
+            <option
+              value="{{ opt }}"
+              {% if opt == default %}
+                selected
+              {% endif %}
+            >
+              {{ opt }}
+            </option>
+          {% endfor %}
+        </select>
         <i class="hgi hgi-stroke hgi-unfold-more"></i>
-      </button>
-      <div ui-drawer="content" class="drawer-select">
-        <div class="head">
-          <div class="info">
-            <h4 class="title">Select a country</h4>
-          </div>
-          <button
-            ui-drawer="trigger"
-            data-for="countries"
-            data-state="close"
-            ui-button
-            data-variant="ghost"
-            data-size="xs"
-            data-icon
-            aria-label="close"
-          >
-            <i class="hgi hgi-stroke hgi-cancel-01"></i>
-          </button>
+      {% elsif variant.type == 'image_based_buttons' %}
+        <div class="options">
+          {% for opt in variant.values %}
+            <label class="opt">
+              {% if opt.preview %}
+                <img
+                  src="{{ opt.preview }}"
+                  alt="{{ opt.value }}"
+                  height="80"
+                  width="80"
+                >
+              {% else %}
+                {% render 'misc.image-fallback' %}
+              {% endif %}
+              <input
+                type="radio"
+                name="{{ unique_name }}"
+                value="{{ opt.value }}"
+                {% if opt.value == default %}
+                  checked
+                {% endif %}
+              >
+              <div class="checked">
+                <i class="hgi hgi-stroke hgi-tick-02"></i>
+              </div>
+            </label>
+          {% endfor %}
         </div>
-        <ui-select class="core">
-          <div class="search">
-            <input ui-select="input" ui-input type="text" name="countries-search" placeholder="Search..">
-            <button ui-select="clear" ui-button data-variant="destructive" data-size="md" data-icon aria-label="clear">
-              <i class="hgi hgi-stroke hgi-eraser-01"></i>
-            </button>
-          </div>
-          <div ui-select="options" class="options">
-            <label class="opt">
-              Morocco
-              <input ui-radio type="radio" name="countries" value="morocco">
-            </label>
-            <label class="opt">
-              Canada
-              <input ui-radio type="radio" name="countries" value="canada">
-            </label>
-            <label class="opt">
-              Japan
-              <input ui-radio type="radio" name="countries" value="japan">
-            </label>
-          </div>
-        </ui-select>
-      </div>
-    </ui-drawer>
-  </div>
+      {% endif %}
+    </div>
+  {% endfor %}
 </ui-variants>
