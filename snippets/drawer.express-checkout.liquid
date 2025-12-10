@@ -1,0 +1,141 @@
+{{ 'drawer.express-checkout.css' | asset_url | stylesheet_tag }}
+
+{% comment %}
+  Renders the express checkout form
+
+  Accepts:
+  - fields: {Array} Checkout fields
+
+  Usage:
+  {% render 'misc.express-checkout', name: [...] %}
+{% endcomment %}
+
+{% assign linked_fields = 'country,region,city' %}
+{% assign has_linked_fields = checkout.linked_fields %}
+{% assign default_variant = product.selected_or_first_available_variant %}
+
+<div ui-drawer="content" class="drawer-express-checkout">
+  <div class="head">
+    <div class="info">
+      <h4 class="title">Customer information</h4>
+      <p class="description">Fill out this form, and we'll contact you soon</p>
+    </div>
+    <button
+      ui-drawer="trigger"
+      data-for="express-checkout"
+      data-state="close"
+      ui-button
+      data-variant="ghost"
+      data-size="xs"
+      data-icon
+      aria-label="close"
+    >
+      <i class="hgi hgi-stroke hgi-cancel-01"></i>
+    </button>
+  </div>
+  <form class="core" ui-product-button="form">
+    <div class="about">
+      <div class="product-item">
+        <div class="image">
+          {% if product.preview_image %}
+            <img
+              src="{{ product.preview_image.original }}"
+              alt="{{ product.name }}"
+              width="100%"
+              height="100%"
+            >
+          {% else %}
+            {% render 'misc.image-fallback' %}
+          {% endif %}
+        </div>
+        <div class="info">
+          <span class="title">{{ product.name }}</span>
+          <span class="price">{{ price | default: 0 | money }}</span>
+        </div>
+      </div>
+      <div class="quantity-item">
+        <span class="label">Change quantity:</span>
+        {% render 'core.quantity', product: product, variant: 'outline', size: 'xs' %}
+      </div>
+    </div>
+    <div class="fields">
+      {% for field in checkout.fields %}
+        {% assign field_name = field.name %}
+
+        {% if field.custom %}
+          {% assign field_name = 'extra_fields[' | append: field.name | append: ']' %}
+        {% endif %}
+
+        {% unless has_linked_fields and linked_fields contains field.name %}
+          <label ui-express-checkout="field">
+            <span ui-express-checkout="label">{{ field.display_name }}</span>
+            {% case field.type %}
+              {% when 'text', 'number', 'hidden' %}
+                <input
+                  ui-input
+                  type="{{ field.type }}"
+                  name="{{ field_name }}"
+                  value="{{ field.default_value }}"
+                  placeholder="{{ field.placeholder }}"
+                  {% if field.required %}
+                    required
+                  {% endif %}
+                >
+              {% when 'textarea' %}
+                <textarea
+                  ui-input
+                  name="{{ field_name }}"
+                  placeholder="{{ field.placeholder }}"
+                  {% if field.required %}
+                    required
+                  {% endif %}
+                ></textarea>
+              {% when 'select' %}
+                <select
+                  name="{{ field_name }}"
+                  {% if field.required %}
+                    required
+                  {% endif %}
+                >
+                  {% for opt in field.options %}
+                    <option
+                      value="{{ opt }}"
+                      {% if option == field.default_value %}
+                        selected
+                      {% endif %}
+                    >
+                      {{ opt }}
+                    </option>
+                  {% endfor %}
+                </select>
+                <i class="hgi hgi-stroke hgi-unfold-more"></i>
+            {% endcase %}
+          </label>
+        {% endunless %}
+      {% endfor %}
+
+      {% if has_linked_fields %}
+        {% render 'misc.linked-fields', fields: checkout.fields %}
+      {% endif %}
+    </div>
+    <div class="note">
+      <p class="message">
+        <i class="hgi hgi-stroke hgi-information-square"></i>Fill out this form, and we'll contact you soon
+      </p>
+    </div>
+    <div class="actions">
+      <ui-product-button
+        quantity="1"
+        variant-id="{{ default_variant.id }}"
+        checkout-type="express"
+        {% unless product.available %}
+          not-available
+        {% endunless %}
+      >
+        <button ui-product-button="action" ui-button data-variant="primary" data-size="lg">
+          Place order<i class="hgi hgi-stroke hgi-sent"></i>
+        </button>
+      </ui-product-button>
+    </div>
+  </form>
+</div>
