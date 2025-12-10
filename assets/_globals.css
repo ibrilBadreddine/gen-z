@@ -67,6 +67,10 @@ body {
       }
     }
 
+    &:has([ui-section="announcement"]) {
+      margin-block-start: var(--spacing-64);
+    }
+
     /* HEADER */
     [ui-layout="header"] {
       display: flex;

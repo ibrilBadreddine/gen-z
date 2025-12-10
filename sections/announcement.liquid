@@ -1,16 +1,77 @@
 {{ 'section.announcement.css' | asset_url | stylesheet_tag }}
 
 <div ui-section="announcement">
-  <button class="preview">
-    <span class="tag">Save 30%</span>
-    <span class="label">on orders over $70</span>
-    <i class="hgi hgi-stroke hgi-arrow-down-01"></i>
-  </button>
-  <div class="core"></div>
+  <div class="content">
+    {% for block in section.blocks %}
+      {% if block.type == 'tag' %}
+        <span class="tag" {{ block.youcan_attributes }}>
+          {{ block.settings.tag_content }}
+        </span>
+
+      {% elsif block.type == 'paragraph' %}
+        <p class="info" {{ block.youcan_attributes }}>
+          {{ block.settings.paragraph_content }}
+        </p>
+
+      {% elsif block.type == 'link' %}
+        <a href="{{ block.settings.link_url }}" class="action" {{ block.youcan_attributes }}>
+          {{ block.settings.link_label }}
+        </a>
+      {% endif %}
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
 {
-  "label": "Announcement"
+  "label": "Announcement",
+  "limit": 1,
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "tag",
+      "label": "Tag",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "tag_content",
+          "type": "text",
+          "label": "Tag content",
+          "default": "Save 30%"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "label": "Paragraph",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "paragraph_content",
+          "type": "text",
+          "label": "Paragraph content",
+          "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "label": "Link",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "link_label",
+          "type": "text",
+          "label": "Link label",
+          "default": "Learn more"
+        },
+        {
+          "id": "link_url",
+          "type": "text",
+          "label": "Link url"
+        }
+      ]
+    }
+  ]
 }
 {% endschema %}

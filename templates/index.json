@@ -1,5 +1,8 @@
 {
   "sections": {
+    "announcement": {
+      "type": "announcement"
+    },
     "hero": {
       "type": "hero"
     },
@@ -38,6 +41,7 @@
     }
   },
   "order": [
+    "announcement",
     "promotion",
     "hero",
     "gallery",
