@@ -8,20 +8,14 @@
   }
 
   .links {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-8);
 
     .link {
-      width: 100%;
-    }
-  }
-}
-
-@media (width <= 769px) {
-  [ui-section="social-links"] {
-    .links {
-      flex-direction: column;
+      &:nth-of-type(odd):last-child {
+        grid-column: 1 / 3;
+      }
     }
   }
 }
