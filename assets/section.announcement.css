@@ -1,10 +1,10 @@
 /* ANNOUNCEMENT */
 [ui-section="announcement"] {
-  position: absolute;
+  position: relative;
   left: 50%;
   width: 600px;
+  padding-block-start: var(--spacing-12);
   transform: translateX(-50%);
-  inset-block-start: -42px;
 
   .content {
     align-items: center;
@@ -38,21 +38,15 @@
 @media (width > 769px) {
   [ui-section="announcement"] {
     .content {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }
 
 @media (width <= 769px) {
   [ui-section="announcement"] {
-    width: 100%;
-    padding-inline: var(--spacing-12);
-
-    .content {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    display: none;
   }
 }
