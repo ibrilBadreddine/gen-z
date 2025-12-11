@@ -1,10 +1,38 @@
 {
   "current": {
-    "cart_type": "drawer",
-    "sections": {},
-    "logo": "Persona_5_logo-2ZfjGHqFpl4IvRsRPAmpYRZCVBZ.png",
-    "favicon": "Persona_5_logo-2ZfjGHqFpl4IvRsRPAmpYRZCVBZ.png",
-    "logo_width": 90
+    "sections": {
+      "announcement": {
+        "type": "announcement",
+        "settings": {},
+        "blocks": {
+          "block_gkk8ae6rzniqule": {
+            "type": "tag",
+            "settings": {}
+          },
+          "block_glpfko4s63fm6kj": {
+            "type": "paragraph",
+            "settings": {}
+          },
+          "block_gmrv273jdps9sso": {
+            "type": "link",
+            "settings": {}
+          }
+        },
+        "order": [
+          "block_gkk8ae6rzniqule",
+          "block_glpfko4s63fm6kj",
+          "block_gmrv273jdps9sso"
+        ]
+      },
+      "header": {
+        "type": "header",
+        "settings": {}
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {}
+      }
+    }
   },
   "presets": {
     "Default": {}

@@ -1,16 +1,13 @@
 {
   "sections": {
-    "announcement": {
-      "type": "announcement"
-    },
     "hero": {
       "type": "hero"
     },
-    "gallery": {
-      "type": "gallery"
+    "collections": {
+      "type": "collections"
     },
-    "bio": {
-      "type": "bio"
+    "products": {
+      "type": "products"
     },
     "featured-product": {
       "type": "featured-product"
@@ -20,38 +17,14 @@
     },
     "social-links": {
       "type": "social-links"
-    },
-    "map": {
-      "type": "map"
-    },
-    "collections": {
-      "type": "collections"
-    },
-    "products": {
-      "type": "products"
-    },
-    "products-by-collection": {
-      "type": "products-by-collection"
-    },
-    "promotion": {
-      "type": "promotion"
-    },
-    "special-offer": {
-      "type": "special-offer"
     }
   },
   "order": [
-    "announcement",
-    "promotion",
     "hero",
-    "gallery",
-    "bio",
-    "map",
-    "social-links",
     "collections",
     "products",
-    "products-by-collection",
+    "featured-product",
     "faq",
-    "featured-product"
+    "social-links"
   ]
 }

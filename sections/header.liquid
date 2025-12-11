@@ -1,11 +1,62 @@
-<header ui-layout="header">
-  <button ui-button data-variant="secondary" data-size="sm" data-icon aria-label="menu">Menu</button>
-  <button ui-button data-variant="secondary" data-size="sm" data-icon aria-label="cart">Cart</button>
-</header>
+<div ui-layout="header" data-template="{{ template.name }}">
+  {% unless template.name == 'index' %}
+    <div class="back">
+      <a
+        href="/"
+        ui-button
+        data-variant="outline"
+        data-size="md"
+        data-icon
+        aria-label="back"
+      >
+        <i class="hgi hgi-stroke hgi-arrow-left-02"></i>
+      </a>
+      {% if template.name == 'search' %}
+        {% paginate search.products by 24 cod %}
+          <form action="/search">
+            <input ui-input type="text" name="q" placeholder="Search a product.." value="{{ terms }}">
+          </form>
+        {% endpaginate %}
+      {% endif %}
+    </div>
+  {% endunless %}
+  <ui-drawer id="menu">
+    <button
+      ui-drawer="trigger"
+      data-for="menu"
+      data-state="open"
+      ui-button
+      data-variant="outline"
+      data-size="md"
+      data-icon
+      aria-label="menu"
+    >
+      <i class="hgi hgi-stroke hgi-menu-05"></i>
+    </button>
+    {% render 'drawer.menu' %}
+  </ui-drawer>
+  <ui-drawer id="cart">
+    <button
+      ui-drawer="trigger"
+      data-for="cart"
+      data-state="open"
+      ui-button
+      data-variant="outline"
+      data-size="md"
+      data-icon
+      aria-label="cart"
+    >
+      <i class="hgi hgi-stroke hgi-shopping-basket-03"></i>
+      <ui-cart-bubble>{{ cart.count | default: 0 }}</ui-cart-bubble>
+    </button>
+    {% render 'drawer.cart' %}
+  </ui-drawer>
+</div>
 
 {% schema %}
 {
   "label": "Header",
+  "tag": "header",
   "settings": []
 }
 {% endschema %}
